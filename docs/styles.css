@@ -1,0 +1,125 @@
+/* ---------------------
+   ALTURA DE VENTANA
+---------------------- */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  overflow: hidden; /* Evita scroll global */
+}
+
+/* ---------------------
+   ENCABEZADO
+---------------------- */
+header {
+  background-color: #002C54;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  color: #fff;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* ---------------------
+   LAYOUT PRINCIPAL
+---------------------- */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* El main (.container) ocupa el espacio disponible que deje el header */
+.container {
+  flex: 1;            /* Se expande para ocupar el resto del alto */
+  display: flex;      /* 2 columnas */
+  overflow: hidden;   /* Evita scroll en el contenedor principal */
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* ---------------------
+   COLUMNAS
+---------------------- */
+.analysis-section, 
+.chart-section {
+  flex: 1;               /* Ambas columnas ocupan el mismo ancho */
+  min-width: 300px;      /* Evita que se compriman en pantallas muy pequeñas */
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  /* Scroll interno si se excede la altura */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+/* Si quieres que la sección izquierda sea más angosta:
+   .analysis-section { flex: 0.8; }
+   .chart-section   { flex: 1.2; }
+*/
+
+/* ---------------------
+   ESTILO DE MARKDOWN
+---------------------- */
+.analysis-section ul,
+.analysis-section ol {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.analysis-section h1,
+.analysis-section h2,
+.analysis-section h3,
+.analysis-section h4,
+.analysis-section h5,
+.analysis-section h6 {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.analysis-section p,
+.analysis-section ul,
+.analysis-section ol {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+/* ---------------------
+   CHART
+---------------------- */
+.chart-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Permite que el canvas se adapte */
+.chart-section canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------------
+   RESPONSIVIDAD
+---------------------- */
+@media (max-width: 700px) {
+  /* Apila columnas en pantallas pequeñas */
+  .container {
+    flex-direction: column;
+  }
+  .analysis-section, 
+  .chart-section {
+    flex: none;
+    width: 100%;
+    height: 50%; /* cada sección ocupa la mitad de la pantalla en vertical */
+  }
+}
