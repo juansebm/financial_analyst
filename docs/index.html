@@ -1,49 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Resultados IPSA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resultados IPSA</title>
+
+  <style>
+    /* Reset de márgenes y tipografía básica */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.4;
+    }
+
+    header, section {
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .analysis-section {
+      margin-bottom: 2rem;
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    /* Estilos para la tabla */
+    .responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+
+    .responsive-table thead {
+      background: #eee;
+    }
+
+    .responsive-table th,
+    .responsive-table td {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    /* Responsividad: en pantallas pequeñas ocultamos el thead y 
+       usamos data-label para mostrar el encabezado en cada celda */
+    @media (max-width: 600px) {
+      .responsive-table thead {
+        display: none;
+      }
+      .responsive-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ddd;
+      }
+      .responsive-table td {
+        display: block;
+        text-align: right;
+        border-bottom: 1px dotted #ccc;
+        position: relative;
+      }
+      .responsive-table td:before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <header>
     <h1>Resultados IPSA</h1>
-    <div id="tableContainer"></div>
-    <script>
-        fetch('./results.json')
-          .then(response => response.json())
-          .then(data => {
-            const tableContainer = document.getElementById('tableContainer');
-            const table = document.createElement('table');
-            table.border = 1;
-        
-            // Asumiendo que data.data es el array de acciones
-            const rows = data.data;
-        
-            // Crea la fila de cabecera
-            const headerRow = document.createElement('tr');
-            ['Stock', 'Último Precio', 'RSI', 'P/E Ratio', 'Debt/Equity'].forEach(headerText => {
-              const th = document.createElement('th');
-              th.textContent = headerText;
-              headerRow.appendChild(th);
-            });
-            table.appendChild(headerRow);
-        
-            // Crea una fila por cada acción
-            rows.forEach(item => {
-              const row = document.createElement('tr');
-              ['Stock', 'Último Precio', 'RSI', 'P/E Ratio', 'Debt/Equity'].forEach(key => {
-                const td = document.createElement('td');
-                td.textContent = item[key] !== null ? item[key] : 'N/A';
-                row.appendChild(td);
-              });
-              table.appendChild(row);
-            });
-        
-            tableContainer.appendChild(table);
-          })
-          .catch(error => {
-            console.error('Error fetching JSON:', error);
+  </header>
+
+  <section>
+    <!-- Aquí mostraremos el texto de "analysis" -->
+    <div id="analysisContainer" class="analysis-section"></div>
+
+    <!-- Tabla para mostrar los datos de "data" -->
+    <table class="responsive-table" id="resultsTable">
+      <thead>
+        <tr>
+          <th>Stock</th>
+          <th>Último Precio</th>
+          <th>RSI</th>
+          <th>P/E Ratio</th>
+          <th>Debt/Equity</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <script>
+    // Llamamos a results.json y mostramos sus datos
+    fetch('./results.json')
+      .then(response => response.json())
+      .then(data => {
+        // 1. Mostramos el texto HTML que hay en "analysis"
+        const analysisContainer = document.getElementById('analysisContainer');
+        analysisContainer.innerHTML = data.analysis;
+
+        // 2. Llenamos la tabla con el array de objetos en "data"
+        const tableBody = document.querySelector('#resultsTable tbody');
+        const rows = data.data || [];
+
+        rows.forEach(item => {
+          const row = document.createElement('tr');
+          // Orden en que queremos las columnas
+          const keys = ['Stock', 'Último Precio', 'RSI', 'P/E Ratio', 'Debt/Equity'];
+
+          keys.forEach(key => {
+            const td = document.createElement('td');
+            td.setAttribute('data-label', key);  // Para el modo responsive
+            td.textContent = item[key] !== null ? item[key] : 'N/A';
+            row.appendChild(td);
           });
-        </script>
-        
+
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching JSON:', error);
+      });
+  </script>
 </body>
 </html>
