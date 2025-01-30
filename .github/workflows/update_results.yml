@@ -19,9 +19,11 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
+          
       - name: Run analysis script
-        run: python financial_analyst.py
+        run: |
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
+          python financial_analyst.py
 
       - name: Commit and push changes
         run: |
