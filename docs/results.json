@@ -1,215 +1,215 @@
 {
   "data": [
     {
-      "Stock": "SQM-B.SN",
-      "Último Precio": 39399.0,
-      "RSI": 56.68,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "CHILE.SN",
-      "Último Precio": 120.5,
-      "RSI": 81.58,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "BSANTANDER.SN",
-      "Último Precio": 49.400001525878906,
-      "RSI": 72.25,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "COPEC.SN",
-      "Último Precio": 6620.0,
-      "RSI": 65.12,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
       "Stock": "ENELAM.SN",
-      "Último Precio": 87.0,
-      "RSI": 33.18,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "CENCOSUD.SN",
-      "Último Precio": 2380.0,
-      "RSI": 71.83,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "CMPC.SN",
-      "Último Precio": 1675.0,
-      "RSI": 69.03,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "BCI.SN",
-      "Último Precio": 28875.0,
-      "RSI": 65.07,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "FALABELLA.SN",
-      "Último Precio": 3746.0,
-      "RSI": 79.55,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "ENELCHILE.SN",
-      "Último Precio": 58.29999923706055,
-      "RSI": 50.0,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "PARAUCO.SN",
-      "Último Precio": 1610.0,
-      "RSI": 76.29,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "COLBUN.SN",
-      "Último Precio": 127.5,
-      "RSI": 59.16,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "CCU.SN",
-      "Último Precio": 5910.0,
-      "RSI": 50.61,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "ANDINA-B.SN",
-      "Último Precio": 3166.300048828125,
-      "RSI": 53.47,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Último Precio": 87.94999694824219,
+      "RSI": 40.33,
+      "P/E Ratio": 8.963741,
+      "Debt/Equity": 32.236
     },
     {
       "Stock": "VAPORES.SN",
-      "Último Precio": 53.5,
-      "RSI": 40.57,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "AGUAS-A.SN",
-      "Último Precio": 306.0,
-      "RSI": 71.31,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "QUINENCO.SN",
-      "Último Precio": 3374.60009765625,
-      "RSI": 69.4,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Último Precio": 54.209999084472656,
+      "RSI": 48.73,
+      "P/E Ratio": 8.827642,
+      "Debt/Equity": 0.019
     },
     {
       "Stock": "CENCOMALLS.SN",
-      "Último Precio": 1590.0999755859375,
-      "RSI": 39.72,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Último Precio": 1618.0,
+      "RSI": 49.53,
+      "P/E Ratio": 11.946934,
+      "Debt/Equity": 27.903
     },
     {
-      "Stock": "LTM.SN",
-      "Último Precio": 14.300000190734863,
-      "RSI": 67.68,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "CONCHATORO.SN",
-      "Último Precio": 1111.199951171875,
-      "RSI": 59.71,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "ENTEL.SN",
-      "Último Precio": 3030.0,
-      "RSI": 75.48,
-      "P/E Ratio": null,
-      "Debt/Equity": null
-    },
-    {
-      "Stock": "CAP.SN",
-      "Último Precio": 5400.0,
-      "RSI": 79.05,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Stock": "CCU.SN",
+      "Último Precio": 5950.0,
+      "RSI": 50.06,
+      "P/E Ratio": 16.179388,
+      "Debt/Equity": 92.53
     },
     {
       "Stock": "ORO-BLANCO.SN",
-      "Último Precio": 4.355000019073486,
-      "RSI": 54.83,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Último Precio": 4.349999904632568,
+      "RSI": 54.27,
+      "P/E Ratio": NaN,
+      "Debt/Equity": 19.403
     },
     {
-      "Stock": "MALLPLAZA.SN",
-      "Último Precio": 1725.0,
-      "RSI": 79.69,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Stock": "CONCHATORO.SN",
+      "Último Precio": 1115.0,
+      "RSI": 54.52,
+      "P/E Ratio": 9.805448,
+      "Debt/Equity": 59.549
     },
     {
-      "Stock": "ECL.SN",
-      "Último Precio": 979.7000122070312,
-      "RSI": 77.83,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Stock": "ENELCHILE.SN",
+      "Último Precio": 58.900001525878906,
+      "RSI": 55.03,
+      "P/E Ratio": 8.319209,
+      "Debt/Equity": 84.053
     },
     {
-      "Stock": "IAM.SN",
-      "Último Precio": 745.0,
-      "RSI": 57.31,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Stock": "COLBUN.SN",
+      "Último Precio": 127.41999816894531,
+      "RSI": 59.13,
+      "P/E Ratio": 8670.964,
+      "Debt/Equity": 63.456
     },
     {
-      "Stock": "SMU.SN",
-      "Último Precio": 171.0,
-      "RSI": 96.01,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Stock": "ANDINA-B.SN",
+      "Último Precio": 3249.89990234375,
+      "RSI": 59.87,
+      "P/E Ratio": 11.41462,
+      "Debt/Equity": 106.819
     },
     {
-      "Stock": "ITAUCL.SN",
-      "Último Precio": 10600.0,
-      "RSI": 81.21,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Stock": "SQM-B.SN",
+      "Último Precio": 40352.0,
+      "RSI": 60.35,
+      "P/E Ratio": 28.634687,
+      "Debt/Equity": 91.006
+    },
+    {
+      "Stock": "BCI.SN",
+      "Último Precio": 29200.0,
+      "RSI": 66.01,
+      "P/E Ratio": 7.4437194,
+      "Debt/Equity": NaN
+    },
+    {
+      "Stock": "COPEC.SN",
+      "Último Precio": 6789.0,
+      "RSI": 67.4,
+      "P/E Ratio": 7640.1943,
+      "Debt/Equity": 70.352
+    },
+    {
+      "Stock": "CMPC.SN",
+      "Último Precio": 1700.0,
+      "RSI": 71.44,
+      "P/E Ratio": 9068.117,
+      "Debt/Equity": 72.507
+    },
+    {
+      "Stock": "AGUAS-A.SN",
+      "Último Precio": 308.70001220703125,
+      "RSI": 73.37,
+      "P/E Ratio": 13.587149,
+      "Debt/Equity": 155.147
     },
     {
       "Stock": "SONDA.SN",
-      "Último Precio": 357.79998779296875,
-      "RSI": 69.02,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Último Precio": 364.0,
+      "RSI": 73.87,
+      "P/E Ratio": 7.170317,
+      "Debt/Equity": 66.798
+    },
+    {
+      "Stock": "LTM.SN",
+      "Último Precio": 14.630000114440918,
+      "RSI": 74.22,
+      "P/E Ratio": 6.6199093,
+      "Debt/Equity": 995.347
+    },
+    {
+      "Stock": "QUINENCO.SN",
+      "Último Precio": 3445.0,
+      "RSI": 74.63,
+      "P/E Ratio": 9.911102,
+      "Debt/Equity": 106.907
+    },
+    {
+      "Stock": "BSANTANDER.SN",
+      "Último Precio": 50.119998931884766,
+      "RSI": 75.35,
+      "P/E Ratio": 9.610038,
+      "Debt/Equity": NaN
+    },
+    {
+      "Stock": "ECL.SN",
+      "Último Precio": 979.9500122070312,
+      "RSI": 77.89,
+      "P/E Ratio": 5169.6035,
+      "Debt/Equity": 164.153
+    },
+    {
+      "Stock": "CENCOSUD.SN",
+      "Último Precio": 2420.0,
+      "RSI": 79.07,
+      "P/E Ratio": 10.968771,
+      "Debt/Equity": 113.837
+    },
+    {
+      "Stock": "ENTEL.SN",
+      "Último Precio": 3055.0,
+      "RSI": 79.22,
+      "P/E Ratio": 6.5091753,
+      "Debt/Equity": 136.598
+    },
+    {
+      "Stock": "CAP.SN",
+      "Último Precio": 5455.7001953125,
+      "RSI": 80.19,
+      "P/E Ratio": 8901.017,
+      "Debt/Equity": 55.004
+    },
+    {
+      "Stock": "IAM.SN",
+      "Último Precio": 746.0,
+      "RSI": 80.79,
+      "P/E Ratio": 9.653928,
+      "Debt/Equity": 118.308
     },
     {
       "Stock": "RIPLEY.SN",
-      "Último Precio": 279.9800109863281,
-      "RSI": 74.85,
-      "P/E Ratio": null,
-      "Debt/Equity": null
+      "Último Precio": 283.5,
+      "RSI": 80.85,
+      "P/E Ratio": 12.110209,
+      "Debt/Equity": 211.687
+    },
+    {
+      "Stock": "FALABELLA.SN",
+      "Último Precio": 3818.0,
+      "RSI": 81.43,
+      "P/E Ratio": 17.021214,
+      "Debt/Equity": 79.397
+    },
+    {
+      "Stock": "MALLPLAZA.SN",
+      "Último Precio": 1750.0,
+      "RSI": 82.21,
+      "P/E Ratio": 12.974134,
+      "Debt/Equity": 44.991
+    },
+    {
+      "Stock": "CHILE.SN",
+      "Último Precio": 121.73999786376953,
+      "RSI": 84.52,
+      "P/E Ratio": 10.909531,
+      "Debt/Equity": NaN
+    },
+    {
+      "Stock": "PARAUCO.SN",
+      "Último Precio": 1649.9000244140625,
+      "RSI": 88.13,
+      "P/E Ratio": 13.553188,
+      "Debt/Equity": 93.795
+    },
+    {
+      "Stock": "ITAUCL.SN",
+      "Último Precio": 10649.0,
+      "RSI": 88.7,
+      "P/E Ratio": 6.1229043,
+      "Debt/Equity": NaN
+    },
+    {
+      "Stock": "SMU.SN",
+      "Último Precio": 171.4199981689453,
+      "RSI": 95.82,
+      "P/E Ratio": 13.170956,
+      "Debt/Equity": 141.397
     }
   ],
-  "analysis": "### 1) Resumen de puntos clave\n- **Rango de RSI**: Las acciones presentan un rango de RSI que va desde 33.18 (ENELAM.SN) hasta 96.01 (SMU.SN). Un RSI por encima de 70 indica que una acción está sobrecomprada, mientras que un RSI por debajo de 30 sugiere que está sobrevendida.\n- **P/E Ratio**: No se dispone de datos de P/E Ratio para la mayoría de las acciones, lo que limita el análisis de valoración.\n- **Diversidad sectorial**: Las acciones analizadas provienen de diferentes sectores, incluyendo energía, retail, y finanzas, lo que sugiere una buena diversificación en el mercado chileno.\n\n### 2) Fortalezas o debilidades observadas\n- **Fortalezas**:\n  - **SMU.SN**: Con un RSI de 96.01, indica un fuerte interés de compra, aunque podría estar en una zona de sobrecompra.\n  - **ITAUCL.SN** y **FALABELLA.SN**: Ambos tienen un RSI alto (81.21 y 79.55 respectivamente), lo que sugiere un buen desempeño reciente.\n  - **CENCOSUD.SN** y **ENTEL.SN**: También muestran un RSI alto, lo que indica un interés sostenido en estas acciones.\n\n- **Debilidades**:\n  - **ENELAM.SN**: Con un RSI de 33.18, está en la zona de sobreventa, lo que podría indicar un potencial de recuperación, pero también un riesgo de continuar a la baja.\n  - **CENCOMALLS.SN**: Con un RSI de 39.72, muestra debilidad en el interés de compra.\n\n### 3) Recomendación objetiva basada en los datos\nSe recomienda tener precaución con las acciones que presentan un RSI muy alto, ya que podrían estar en riesgo de corrección. Sin embargo, las acciones con un RSI bajo, como ENELAM.SN, podrían ofrecer oportunidades de compra si se considera que el precio puede recuperarse. Es importante monitorear el comportamiento del mercado y las noticias económicas que puedan afectar a estas acciones.\n\n### 4) Lista de cinco acciones recomendadas\n1. **ITAUCL.SN**: Buen desempeño con un RSI alto, lo que sugiere un interés sostenido.\n2. **FALABELLA.SN**: También presenta un RSI alto, lo que indica un fuerte interés de compra.\n3. **CENCOSUD.SN**: RSI alto y en un sector de retail que puede beneficiarse de la recuperación económica.\n4. **SMU.SN**: Aunque está en sobrecompra, su alto RSI puede indicar un fuerte momentum.\n5. **ENELAM.SN**: A pesar de su bajo RSI, puede ser una buena oportunidad de compra si se busca un potencial de recuperación.\n\nEs recomendable realizar un análisis más profundo y considerar otros factores como el contexto económico y las proyecciones de cada empresa antes de tomar decisiones de inversión."
+  "analysis": "### Resumen de Puntos Clave\n\n1. **Rango de Precios**: Las acciones analizadas tienen un amplio rango de precios, desde $4.35 (ORO-BLANCO.SN) hasta $40,352 (SQM-B.SN).\n2. **Índice RSI**: La mayoría de las acciones se encuentran en un rango RSI que indica que están en condiciones de sobrecompra (por encima de 70) o en condiciones neutrales (entre 40 y 60).\n3. **P/E Ratio**: Las relaciones P/E varían significativamente, con algunas acciones mostrando valores extremadamente altos (como COLBUN.SN y CMPC.SN) y otras con valores más bajos, lo que puede indicar diferentes expectativas de crecimiento.\n4. **Deuda/Equidad**: La relación deuda/capital también varía, con algunas empresas mostrando niveles de deuda muy altos, lo que podría ser un riesgo en tiempos de incertidumbre económica.\n\n### Fortalezas y Debilidades Observadas\n\n**Fortalezas:**\n- **Bajo P/E Ratio**: Acciones como BCI.SN y ENELAM.SN tienen un P/E bajo, lo que puede indicar que están subvaloradas en comparación con sus ganancias.\n- **RSI Alto**: Acciones como SMU.SN y PARAUCO.SN tienen un RSI alto, lo que puede indicar un fuerte interés del mercado y potencial de crecimiento.\n\n**Debilidades:**\n- **Altos Niveles de Deuda**: Empresas como AGUAS-A.SN y CMPC.SN tienen altos niveles de deuda en relación a su capital, lo que puede ser un riesgo en un entorno de tasas de interés crecientes.\n- **P/E Ratio Elevado**: Algunas acciones, como COLBUN.SN, tienen un P/E extremadamente alto, lo que puede indicar que están sobrevaloradas.\n\n### Recomendación Objetiva\n\nBasado en el análisis de los datos, se recomienda considerar acciones con un P/E razonable, un RSI que no indique sobrecompra y niveles de deuda manejables. Las acciones con un P/E bajo y un RSI en un rango saludable son más atractivas para los inversores que buscan valor.\n\n### Lista de Cinco Acciones Recomendadas\n\n1. **VAPORES.SN**: P/E bajo y RSI en un rango neutral, lo que sugiere estabilidad.\n2. **BCI.SN**: P/E bajo y potencial de crecimiento, aunque sin datos de deuda.\n3. **ENELAM.SN**: Buen P/E y RSI moderado, lo que puede indicar una buena oportunidad de compra.\n4. **CENCOSUD.SN**: RSI alto pero con un P/E razonable, lo que sugiere que puede seguir creciendo.\n5. **PARAUCO.SN**: RSI alto, pero con un P/E que sugiere que puede haber valor en la acción.\n\nEstas recomendaciones se basan en la combinación de un análisis fundamental y técnico, buscando un balance entre riesgo y potencial de retorno."
 }
