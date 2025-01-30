@@ -27,6 +27,29 @@ header h1 {
   font-weight: 600;
 }
 
+header.header {
+  display: flex;
+  align-items: center;      /* Centra verticalmente */
+  justify-content: space-between;  /* Título a la izq, fecha a la der */
+  background-color: #002C54;
+  padding: 1rem;
+  margin: 0;  
+}
+
+.header-title {
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.header-date {
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0.9;  /* Opcional, para un tono más suave */
+}
+
+
 /* ---------------------
    LAYOUT PRINCIPAL
 ---------------------- */

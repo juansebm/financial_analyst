@@ -138,3 +138,12 @@ function formatAnalysis(text) {
   .catch(error => {
     console.error('Error fetching JSON:', error);
   });
+
+  // Al final de tu app.js
+document.addEventListener('DOMContentLoaded', () => {
+  const dateContainer = document.getElementById('dateContainer');
+  const now = new Date();
+  // Formato local 'es-CL' (Chile) en estilo largo, ej: "30 de enero de 2025"
+  const formattedDate = now.toLocaleDateString('es-CL', { dateStyle: 'long' });
+  dateContainer.textContent = formattedDate;
+});
