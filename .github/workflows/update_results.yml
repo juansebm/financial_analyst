@@ -1,0 +1,32 @@
+name: Update Results JSON
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Ejecutar todos los días a las 6 AM UTC
+
+jobs:
+  update-results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run analysis script
+        run: python financial_analyst.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add results.json
+          git commit -m "📅 results.json [$(date)]" || exit 0
+          git push
