@@ -169,6 +169,7 @@ for ticker in ipsa_stocks:
 
 df_results = pd.DataFrame(results)
 df_results = df_results.sort_values(by="RSI", ascending=True, na_position='last')
+df_results.fillna(pd.NA, inplace=True)
 print(df_results)
 
 # ----------------------------------------
