@@ -6,3 +6,4 @@ langchain
 langchain_core>=0.2.38
 langchain_openai
 langgraph
+numpy

@@ -16,24 +16,12 @@ html, body {
    ENCABEZADO
 ---------------------- */
 header {
-  background-color: #002C54;
-  padding: 1rem;
-  text-align: center;
-}
-
-header h1 {
-  color: #fff;
-  margin: 0;
-  font-weight: 600;
-}
-
-header.header {
   display: flex;
-  align-items: center;      /* Centra verticalmente */
-  justify-content: space-between;  /* Título a la izq, fecha a la der */
+  align-items: center;       /* Centra verticalmente */
+  justify-content: space-between; /* Título a la izq, fecha a la der */
   background-color: #002C54;
   padding: 1rem;
-  margin: 0;  
+  margin: 0;
 }
 
 .header-title {
@@ -46,9 +34,8 @@ header.header {
 .header-date {
   color: #fff;
   font-size: 0.9rem;
-  opacity: 0.9;  /* Opcional, para un tono más suave */
+  opacity: 0.9;
 }
-
 
 /* ---------------------
    LAYOUT PRINCIPAL
@@ -58,11 +45,11 @@ body {
   flex-direction: column;
 }
 
-/* El main (.container) ocupa el espacio disponible que deje el header */
+/* main (.container) ocupa el espacio sobrante del header */
 .container {
-  flex: 1;            /* Se expande para ocupar el resto del alto */
-  display: flex;      /* 2 columnas */
-  overflow: hidden;   /* Evita scroll en el contenedor principal */
+  flex: 1;
+  display: flex;       /* 2 columnas: analysis / charts */
+  overflow: hidden;    /* Sin scroll global, cada columna hace scroll interno */
   gap: 1rem;
   padding: 1rem;
 }
@@ -72,22 +59,17 @@ body {
 ---------------------- */
 .analysis-section, 
 .chart-section {
-  flex: 1;               /* Ambas columnas ocupan el mismo ancho */
-  min-width: 300px;      /* Evita que se compriman en pantallas muy pequeñas */
+  flex: 1;
+  min-width: 300px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 
-  /* Scroll interno si se excede la altura */
+  /* Scroll interno si sobrepasa el alto */
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1rem;
 }
-
-/* Si quieres que la sección izquierda sea más angosta:
-   .analysis-section { flex: 0.8; }
-   .chart-section   { flex: 1.2; }
-*/
 
 /* ---------------------
    ESTILO DE MARKDOWN
@@ -117,25 +99,26 @@ body {
 }
 
 /* ---------------------
-   CHART
+   GRÁFICOS
 ---------------------- */
 .chart-section {
-  display: flex;
+  /* display: flex;  <-- Se aplica inline en index.html 
+     flex-direction: column; 
+     gap: 1rem; */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* Permite que el canvas se adapte */
 .chart-section canvas {
   width: 100%;
-  height: 100%;
+  height: 300px; /* Ajusta la altura de cada canvas a tu preferencia */
 }
 
 /* ---------------------
    RESPONSIVIDAD
 ---------------------- */
 @media (max-width: 700px) {
-  /* Apila columnas en pantallas pequeñas */
+  /* Apila las columnas en pantallas pequeñas */
   .container {
     flex-direction: column;
   }
@@ -143,6 +126,27 @@ body {
   .chart-section {
     flex: none;
     width: 100%;
-    height: 50%; /* cada sección ocupa la mitad de la pantalla en vertical */
+    height: 50%; /* Cada sección ocupa la mitad de la pantalla en vertical */
   }
+  /* Ajusta la altura de los gráficos en móviles */
+  .chart-section canvas {
+    height: 200px;
+  }
+}
+
+.legend-rsi {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;       /* Permite que se envuelva en varias líneas si es necesario */
+  gap: 0.5rem;           /* Separación entre elementos */
+  margin-bottom: 0.5rem; /* Espacio debajo de la leyenda */
+  font-size: 0.8rem;     /* Texto pequeño */
+}
+
+.legend-box {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  border-radius: 2px;    /* Esquinas ligeramente redondeadas (opcional) */
+  margin-right: 0.25rem;
 }

@@ -2,207 +2,352 @@
   "data": [
     {
       "Stock": "ENELAM.SN",
-      "Último Precio": 88.41000366210938,
-      "RSI": 43.07,
-      "P/E Ratio": 9.010625,
-      "Debt/Equity": 32.236
+      "Último Precio": 88.62999725341797,
+      "RSI": 44.29,
+      "P/E Ratio": 9.033047,
+      "Debt/Equity": 32.236,
+      "VI_plus": 0.934,
+      "VI_minus": 0.913,
+      "Bollinger_Up": 90.845,
+      "Bollinger_Down": 86.624,
+      "CCI": -37.737
     },
     {
       "Stock": "CENCOMALLS.SN",
-      "Último Precio": 1610.0,
-      "RSI": 47.54,
-      "P/E Ratio": 11.887864,
-      "Debt/Equity": 27.903
+      "Último Precio": 1602.0,
+      "RSI": 45.4,
+      "P/E Ratio": 11.828794,
+      "Debt/Equity": 27.903,
+      "VI_plus": 0.91,
+      "VI_minus": 0.974,
+      "Bollinger_Up": 1629.617,
+      "Bollinger_Down": 1558.933,
+      "CCI": 22.793
     },
     {
       "Stock": "VAPORES.SN",
-      "Último Precio": 54.150001525878906,
-      "RSI": 48.17,
-      "P/E Ratio": 8.804878,
-      "Debt/Equity": 0.019
+      "Último Precio": 54.13999938964844,
+      "RSI": 48.07,
+      "P/E Ratio": 8.803252,
+      "Debt/Equity": 0.019,
+      "VI_plus": 0.9,
+      "VI_minus": 1.003,
+      "Bollinger_Up": 56.208,
+      "Bollinger_Down": 52.654,
+      "CCI": -36.177
     },
     {
       "Stock": "CCU.SN",
-      "Último Precio": 5949.7998046875,
-      "RSI": 50.04,
-      "P/E Ratio": 16.179388,
-      "Debt/Equity": 92.53
-    },
-    {
-      "Stock": "CONCHATORO.SN",
-      "Último Precio": 1114.0,
-      "RSI": 54.05,
-      "P/E Ratio": 9.796653,
-      "Debt/Equity": 59.549
+      "Último Precio": 5945.0,
+      "RSI": 49.44,
+      "P/E Ratio": 16.165792,
+      "Debt/Equity": 92.53,
+      "VI_plus": 1.092,
+      "VI_minus": 0.992,
+      "Bollinger_Up": 5971.702,
+      "Bollinger_Down": 5800.188,
+      "CCI": 59.457
     },
     {
       "Stock": "ENELCHILE.SN",
       "Último Precio": 58.849998474121094,
       "RSI": 54.52,
       "P/E Ratio": 8.312147,
-      "Debt/Equity": 84.053
+      "Debt/Equity": 84.053,
+      "VI_plus": 0.983,
+      "VI_minus": 0.981,
+      "Bollinger_Up": 58.938,
+      "Bollinger_Down": 57.344,
+      "CCI": 59.347
+    },
+    {
+      "Stock": "CONCHATORO.SN",
+      "Último Precio": 1115.0999755859375,
+      "RSI": 54.56,
+      "P/E Ratio": 9.806327,
+      "Debt/Equity": 59.549,
+      "VI_plus": 1.128,
+      "VI_minus": 0.929,
+      "Bollinger_Up": 1145.88,
+      "Bollinger_Down": 1077.88,
+      "CCI": 18.97
     },
     {
       "Stock": "ANDINA-B.SN",
-      "Último Precio": 3249.89990234375,
-      "RSI": 59.87,
-      "P/E Ratio": 11.41462,
-      "Debt/Equity": 106.819
+      "Último Precio": 3240.0,
+      "RSI": 59.21,
+      "P/E Ratio": 11.3798485,
+      "Debt/Equity": 106.819,
+      "VI_plus": 1.138,
+      "VI_minus": 0.751,
+      "Bollinger_Up": 3243.704,
+      "Bollinger_Down": 3027.936,
+      "CCI": 77.364
     },
     {
       "Stock": "SQM-B.SN",
-      "Último Precio": 40499.0,
-      "RSI": 61.22,
-      "P/E Ratio": 28.739002,
-      "Debt/Equity": 91.006
+      "Último Precio": 40400.0,
+      "RSI": 60.64,
+      "P/E Ratio": 28.668749,
+      "Debt/Equity": 91.006,
+      "VI_plus": 1.013,
+      "VI_minus": 0.835,
+      "Bollinger_Up": 40930.513,
+      "Bollinger_Down": 37518.187,
+      "CCI": 55.993
     },
     {
       "Stock": "COLBUN.SN",
-      "Último Precio": 129.00999450683594,
-      "RSI": 62.75,
-      "P/E Ratio": 8752.374,
-      "Debt/Equity": 63.456
+      "Último Precio": 130.0,
+      "RSI": 64.65,
+      "P/E Ratio": 8819.539,
+      "Debt/Equity": 63.456,
+      "VI_plus": 1.076,
+      "VI_minus": 0.847,
+      "Bollinger_Up": 134.093,
+      "Bollinger_Down": 120.426,
+      "CCI": 44.774
     },
     {
       "Stock": "COPEC.SN",
-      "Último Precio": 6670.60009765625,
-      "RSI": 64.4,
-      "P/E Ratio": 7506.9497,
-      "Debt/Equity": 70.352
+      "Último Precio": 6691.0,
+      "RSI": 64.96,
+      "P/E Ratio": 7529.907,
+      "Debt/Equity": 70.352,
+      "VI_plus": 1.171,
+      "VI_minus": 0.784,
+      "Bollinger_Up": 7008.01,
+      "Bollinger_Down": 5966.99,
+      "CCI": 54.027
     },
     {
       "Stock": "BCI.SN",
-      "Último Precio": 29196.0,
-      "RSI": 65.98,
-      "P/E Ratio": 7.4427,
-      "Debt/Equity": "No disponible"
+      "Último Precio": 29130.0,
+      "RSI": 65.41,
+      "P/E Ratio": 7.425875,
+      "Debt/Equity": "No disponible",
+      "VI_plus": 1.121,
+      "VI_minus": 0.81,
+      "Bollinger_Up": 29370.5,
+      "Bollinger_Down": 27257.1,
+      "CCI": 139.81
     },
     {
       "Stock": "CMPC.SN",
-      "Último Precio": 1669.5,
-      "RSI": 66.53,
-      "P/E Ratio": 8905.425,
-      "Debt/Equity": 72.507
+      "Último Precio": 1685.0,
+      "RSI": 69.58,
+      "P/E Ratio": 8988.1045,
+      "Debt/Equity": 72.507,
+      "VI_plus": 1.131,
+      "VI_minus": 0.803,
+      "Bollinger_Up": 1770.863,
+      "Bollinger_Down": 1540.327,
+      "CCI": 38.318
     },
     {
       "Stock": "SONDA.SN",
       "Último Precio": 360.0199890136719,
       "RSI": 70.95,
       "P/E Ratio": 7.091916,
-      "Debt/Equity": 66.798
+      "Debt/Equity": 66.798,
+      "VI_plus": 1.107,
+      "VI_minus": 0.698,
+      "Bollinger_Up": 359.959,
+      "Bollinger_Down": 339.977,
+      "CCI": 138.901
+    },
+    {
+      "Stock": "BSANTANDER.SN",
+      "Último Precio": 49.849998474121094,
+      "RSI": 74.27,
+      "P/E Ratio": 9.558268,
+      "Debt/Equity": "No disponible",
+      "VI_plus": 1.229,
+      "VI_minus": 0.689,
+      "Bollinger_Up": 50.567,
+      "Bollinger_Down": 45.542,
+      "CCI": 118.433
     },
     {
       "Stock": "QUINENCO.SN",
       "Último Precio": 3440.0,
       "RSI": 74.32,
       "P/E Ratio": 9.896717,
-      "Debt/Equity": 106.907
-    },
-    {
-      "Stock": "BSANTANDER.SN",
-      "Último Precio": 49.900001525878906,
-      "RSI": 74.48,
-      "P/E Ratio": 9.567855,
-      "Debt/Equity": "No disponible"
+      "Debt/Equity": 106.907,
+      "VI_plus": 1.102,
+      "VI_minus": 0.753,
+      "Bollinger_Up": 3458.859,
+      "Bollinger_Down": 3189.321,
+      "CCI": 74.13
     },
     {
       "Stock": "LTM.SN",
-      "Último Precio": 14.670000076293945,
-      "RSI": 74.67,
-      "P/E Ratio": 6.638009,
-      "Debt/Equity": 995.347
+      "Último Precio": 14.739999771118164,
+      "RSI": 75.42,
+      "P/E Ratio": 6.669683,
+      "Debt/Equity": 995.347,
+      "VI_plus": 1.195,
+      "VI_minus": 0.726,
+      "Bollinger_Up": 14.419,
+      "Bollinger_Down": 13.119,
+      "CCI": 231.35
     },
     {
       "Stock": "AGUAS-A.SN",
-      "Último Precio": 311.8500061035156,
-      "RSI": 75.41,
-      "P/E Ratio": 13.725793,
-      "Debt/Equity": 155.147
+      "Último Precio": 314.2799987792969,
+      "RSI": 76.79,
+      "P/E Ratio": 13.8327465,
+      "Debt/Equity": 155.147,
+      "VI_plus": 1.186,
+      "VI_minus": 0.741,
+      "Bollinger_Up": 314.38,
+      "Bollinger_Down": 283.172,
+      "CCI": 163.229
     },
     {
       "Stock": "ECL.SN",
-      "Último Precio": 980.0,
-      "RSI": 77.9,
-      "P/E Ratio": 5169.867,
-      "Debt/Equity": 164.153
+      "Último Precio": 984.8699951171875,
+      "RSI": 79.04,
+      "P/E Ratio": 5195.558,
+      "Debt/Equity": 164.153,
+      "VI_plus": 1.117,
+      "VI_minus": 0.774,
+      "Bollinger_Up": 1001.191,
+      "Bollinger_Down": 892.132,
+      "CCI": 73.836
+    },
+    {
+      "Stock": "FALABELLA.SN",
+      "Último Precio": 3769.89990234375,
+      "RSI": 79.25,
+      "P/E Ratio": 16.806776,
+      "Debt/Equity": 79.397,
+      "VI_plus": 1.312,
+      "VI_minus": 0.609,
+      "Bollinger_Up": 3768.327,
+      "Bollinger_Down": 3348.183,
+      "CCI": 223.605
     },
     {
       "Stock": "ENTEL.SN",
       "Último Precio": 3058.0,
       "RSI": 79.49,
       "P/E Ratio": 6.5155673,
-      "Debt/Equity": 136.598
-    },
-    {
-      "Stock": "CAP.SN",
-      "Último Precio": 5450.0,
-      "RSI": 79.97,
-      "P/E Ratio": 8891.717,
-      "Debt/Equity": 55.004
+      "Debt/Equity": 136.598,
+      "VI_plus": 1.299,
+      "VI_minus": 0.738,
+      "Bollinger_Up": 3056.49,
+      "Bollinger_Down": 2855.93,
+      "CCI": 186.118
     },
     {
       "Stock": "CENCOSUD.SN",
-      "Último Precio": 2439.199951171875,
-      "RSI": 80.18,
-      "P/E Ratio": 11.055796,
-      "Debt/Equity": 113.837
+      "Último Precio": 2432.199951171875,
+      "RSI": 79.79,
+      "P/E Ratio": 11.024068,
+      "Debt/Equity": 113.837,
+      "VI_plus": 1.204,
+      "VI_minus": 0.74,
+      "Bollinger_Up": 2455.04,
+      "Bollinger_Down": 2130.19,
+      "CCI": 117.944
+    },
+    {
+      "Stock": "CAP.SN",
+      "Último Precio": 5451.60009765625,
+      "RSI": 80.03,
+      "P/E Ratio": 8894.327,
+      "Debt/Equity": 55.004,
+      "VI_plus": 1.156,
+      "VI_minus": 0.686,
+      "Bollinger_Up": 5513.438,
+      "Bollinger_Down": 5039.292,
+      "CCI": 89.955
     },
     {
       "Stock": "RIPLEY.SN",
-      "Último Precio": 283.0,
-      "RSI": 80.55,
-      "P/E Ratio": 12.088851,
-      "Debt/Equity": 211.687
-    },
-    {
-      "Stock": "FALABELLA.SN",
-      "Último Precio": 3802.0,
-      "RSI": 80.76,
-      "P/E Ratio": 16.949883,
-      "Debt/Equity": 79.397
+      "Último Precio": 283.5,
+      "RSI": 80.85,
+      "P/E Ratio": 12.110209,
+      "Debt/Equity": 211.687,
+      "VI_plus": 1.207,
+      "VI_minus": 0.55,
+      "Bollinger_Up": 281.746,
+      "Bollinger_Down": 258.85,
+      "CCI": 224.059
     },
     {
       "Stock": "IAM.SN",
-      "Último Precio": 748.5,
-      "RSI": 82.48,
-      "P/E Ratio": 9.647484,
-      "Debt/Equity": 118.308
+      "Último Precio": 747.2999877929688,
+      "RSI": 81.71,
+      "P/E Ratio": 9.632016,
+      "Debt/Equity": 118.308,
+      "VI_plus": 1.222,
+      "VI_minus": 0.849,
+      "Bollinger_Up": 754.895,
+      "Bollinger_Down": 726.072,
+      "CCI": 91.522
     },
     {
       "Stock": "MALLPLAZA.SN",
-      "Último Precio": 1775.0,
-      "RSI": 84.17,
-      "P/E Ratio": 13.159479,
-      "Debt/Equity": 44.991
+      "Último Precio": 1750.0,
+      "RSI": 82.21,
+      "P/E Ratio": 12.974134,
+      "Debt/Equity": 44.991,
+      "VI_plus": 1.204,
+      "VI_minus": 0.646,
+      "Bollinger_Up": 1734.844,
+      "Bollinger_Down": 1548.796,
+      "CCI": 183.758
     },
     {
       "Stock": "CHILE.SN",
-      "Último Precio": 121.70999908447266,
-      "RSI": 84.47,
-      "P/E Ratio": 10.909531,
-      "Debt/Equity": "No disponible"
+      "Último Precio": 121.87999725341797,
+      "RSI": 84.73,
+      "P/E Ratio": 10.922076,
+      "Debt/Equity": "No disponible",
+      "VI_plus": 1.263,
+      "VI_minus": 0.645,
+      "Bollinger_Up": 123.936,
+      "Bollinger_Down": 111.209,
+      "CCI": 94.492
     },
     {
       "Stock": "PARAUCO.SN",
-      "Último Precio": 1659.0,
-      "RSI": 88.79,
-      "P/E Ratio": 13.627941,
-      "Debt/Equity": 93.795
+      "Último Precio": 1659.9000244140625,
+      "RSI": 88.85,
+      "P/E Ratio": 13.635334,
+      "Debt/Equity": 93.795,
+      "VI_plus": 1.212,
+      "VI_minus": 0.688,
+      "Bollinger_Up": 1623.3,
+      "Bollinger_Down": 1494.29,
+      "CCI": 271.58
     },
     {
       "Stock": "ITAUCL.SN",
-      "Último Precio": 10750.0,
-      "RSI": 90.11,
-      "P/E Ratio": 6.180977,
-      "Debt/Equity": "No disponible"
+      "Último Precio": 10751.0,
+      "RSI": 90.12,
+      "P/E Ratio": 6.181552,
+      "Debt/Equity": "No disponible",
+      "VI_plus": 1.225,
+      "VI_minus": 0.577,
+      "Bollinger_Up": 10698.535,
+      "Bollinger_Down": 10007.165,
+      "CCI": 152.665
     },
     {
       "Stock": "SMU.SN",
-      "Último Precio": 171.5,
-      "RSI": 95.85,
-      "P/E Ratio": 13.177103,
-      "Debt/Equity": 141.397
+      "Último Precio": 172.0,
+      "RSI": 96.01,
+      "P/E Ratio": 13.21552,
+      "Debt/Equity": 141.397,
+      "VI_plus": 1.261,
+      "VI_minus": 0.728,
+      "Bollinger_Up": 173.736,
+      "Bollinger_Down": 154.544,
+      "CCI": 131.393
     }
   ],
-  "analysis": "### 1) Resumen de puntos clave\n- **Rango de precios**: Las acciones analizadas tienen precios que varían desde 14.67 (LTM.SN) hasta 40,499 (SQM-B.SN).\n- **RSI (Índice de Fuerza Relativa)**: La mayoría de las acciones se encuentran en un rango RSI que va de 43.07 a 95.85, lo que indica que varias están en condiciones de sobrecompra (por encima de 70).\n- **P/E Ratio (Relación Precio/Ganancias)**: Varía significativamente, con valores que van desde 6.64 (LTM.SN) hasta 8905.42 (CMPC.SN), lo que sugiere diferencias en la valoración de las acciones.\n- **Debt/Equity (Deuda/Capital)**: Hay una gran variabilidad en la relación deuda/capital, con algunas empresas mostrando niveles muy altos, como LTM.SN (995.35), lo que puede ser un indicador de riesgo financiero.\n\n### 2) Fortalezas o debilidades observadas\n- **Fortalezas**:\n  - **Bajo P/E Ratio**: Acciones como LTM.SN y SONDA.SN tienen P/E ratios bajos, lo que puede indicar que están subvaloradas en comparación con sus ganancias.\n  - **Alto RSI**: Acciones como SMU.SN y ITAUCL.SN tienen un RSI alto, lo que puede indicar un fuerte interés del mercado y potencial de crecimiento.\n  \n- **Debilidades**:\n  - **Alto Debt/Equity**: Empresas como LTM.SN y ANDINA-B.SN tienen ratios de deuda/capital muy altos, lo que puede ser un signo de riesgo financiero y dificultad para manejar deudas.\n  - **P/E Ratio elevado**: Acciones como CMPC.SN y COLBUN.SN tienen P/E ratios extremadamente altos, lo que puede indicar que están sobrevaloradas.\n\n### 3) Recomendación objetiva basada en los datos\nSe recomienda considerar acciones con un P/E ratio bajo y un RSI moderado, lo que sugiere que podrían estar subvaloradas y no en condiciones de sobrecompra. Además, es importante evitar acciones con un alto nivel de deuda, ya que esto puede representar un riesgo significativo.\n\n### 4) Lista de cinco acciones recomendadas\n1. **LTM.SN**: Bajo P/E ratio (6.64) y un RSI de 74.67, lo que sugiere que podría estar subvalorada.\n2. **SONDA.SN**: P/E ratio de 7.09 y un RSI de 70.95, lo que indica un buen potencial de crecimiento.\n3. **VAPORES.SN**: P/E ratio de 8.80 y un RSI de 48.17, lo que sugiere que está en un rango razonable.\n4. **AGUAS-A.SN**: P/E ratio de 13.73 y un RSI de 75.41, lo que indica un interés creciente sin estar en sobrecompra.\n5. **CENCOSUD.SN**: P/E ratio de 11.06 y un RSI de 80.18, lo que sugiere un buen equilibrio entre valoración y potencial de crecimiento.\n\nEstas recomendaciones se basan en la combinación de un P/E ratio razonable y un RSI que no indica sobrecompra extrema, lo que puede ofrecer oportunidades de inversión más seguras."
+  "analysis": "### 1) Resumen de puntos clave\n- **Rango de precios**: Las acciones analizadas tienen precios que varían desde 14.74 (LTM.SN) hasta 40,400 (SQM-B.SN).\n- **Índice de Fuerza Relativa (RSI)**: La mayoría de las acciones se encuentran en un rango de RSI entre 44 y 90, lo que indica que algunas están en condiciones de sobrecompra (por encima de 70) y otras en condiciones neutrales.\n- **Relación Precio/Ganancias (P/E Ratio)**: Varía significativamente, con algunas acciones como BCI.SN y BSANTANDER.SN sin datos disponibles, mientras que otras como SQM-B.SN tienen un P/E de 28.67, lo que puede indicar sobrevaloración.\n- **Deuda/Equidad**: La mayoría de las acciones tienen un ratio de deuda a capital relativamente alto, lo que puede ser un indicador de riesgo financiero.\n\n### 2) Fortalezas o debilidades observadas\n- **Fortalezas**:\n  - Varias acciones tienen un RSI alto, lo que sugiere que están en una tendencia alcista.\n  - Acciones como SMU.SN y PARAUCO.SN tienen un RSI muy alto (96.01 y 88.85 respectivamente), lo que puede indicar un fuerte interés del mercado.\n  \n- **Debilidades**:\n  - Algunas acciones presentan un P/E Ratio muy alto, como COLBUN.SN (8819.54) y CMPC.SN (8988.10), lo que puede indicar que están sobrevaloradas.\n  - La alta relación deuda/capital en varias acciones puede ser un signo de riesgo financiero, especialmente en un entorno económico incierto.\n\n### 3) Recomendación objetiva\nSe recomienda tener precaución al invertir en acciones con un P/E Ratio extremadamente alto y una alta relación deuda/capital. Las acciones con un RSI elevado pueden ser atractivas, pero es importante considerar la sostenibilidad de su crecimiento. Se sugiere diversificar la inversión en acciones con un buen balance entre crecimiento y estabilidad financiera.\n\n### 4) Listado de las mejores acciones según CCI, VI y Bollinger Bands\n- **SMU.SN**: CCI de 131.39, VI positivo (1.261) y se encuentra cerca de la banda superior de Bollinger, lo que indica una fuerte tendencia alcista.\n- **PARAUCO.SN**: CCI de 271.58, VI positivo (1.212) y también cerca de la banda superior de Bollinger, lo que sugiere un fuerte impulso.\n- **FALABELLA.SN**: CCI de 223.61, VI positivo (1.312) y en la banda superior de Bollinger, lo que indica un buen momento de compra.\n- **ENTEL.SN**: CCI de 186.12, VI positivo (1.299) y en la banda superior de Bollinger, lo que sugiere un buen potencial de crecimiento.\n- **LTM.SN**: CCI de 231.35, VI positivo (1.195) y en la banda superior de Bollinger, lo que indica un fuerte impulso.\n\n### 5) Lista de cinco acciones recomendadas\n1. **SMU.SN**: Alta tendencia alcista y buen CCI.\n2. **PARAUCO.SN**: Fuerte impulso y buen desempeño en indicadores técnicos.\n3. **FALABELLA.SN**: Buen balance entre crecimiento y estabilidad.\n4. **ENTEL.SN**: Buen potencial de crecimiento y fuerte interés del mercado.\n5. **LTM.SN**: Atractiva por su CCI y tendencia positiva.\n\nEstas recomendaciones están basadas en un análisis técnico y fundamental, buscando diversificar en diferentes sectores y niveles de riesgo."
 }

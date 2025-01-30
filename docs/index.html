@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IA Powered IPSA Stock Analyst (Daily Update)</title>
+  <title>Resultados IPSA</title>
 
   <!-- Fuente Montserrat (ejecutiva) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,26 +13,42 @@
     rel="stylesheet"
   >
 
-  <!-- CSS principal -->
+  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Librería Marked para convertir Markdown a HTML -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <!-- Librería Chart.js para gráficas -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Plugin de anotación (versión compatible con Chart.js 3/4) -->
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
 </head>
 <body>
-  <header class="header">
-    <h1>🤖📈 IA Powered IPSA Stock Analyst</h1>
+  <header>
+    <h1 class="header-title">Resultados IPSA</h1>
     <div class="header-date" id="dateContainer"></div>
   </header>
 
   <main class="container">
-    <!-- Columna Izquierda: Texto (analysis) -->
+    <!-- Columna Izquierda: análisis en Markdown -->
     <section id="analysisContainer" class="analysis-section"></section>
-    <!-- Columna Derecha: Gráfico -->
-    <section class="chart-section">
-      <canvas id="ipsaChart"></canvas>
+
+    <!-- Columna Derecha: 2 gráficos, uno encima del otro -->
+    <section class="chart-section" style="display: flex; flex-direction: column; gap: 1rem;">
+      <!-- Primer gráfico (arriba): RSI vertical -->
+      <div class="legend-rsi">
+        <span class="legend-box" style="background-color: rgba(255, 0, 0, 0.7);"></span>
+        <small>RSI ≥ 70 (Sobrecompra)</small>
+      
+        <span class="legend-box" style="background-color: rgba(0, 128, 0, 0.7);"></span>
+        <small>RSI ≤ 30 (Sobreventa)</small>
+      
+        <span class="legend-box" style="background-color: rgba(0, 44, 84, 0.7);"></span>
+        <small>Neutral</small>
+      </div>
+      <canvas id="chartRSI"></canvas>
+      <!-- Segundo gráfico (abajo): Índices técnicos en barras horizontales -->
+      <canvas id="chartIndices"></canvas>
     </section>
   </main>
 
