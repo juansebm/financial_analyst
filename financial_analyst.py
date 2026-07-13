@@ -160,19 +160,36 @@ def stock_snapshot(
     }
 
 
-def downsample_frontier(df: pd.DataFrame, max_points: int = 400) -> list[dict]:
-    if len(df) <= max_points:
-        sample = df
-    else:
-        sample = df.sample(max_points, random_state=1)
+def _to_pct_points(df: pd.DataFrame) -> list[dict]:
     return [
         {
             "volatility": round(float(row["volatility"]) * 100, 3),
             "return": round(float(row["return"]) * 100, 3),
             "sharpe": round(float(row["sharpe"]), 3),
         }
-        for _, row in sample.iterrows()
+        for _, row in df.iterrows()
     ]
+
+
+def downsample_frontier(df: pd.DataFrame, max_points: int = 400) -> list[dict]:
+    if len(df) <= max_points:
+        sample = df
+    else:
+        sample = df.sample(max_points, random_state=1)
+    return _to_pct_points(sample)
+
+
+def extract_efficient_curve(df: pd.DataFrame, n_bins: int = 40) -> list[dict]:
+    """Envolvente superior: máximo retorno por bucket de volatilidad."""
+    work = df.copy()
+    work["bin"] = pd.qcut(work["volatility"], q=min(n_bins, len(work)), duplicates="drop")
+    curve = (
+        work.groupby("bin", observed=True)
+        .apply(lambda g: g.loc[g["return"].idxmax()])
+        .reset_index(drop=True)
+        .sort_values("volatility")
+    )
+    return _to_pct_points(curve)
 
 
 def run() -> dict:
@@ -217,7 +234,8 @@ def run() -> dict:
             "return_pct": round(port_ret * 100, 2),
             "sharpe": round(port_sharpe, 3),
         },
-        "frontier": downsample_frontier(frontier),
+        "frontier": downsample_frontier(frontier, max_points=300),
+        "frontier_curve": extract_efficient_curve(frontier),
         "stocks": stocks,
     }
     return result

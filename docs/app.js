@@ -8,6 +8,9 @@ const fmtPct = (v, digits = 2) =>
 const fmtNum = (v) =>
   v == null || Number.isNaN(v) ? '—' : Number(v).toLocaleString('es-CL', { maximumFractionDigits: 2 });
 
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#30363d';
+
 function buildTickerItems(stocks) {
   return stocks.flatMap((s) => [
     {
@@ -27,7 +30,6 @@ function renderTicker(stocks) {
         `<span class="ticker-item ${item.up ? 'up' : 'down'}">${item.text}</span>`
     )
     .join('<span class="ticker-sep">◆</span>');
-  // Duplicamos para loop continuo
   track.innerHTML = html + '<span class="ticker-sep">◆</span>' + html;
 }
 
@@ -62,36 +64,45 @@ function renderPortfolioInfo(data) {
 
 function renderFrontierChart(data) {
   const ctx = document.getElementById('chartFrontier').getContext('2d');
-  const frontier = data.frontier || [];
+  const cloud = data.frontier || [];
+  const curve = (data.frontier_curve || []).slice().sort((a, b) => a.volatility - b.volatility);
   const optimal = data.max_sharpe_point;
-  const selected = (data.stocks || []).map((s) => ({
-    x: null,
-    y: null,
-    label: s.label,
-  }));
 
-  // Puntos individuales de las 5 acciones (riesgo/retorno propios) no están en JSON;
-  // mostramos frontera + óptimo + pesos en tooltip del óptimo
   new Chart(ctx, {
     type: 'scatter',
     data: {
       datasets: [
         {
-          label: 'Frontera simulada',
-          data: frontier.map((p) => ({ x: p.volatility, y: p.return })),
-          backgroundColor: 'rgba(0, 44, 84, 0.25)',
-          borderColor: 'rgba(0, 44, 84, 0.4)',
-          pointRadius: 3,
+          label: 'Portafolios simulados',
+          data: cloud.map((p) => ({ x: p.volatility, y: p.return })),
+          backgroundColor: 'rgba(88, 166, 255, 0.18)',
+          pointRadius: 2,
+          pointHoverRadius: 4,
+          order: 3,
+        },
+        {
+          type: 'line',
+          label: 'Frontera eficiente',
+          data: curve.map((p) => ({ x: p.volatility, y: p.return, sharpe: p.sharpe })),
+          borderColor: '#58a6ff',
+          backgroundColor: 'rgba(88, 166, 255, 0.12)',
+          borderWidth: 3,
+          pointRadius: 0,
           pointHoverRadius: 5,
+          tension: 0.35,
+          fill: false,
+          showLine: true,
+          order: 2,
         },
         {
           label: 'Máximo Sharpe',
           data: [{ x: optimal.volatility_pct, y: optimal.return_pct }],
-          backgroundColor: 'rgba(255, 193, 7, 1)',
-          borderColor: '#b8860b',
-          pointRadius: 10,
-          pointHoverRadius: 12,
+          backgroundColor: '#ffc107',
+          borderColor: '#ffdd57',
+          pointRadius: 11,
+          pointHoverRadius: 13,
           pointStyle: 'star',
+          order: 1,
         },
         {
           label: 'Acciones seleccionadas',
@@ -101,10 +112,11 @@ function renderFrontierChart(data) {
             label: s.label,
             weight: s.weight,
           })),
-          backgroundColor: 'rgba(0, 180, 120, 0.85)',
-          borderColor: '#007a52',
-          pointRadius: 8,
-          pointHoverRadius: 10,
+          backgroundColor: '#3fb950',
+          borderColor: '#56d364',
+          pointRadius: 7,
+          pointHoverRadius: 9,
+          order: 0,
         },
       ],
     },
@@ -115,15 +127,22 @@ function renderFrontierChart(data) {
         title: {
           display: true,
           text: 'Frontera eficiente — Riesgo vs Retorno (anualizado)',
+          color: '#e6edf3',
           font: { size: 16, weight: '600' },
         },
-        legend: { position: 'bottom' },
+        legend: {
+          position: 'bottom',
+          labels: { color: '#8b949e', usePointStyle: true },
+        },
         tooltip: {
           callbacks: {
             label(ctx) {
               const p = ctx.raw;
               if (p.label) {
                 return `${p.label}: σ ${p.x.toFixed(1)}% · μ ${p.y.toFixed(1)}% · peso ${(p.weight * 100).toFixed(1)}%`;
+              }
+              if (p.sharpe != null) {
+                return `Frontera: σ ${p.x.toFixed(2)}% · μ ${p.y.toFixed(2)}% · Sharpe ${p.sharpe.toFixed(2)}`;
               }
               return `σ ${p.x.toFixed(2)}% · μ ${p.y.toFixed(2)}%`;
             },
@@ -132,10 +151,14 @@ function renderFrontierChart(data) {
       },
       scales: {
         x: {
-          title: { display: true, text: 'Volatilidad anual (%)' },
+          title: { display: true, text: 'Volatilidad anual (%)', color: '#8b949e' },
+          ticks: { color: '#8b949e' },
+          grid: { color: 'rgba(48, 54, 61, 0.8)' },
         },
         y: {
-          title: { display: true, text: 'Retorno anual (%)' },
+          title: { display: true, text: 'Retorno anual (%)', color: '#8b949e' },
+          ticks: { color: '#8b949e' },
+          grid: { color: 'rgba(48, 54, 61, 0.8)' },
         },
       },
     },

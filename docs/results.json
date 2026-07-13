@@ -1521,506 +1521,208 @@
       "volatility": 17.219,
       "return": 32.704,
       "sharpe": 1.667
+    }
+  ],
+  "frontier_curve": [
+    {
+      "volatility": 14.183,
+      "return": 27.508,
+      "sharpe": 1.657
     },
     {
-      "volatility": 15.376,
-      "return": 16.901,
-      "sharpe": 0.839
+      "volatility": 14.431,
+      "return": 28.126,
+      "sharpe": 1.672
     },
     {
-      "volatility": 16.491,
-      "return": 19.455,
-      "sharpe": 0.937
+      "volatility": 14.657,
+      "return": 30.424,
+      "sharpe": 1.803
     },
     {
-      "volatility": 18.752,
-      "return": 25.643,
-      "sharpe": 1.154
+      "volatility": 14.809,
+      "return": 29.267,
+      "sharpe": 1.706
     },
     {
-      "volatility": 15.835,
-      "return": 23.338,
-      "sharpe": 1.221
+      "volatility": 14.886,
+      "return": 29.4,
+      "sharpe": 1.706
     },
     {
-      "volatility": 16.844,
-      "return": 17.884,
-      "sharpe": 0.824
+      "volatility": 14.951,
+      "return": 32.214,
+      "sharpe": 1.887
     },
     {
-      "volatility": 17.82,
-      "return": 30.943,
-      "sharpe": 1.512
-    },
-    {
-      "volatility": 16.653,
-      "return": 28.64,
-      "sharpe": 1.48
-    },
-    {
-      "volatility": 15.47,
-      "return": 21.962,
-      "sharpe": 1.161
-    },
-    {
-      "volatility": 16.349,
-      "return": 20.646,
-      "sharpe": 1.018
-    },
-    {
-      "volatility": 15.787,
-      "return": 29.699,
-      "sharpe": 1.628
-    },
-    {
-      "volatility": 20.369,
-      "return": 40.196,
-      "sharpe": 1.777
-    },
-    {
-      "volatility": 18.51,
-      "return": 37.837,
-      "sharpe": 1.828
-    },
-    {
-      "volatility": 15.052,
-      "return": 18.997,
-      "sharpe": 0.996
-    },
-    {
-      "volatility": 15.946,
-      "return": 23.638,
-      "sharpe": 1.232
-    },
-    {
-      "volatility": 17.065,
-      "return": 22.034,
-      "sharpe": 1.057
-    },
-    {
-      "volatility": 16.654,
-      "return": 20.946,
-      "sharpe": 1.018
-    },
-    {
-      "volatility": 16.203,
-      "return": 29.873,
-      "sharpe": 1.597
-    },
-    {
-      "volatility": 16.261,
-      "return": 23.043,
-      "sharpe": 1.171
-    },
-    {
-      "volatility": 16.494,
-      "return": 21.766,
-      "sharpe": 1.077
-    },
-    {
-      "volatility": 16.254,
-      "return": 21.305,
-      "sharpe": 1.065
-    },
-    {
-      "volatility": 17.279,
-      "return": 22.039,
-      "sharpe": 1.044
-    },
-    {
-      "volatility": 16.247,
-      "return": 21.777,
-      "sharpe": 1.094
-    },
-    {
-      "volatility": 15.682,
-      "return": 30.644,
-      "sharpe": 1.699
-    },
-    {
-      "volatility": 16.46,
-      "return": 24.433,
-      "sharpe": 1.241
-    },
-    {
-      "volatility": 16.214,
-      "return": 24.672,
-      "sharpe": 1.275
-    },
-    {
-      "volatility": 16.829,
-      "return": 32.094,
-      "sharpe": 1.669
+      "volatility": 15.062,
+      "return": 29.351,
+      "sharpe": 1.683
     },
     {
       "volatility": 15.134,
-      "return": 17.731,
-      "sharpe": 0.907
+      "return": 31.438,
+      "sharpe": 1.813
     },
     {
-      "volatility": 15.997,
-      "return": 20.136,
-      "sharpe": 1.009
+      "volatility": 15.24,
+      "return": 31.759,
+      "sharpe": 1.821
     },
     {
-      "volatility": 18.112,
-      "return": 24.942,
-      "sharpe": 1.156
+      "volatility": 15.347,
+      "return": 30.913,
+      "sharpe": 1.754
     },
     {
-      "volatility": 16.569,
-      "return": 25.333,
-      "sharpe": 1.288
+      "volatility": 15.38,
+      "return": 32.944,
+      "sharpe": 1.882
     },
     {
-      "volatility": 16.01,
-      "return": 20.37,
-      "sharpe": 1.022
+      "volatility": 15.473,
+      "return": 31.851,
+      "sharpe": 1.8
     },
     {
-      "volatility": 15.248,
-      "return": 15.241,
-      "sharpe": 0.737
+      "volatility": 15.532,
+      "return": 31.2,
+      "sharpe": 1.751
     },
     {
-      "volatility": 16.301,
-      "return": 29.951,
-      "sharpe": 1.592
+      "volatility": 15.614,
+      "return": 31.647,
+      "sharpe": 1.771
     },
     {
-      "volatility": 16.101,
-      "return": 28.503,
-      "sharpe": 1.522
+      "volatility": 15.652,
+      "return": 34.172,
+      "sharpe": 1.928
     },
     {
-      "volatility": 14.832,
-      "return": 20.324,
-      "sharpe": 1.101
+      "volatility": 15.689,
+      "return": 31.12,
+      "sharpe": 1.729
     },
     {
-      "volatility": 14.555,
-      "return": 24.119,
-      "sharpe": 1.382
+      "volatility": 15.745,
+      "return": 33.634,
+      "sharpe": 1.882
     },
     {
-      "volatility": 16.571,
-      "return": 25.551,
-      "sharpe": 1.301
+      "volatility": 15.838,
+      "return": 32.968,
+      "sharpe": 1.829
     },
     {
-      "volatility": 14.716,
-      "return": 22.699,
-      "sharpe": 1.271
+      "volatility": 15.903,
+      "return": 32.39,
+      "sharpe": 1.785
     },
     {
-      "volatility": 16.025,
-      "return": 23.46,
-      "sharpe": 1.214
+      "volatility": 15.954,
+      "return": 37.338,
+      "sharpe": 2.09
     },
     {
-      "volatility": 15.128,
-      "return": 24.766,
-      "sharpe": 1.373
+      "volatility": 16.033,
+      "return": 35.139,
+      "sharpe": 1.942
     },
     {
-      "volatility": 16.722,
-      "return": 24.741,
-      "sharpe": 1.24
+      "volatility": 16.08,
+      "return": 35.28,
+      "sharpe": 1.945
     },
     {
-      "volatility": 15.837,
-      "return": 28.936,
-      "sharpe": 1.575
+      "volatility": 16.107,
+      "return": 34.48,
+      "sharpe": 1.892
     },
     {
-      "volatility": 16.737,
-      "return": 27.012,
-      "sharpe": 1.375
+      "volatility": 16.208,
+      "return": 33.379,
+      "sharpe": 1.813
     },
     {
-      "volatility": 15.066,
-      "return": 20.034,
-      "sharpe": 1.064
+      "volatility": 16.244,
+      "return": 35.565,
+      "sharpe": 1.943
     },
     {
-      "volatility": 18.309,
-      "return": 33.991,
-      "sharpe": 1.638
+      "volatility": 16.296,
+      "return": 34.721,
+      "sharpe": 1.885
     },
     {
-      "volatility": 15.013,
-      "return": 19.318,
-      "sharpe": 1.02
+      "volatility": 16.353,
+      "return": 39.26,
+      "sharpe": 2.156
     },
     {
-      "volatility": 16.314,
-      "return": 25.89,
-      "sharpe": 1.342
+      "volatility": 16.411,
+      "return": 34.867,
+      "sharpe": 1.881
     },
     {
-      "volatility": 16.784,
-      "return": 20.898,
-      "sharpe": 1.007
+      "volatility": 16.528,
+      "return": 36.127,
+      "sharpe": 1.944
     },
     {
-      "volatility": 15.505,
-      "return": 21.88,
-      "sharpe": 1.153
+      "volatility": 16.597,
+      "return": 37.824,
+      "sharpe": 2.038
     },
     {
-      "volatility": 14.855,
-      "return": 23.352,
-      "sharpe": 1.303
+      "volatility": 16.66,
+      "return": 37.077,
+      "sharpe": 1.985
     },
     {
-      "volatility": 16.205,
-      "return": 24.764,
-      "sharpe": 1.281
+      "volatility": 16.754,
+      "return": 38.595,
+      "sharpe": 2.065
     },
     {
-      "volatility": 14.812,
-      "return": 13.716,
-      "sharpe": 0.656
+      "volatility": 16.765,
+      "return": 34.553,
+      "sharpe": 1.822
     },
     {
-      "volatility": 15.142,
-      "return": 16.128,
-      "sharpe": 0.801
+      "volatility": 16.88,
+      "return": 36.871,
+      "sharpe": 1.947
     },
     {
-      "volatility": 16.304,
-      "return": 20.608,
-      "sharpe": 1.019
+      "volatility": 17.034,
+      "return": 35.626,
+      "sharpe": 1.857
     },
     {
-      "volatility": 15.349,
-      "return": 17.145,
-      "sharpe": 0.856
+      "volatility": 17.137,
+      "return": 37.769,
+      "sharpe": 1.971
     },
     {
-      "volatility": 15.151,
-      "return": 17.641,
-      "sharpe": 0.9
+      "volatility": 17.243,
+      "return": 40.821,
+      "sharpe": 2.135
     },
     {
-      "volatility": 15.256,
-      "return": 20.117,
-      "sharpe": 1.056
+      "volatility": 17.408,
+      "return": 37.391,
+      "sharpe": 1.918
     },
     {
-      "volatility": 16.775,
-      "return": 29.857,
-      "sharpe": 1.541
+      "volatility": 17.867,
+      "return": 39.908,
+      "sharpe": 2.01
     },
     {
-      "volatility": 15.785,
-      "return": 24.013,
-      "sharpe": 1.268
-    },
-    {
-      "volatility": 15.65,
-      "return": 24.711,
-      "sharpe": 1.323
-    },
-    {
-      "volatility": 15.372,
-      "return": 18.629,
-      "sharpe": 0.952
-    },
-    {
-      "volatility": 17.308,
-      "return": 29.305,
-      "sharpe": 1.462
-    },
-    {
-      "volatility": 14.852,
-      "return": 16.822,
-      "sharpe": 0.863
-    },
-    {
-      "volatility": 16.906,
-      "return": 18.66,
-      "sharpe": 0.867
-    },
-    {
-      "volatility": 15.722,
-      "return": 19.859,
-      "sharpe": 1.009
-    },
-    {
-      "volatility": 17.101,
-      "return": 32.364,
-      "sharpe": 1.659
-    },
-    {
-      "volatility": 15.791,
-      "return": 14.783,
-      "sharpe": 0.683
-    },
-    {
-      "volatility": 15.259,
-      "return": 25.507,
-      "sharpe": 1.41
-    },
-    {
-      "volatility": 15.225,
-      "return": 22.618,
-      "sharpe": 1.223
-    },
-    {
-      "volatility": 15.632,
-      "return": 32.926,
-      "sharpe": 1.85
-    },
-    {
-      "volatility": 16.668,
-      "return": 18.233,
-      "sharpe": 0.854
-    },
-    {
-      "volatility": 15.696,
-      "return": 23.032,
-      "sharpe": 1.213
-    },
-    {
-      "volatility": 15.049,
-      "return": 23.482,
-      "sharpe": 1.295
-    },
-    {
-      "volatility": 15.865,
-      "return": 20.441,
-      "sharpe": 1.036
-    },
-    {
-      "volatility": 15.028,
-      "return": 26.487,
-      "sharpe": 1.496
-    },
-    {
-      "volatility": 15.129,
-      "return": 16.251,
-      "sharpe": 0.81
-    },
-    {
-      "volatility": 16.629,
-      "return": 29.365,
-      "sharpe": 1.525
-    },
-    {
-      "volatility": 16.744,
-      "return": 29.484,
-      "sharpe": 1.522
-    },
-    {
-      "volatility": 18.125,
-      "return": 27.664,
-      "sharpe": 1.306
-    },
-    {
-      "volatility": 16.501,
-      "return": 18.857,
-      "sharpe": 0.9
-    },
-    {
-      "volatility": 16.518,
-      "return": 28.61,
-      "sharpe": 1.49
-    },
-    {
-      "volatility": 16.817,
-      "return": 16.651,
-      "sharpe": 0.752
-    },
-    {
-      "volatility": 16.591,
-      "return": 31.322,
-      "sharpe": 1.647
-    },
-    {
-      "volatility": 17.732,
-      "return": 22.568,
-      "sharpe": 1.047
-    },
-    {
-      "volatility": 14.31,
-      "return": 22.952,
-      "sharpe": 1.324
-    },
-    {
-      "volatility": 14.872,
-      "return": 21.651,
-      "sharpe": 1.187
-    },
-    {
-      "volatility": 16.833,
-      "return": 22.315,
-      "sharpe": 1.088
-    },
-    {
-      "volatility": 16.417,
-      "return": 19.716,
-      "sharpe": 0.957
-    },
-    {
-      "volatility": 15.982,
-      "return": 26.461,
-      "sharpe": 1.405
-    },
-    {
-      "volatility": 17.417,
-      "return": 32.504,
-      "sharpe": 1.637
-    },
-    {
-      "volatility": 15.995,
-      "return": 25.355,
-      "sharpe": 1.335
-    },
-    {
-      "volatility": 15.129,
-      "return": 17.524,
-      "sharpe": 0.894
-    },
-    {
-      "volatility": 13.967,
-      "return": 21.029,
-      "sharpe": 1.219
-    },
-    {
-      "volatility": 17.252,
-      "return": 32.355,
-      "sharpe": 1.644
-    },
-    {
-      "volatility": 15.482,
-      "return": 22.679,
-      "sharpe": 1.207
-    },
-    {
-      "volatility": 14.997,
-      "return": 19.484,
-      "sharpe": 1.032
-    },
-    {
-      "volatility": 17.13,
-      "return": 33.599,
-      "sharpe": 1.728
-    },
-    {
-      "volatility": 13.976,
-      "return": 17.501,
-      "sharpe": 0.966
-    },
-    {
-      "volatility": 16.237,
-      "return": 18.589,
-      "sharpe": 0.898
-    },
-    {
-      "volatility": 16.379,
-      "return": 27.31,
-      "sharpe": 1.423
+      "volatility": 19.511,
+      "return": 42.093,
+      "sharpe": 1.952
     }
   ],
   "stocks": [

@@ -223,9 +223,10 @@ header {
   vertical-align: middle;
 }
 
-.dot-frontier { background: rgba(0, 44, 84, 0.6); }
+.dot-cloud { background: rgba(88, 166, 255, 0.35); }
+.dot-frontier { background: #58a6ff; }
 .dot-optimal { background: #ffc107; }
-.dot-selected { background: #00b478; }
+.dot-selected { background: #3fb950; }
 
 @media (max-width: 800px) {
   .container {
