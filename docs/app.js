@@ -33,18 +33,49 @@ function renderTicker(stocks) {
   track.innerHTML = html + '<span class="ticker-sep">◆</span>' + html;
 }
 
+function fmtMoney(v) {
+  if (v == null || Number.isNaN(v)) return '—';
+  return Number(v).toLocaleString('es-CL', { maximumFractionDigits: 0 });
+}
+
+function parseAmount(raw) {
+  const n = Number(String(raw).replace(/\./g, '').replace(',', '.'));
+  return Number.isFinite(n) && n > 0 ? n : 0;
+}
+
+function updateAllocations(stocks, total) {
+  stocks.forEach((s, i) => {
+    const amountEl = document.getElementById(`alloc-amount-${i}`);
+    const sharesEl = document.getElementById(`alloc-shares-${i}`);
+    if (!amountEl) return;
+    if (!total) {
+      amountEl.textContent = '—';
+      if (sharesEl) sharesEl.textContent = '';
+      return;
+    }
+    const amount = total * s.weight;
+    amountEl.textContent = `$${fmtMoney(amount)}`;
+    if (sharesEl && s.price > 0) {
+      sharesEl.textContent = `≈ ${(amount / s.price).toFixed(1)} acciones`;
+    }
+  });
+}
+
 function renderPortfolioInfo(data) {
   const el = document.getElementById('portfolioInfo');
   const p = data.portfolio;
-  const stocksHtml = (data.stocks || [])
+  const stocks = data.stocks || [];
+  const stocksHtml = stocks
     .map(
-      (s) => `
+      (s, i) => `
       <div class="stock-card">
         <div class="stock-name">${s.label}</div>
         <div class="stock-ticker">${s.ticker}</div>
         <div class="stock-price">$${fmtNum(s.price)}</div>
         <div class="stock-change ${s.change_pct >= 0 ? 'up' : 'down'}">${fmtPct(s.change_pct)}</div>
         <div class="stock-weight">${(s.weight * 100).toFixed(1)}% del portafolio</div>
+        <div class="stock-alloc" id="alloc-amount-${i}">—</div>
+        <div class="stock-shares" id="alloc-shares-${i}"></div>
       </div>`
     )
     .join('');
@@ -57,9 +88,22 @@ function renderPortfolioInfo(data) {
       <div class="metric"><span class="metric-label">Volatilidad</span><span class="metric-value">${p.annual_volatility_pct}%</span></div>
       <div class="metric"><span class="metric-label">Universo</span><span class="metric-value">${data.universe_size} acciones</span></div>
     </div>
+    <div class="allocator">
+      <label for="totalInput">Monto a invertir (CLP)</label>
+      <div class="allocator-row">
+        <span class="allocator-prefix">$</span>
+        <input id="totalInput" type="text" inputmode="numeric" placeholder="1.000.000" autocomplete="off" />
+      </div>
+      <p class="allocator-hint">Se reparte según los pesos del portafolio de máximo Sharpe.</p>
+    </div>
     <p class="note">Selección por máximo ratio de Sharpe sobre ${data.universe_size} acciones del IPSA. Datos semanales, ${data.lookback_weeks || 156} semanas (~3 años). Nube: simulación Monte Carlo.</p>
     <div class="stock-grid">${stocksHtml}</div>
   `;
+
+  const input = document.getElementById('totalInput');
+  const refresh = () => updateAllocations(stocks, parseAmount(input.value));
+  input.addEventListener('input', refresh);
+  refresh();
 }
 
 function renderFrontierChart(data) {

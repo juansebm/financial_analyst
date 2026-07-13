@@ -146,6 +146,71 @@ header {
   margin-bottom: 1rem;
 }
 
+.allocator {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.85rem;
+}
+
+.allocator label {
+  display: block;
+  font-size: 0.7rem;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.allocator-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  padding: 0.35rem 0.6rem;
+}
+
+.allocator-prefix {
+  font-family: 'JetBrains Mono', monospace;
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+.allocator input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e6edf3;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.allocator-hint {
+  margin: 0.4rem 0 0;
+  font-size: 0.7rem;
+  color: #8b949e;
+}
+
+.stock-alloc {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffc107;
+  margin-top: 0.35rem;
+}
+
+.stock-shares {
+  font-size: 0.65rem;
+  color: #8b949e;
+  font-family: 'JetBrains Mono', monospace;
+}
+
 .stock-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
