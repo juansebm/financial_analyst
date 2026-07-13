@@ -211,6 +211,35 @@ header {
   font-family: 'JetBrains Mono', monospace;
 }
 
+.stock-validity {
+  margin-top: 0.45rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #30363d;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.validity-label {
+  font-size: 0.65rem;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.validity-until {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #58a6ff;
+}
+
+.validity-reason {
+  font-size: 0.65rem;
+  color: #8b949e;
+  line-height: 1.3;
+}
+
 .stock-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -222,6 +251,83 @@ header {
   border: 1px solid #30363d;
   border-radius: 6px;
   padding: 0.6rem 0.75rem;
+  position: relative;
+}
+
+.stock-card.is-new {
+  border-color: #3fb950;
+}
+
+.stock-badge {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.35rem;
+  border-radius: 3px;
+  background: #21262d;
+  color: #8b949e;
+}
+
+.stock-card.is-new .stock-badge {
+  background: rgba(63, 185, 80, 0.2);
+  color: #3fb950;
+}
+
+.week-compare {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.85rem;
+}
+
+.week-compare h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: #e6edf3;
+}
+
+.week-asof {
+  color: #8b949e;
+  font-weight: 400;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.compare-summary {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+
+.compare-summary.same { color: #8b949e; }
+.compare-summary.changed { color: #ffc107; }
+
+.prev-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.8rem;
+}
+
+.prev-list li {
+  margin-bottom: 0.2rem;
+  color: #e6edf3;
+}
+
+.prev-list li span {
+  font-family: 'JetBrains Mono', monospace;
+  color: #8b949e;
+  font-size: 0.75rem;
+}
+
+.prev-list li.exited {
+  color: #f85149;
+  text-decoration: line-through;
+  opacity: 0.85;
 }
 
 .stock-name {

@@ -61,6 +61,36 @@ function updateAllocations(stocks, total) {
   });
 }
 
+function renderWeekComparison(data) {
+  const cmp = data.comparison;
+  const prev = data.previous_week;
+  if (!cmp || !prev) return '';
+
+  const prevList = (prev.labels || [])
+    .map((label, i) => {
+      const ticker = prev.tickers[i];
+      const w = ((prev.weights[ticker] || 0) * 100).toFixed(1);
+      const exited = (cmp.exited || []).some((e) => e.ticker === ticker);
+      return `<li class="${exited ? 'exited' : 'kept'}">${label} <span>${w}%</span>${exited ? ' · salió' : ''}</li>`;
+    })
+    .join('');
+
+  const summary = cmp.unchanged
+    ? '<p class="compare-summary same">Sin cambios: el top 5 es el mismo que la semana pasada.</p>'
+    : `<p class="compare-summary changed">
+        ${cmp.entered.length ? `Entraron: <strong>${cmp.entered.map((e) => e.label).join(', ')}</strong>. ` : ''}
+        ${cmp.exited.length ? `Salieron: <strong>${cmp.exited.map((e) => e.label).join(', ')}</strong>.` : ''}
+      </p>`;
+
+  return `
+    <div class="week-compare">
+      <h3>vs semana pasada <span class="week-asof">(${prev.as_of})</span></h3>
+      ${summary}
+      <ol class="prev-list">${prevList}</ol>
+    </div>
+  `;
+}
+
 function renderPortfolioInfo(data) {
   const el = document.getElementById('portfolioInfo');
   const p = data.portfolio;
@@ -68,7 +98,8 @@ function renderPortfolioInfo(data) {
   const stocksHtml = stocks
     .map(
       (s, i) => `
-      <div class="stock-card">
+      <div class="stock-card ${s.vs_last_week === 'new' ? 'is-new' : 'is-kept'}">
+        <div class="stock-badge">${s.vs_last_week === 'new' ? 'NUEVA' : 'igual'}</div>
         <div class="stock-name">${s.label}</div>
         <div class="stock-ticker">${s.ticker}</div>
         <div class="stock-price">$${fmtNum(s.price)}</div>
@@ -76,6 +107,11 @@ function renderPortfolioInfo(data) {
         <div class="stock-weight">${(s.weight * 100).toFixed(1)}% del portafolio</div>
         <div class="stock-alloc" id="alloc-amount-${i}">—</div>
         <div class="stock-shares" id="alloc-shares-${i}"></div>
+        <div class="stock-validity">
+          <span class="validity-label">Vigencia orden</span>
+          <span class="validity-until">hasta ${s.order_valid_label || '—'}</span>
+          <span class="validity-reason">${s.order_valid_reason || ''}</span>
+        </div>
       </div>`
     )
     .join('');
@@ -96,7 +132,8 @@ function renderPortfolioInfo(data) {
       </div>
       <p class="allocator-hint">Se reparte según los pesos del portafolio de máximo Sharpe.</p>
     </div>
-    <p class="note">Selección por máximo ratio de Sharpe sobre ${data.universe_size} acciones del IPSA. Datos semanales, ${data.lookback_weeks || 156} semanas (~3 años). Nube: simulación Monte Carlo.</p>
+    ${renderWeekComparison(data)}
+    <p class="note">${data.order_validity_note || 'Vigencia de órdenes dentro de los próximos 7 días.'} Universo: ${data.universe_size} acciones IPSA · ${data.lookback_weeks || 156} semanas.</p>
     <div class="stock-grid">${stocksHtml}</div>
   `;
 

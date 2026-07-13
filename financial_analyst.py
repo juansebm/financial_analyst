@@ -29,6 +29,9 @@ IPSA_STOCKS = [
     "CCU.SN", "ANDINA-B.SN", "VAPORES.SN", "AGUAS-A.SN", "QUINENCO.SN", "CENCOMALLS.SN",
     "LTM.SN", "CONCHATORO.SN", "ENTEL.SN", "CAP.SN", "MALLPLAZA.SN",
     "ECL.SN", "IAM.SN", "SMU.SN", "ITAUCL.SN", "SONDA.SN", "RIPLEY.SN",
+    # Ampliación IPSA / líquidas BCS
+    "ILC.SN", "SALFACORP.SN", "SMSAAM.SN", "FORUS.SN",
+    "SK.SN", "ENAEX.SN", "BESALCO.SN", "HABITAT.SN",
 ]
 
 TICKER_LABELS = {
@@ -55,13 +58,27 @@ TICKER_LABELS = {
     "ENTEL.SN": "Entel",
     "CAP.SN": "CAP",
     "MALLPLAZA.SN": "Mall Plaza",
-    "ECL.SN": "E-CL",
+    "ECL.SN": "Engie Chile",
     "IAM.SN": "Inversiones Aguas",
     "SMU.SN": "SMU",
     "ITAUCL.SN": "Itaú",
     "SONDA.SN": "Sonda",
     "RIPLEY.SN": "Ripley",
+    "ILC.SN": "ILC",
+    "SALFACORP.SN": "SalfaCorp",
+    "SMSAAM.SN": "SAAM",
+    "FORUS.SN": "Forus",
+    "SK.SN": "Sigdo Koppers",
+    "ENAEX.SN": "Enaex",
+    "BESALCO.SN": "Besalco",
+    "HABITAT.SN": "Habitat",
 }
+
+WEEKDAYS_ES = ("lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo")
+MONTHS_ES = (
+    "", "ene", "feb", "mar", "abr", "may", "jun",
+    "jul", "ago", "sep", "oct", "nov", "dic",
+)
 
 
 def download_prices(tickers: list[str], start: dt.datetime, end: dt.datetime) -> pd.DataFrame:
@@ -182,6 +199,55 @@ def stock_snapshot(
     }
 
 
+def business_days_within(as_of: dt.datetime, calendar_days: int = 7) -> list[dt.date]:
+    """Días hábiles (lun–vie) estrictamente dentro de los próximos `calendar_days`."""
+    start = as_of.date() + dt.timedelta(days=1)
+    end = as_of.date() + dt.timedelta(days=calendar_days)
+    days = []
+    d = start
+    while d <= end:
+        if d.weekday() < 5:
+            days.append(d)
+        d += dt.timedelta(days=1)
+    return days
+
+
+def format_day_es(d: dt.date) -> str:
+    return f"{WEEKDAYS_ES[d.weekday()]} {d.day} {MONTHS_ES[d.month]}"
+
+
+def attach_order_validity(stocks: list[dict], as_of: dt.datetime) -> list[dict]:
+    """
+    Vigencia de orden en los próximos 7 días: más volátil → vence antes
+    (evita órdenes stale cuando el precio se mueve rápido).
+    """
+    days = business_days_within(as_of, 7)
+    if not days:
+        for s in stocks:
+            s["order_valid_until"] = None
+            s["order_valid_label"] = "sin día hábil"
+            s["order_valid_reason"] = "sin ventana"
+        return stocks
+
+    ranked = sorted(range(len(stocks)), key=lambda i: stocks[i]["annual_volatility_pct"], reverse=True)
+    n = len(ranked)
+    last = len(days) - 1
+    for rank, idx in enumerate(ranked):
+        day_i = int(round(rank * last / max(n - 1, 1)))
+        day = days[day_i]
+        # terciles de volatilidad relativa al portafolio
+        if rank < max(n // 3, 1):
+            reason = "alta volatilidad: vigencia corta"
+        elif rank >= n - max(n // 3, 1):
+            reason = "baja volatilidad: puede esperar"
+        else:
+            reason = "volatilidad media"
+        stocks[idx]["order_valid_until"] = day.isoformat()
+        stocks[idx]["order_valid_label"] = format_day_es(day)
+        stocks[idx]["order_valid_reason"] = reason
+    return stocks
+
+
 def _to_pct_points(df: pd.DataFrame) -> list[dict]:
     return [
         {
@@ -218,42 +284,101 @@ def extract_efficient_curve(df: pd.DataFrame, n_bins: int = CURVE_BINS) -> list[
     return _to_pct_points(curve)
 
 
-def run() -> dict:
-    end = dt.datetime.now()
-    start = end - dt.timedelta(weeks=LOOKBACK_WEEKS)
-    print(f"Descargando {len(IPSA_STOCKS)} acciones IPSA ({LOOKBACK_WEEKS} semanas)...")
-    prices = download_prices(IPSA_STOCKS, start, end)
+def optimize_window(prices: pd.DataFrame) -> tuple[pd.Series, float, float, float, pd.Series, pd.DataFrame]:
+    """Retorna (top_weights, ret, vol, sharpe, mean_a, cov_a) sobre un slice de precios."""
     returns = prices.pct_change().dropna()
-    # Filtrar columnas con datos suficientes
     valid = [c for c in returns.columns if returns[c].count() >= LOOKBACK_WEEKS // 2]
     returns = returns[valid]
     if len(valid) < PORTFOLIO_SIZE:
         raise RuntimeError(f"Solo {len(valid)} acciones con datos suficientes.")
-
-    mean_w = returns.mean()
-    cov_w = returns.cov()
-    mean_a, cov_a = annualize(mean_w, cov_w)
-
+    mean_a, cov_a = annualize(returns.mean(), returns.cov())
     weights, port_ret, port_vol, port_sharpe = max_sharpe_portfolio(mean_a, cov_a)
-    frontier = simulate_frontier(mean_a, cov_a, MONTE_CARLO_SAMPLES)
-    top_weights = pick_top_stocks(weights)
+    top = pick_top_stocks(weights)
+    return top, port_ret, port_vol, port_sharpe, mean_a, cov_a
+
+
+def week_portfolio_summary(top_weights: pd.Series, as_of: str) -> dict:
+    return {
+        "as_of": as_of,
+        "tickers": list(top_weights.index),
+        "weights": {t: round(float(w), 4) for t, w in top_weights.items()},
+        "labels": [TICKER_LABELS.get(t, t.replace(".SN", "")) for t in top_weights.index],
+    }
+
+
+def compare_top5(current: pd.Series, previous: pd.Series) -> dict:
+    curr = set(current.index)
+    prev = set(previous.index)
+    kept = sorted(curr & prev)
+    entered = sorted(curr - prev)
+    exited = sorted(prev - curr)
+    return {
+        "unchanged": curr == prev,
+        "kept": [
+            {"ticker": t, "label": TICKER_LABELS.get(t, t.replace(".SN", "")),
+             "weight_now": round(float(current[t]), 4),
+             "weight_prev": round(float(previous[t]), 4)}
+            for t in kept
+        ],
+        "entered": [
+            {"ticker": t, "label": TICKER_LABELS.get(t, t.replace(".SN", "")),
+             "weight": round(float(current[t]), 4)}
+            for t in entered
+        ],
+        "exited": [
+            {"ticker": t, "label": TICKER_LABELS.get(t, t.replace(".SN", "")),
+             "weight": round(float(previous[t]), 4)}
+            for t in exited
+        ],
+    }
+
+
+def run() -> dict:
+    end = dt.datetime.now()
+    end_prev = end - dt.timedelta(weeks=1)
+    # +1 semana para poder cortar la ventana "semana pasada" con el mismo lookback
+    start = end - dt.timedelta(weeks=LOOKBACK_WEEKS + 1)
+    print(f"Descargando {len(IPSA_STOCKS)} acciones IPSA ({LOOKBACK_WEEKS} semanas + 1)...")
+    prices = download_prices(IPSA_STOCKS, start, end)
+
+    # Semana actual
+    prices_now = prices.loc[: end.strftime("%Y-%m-%d")].tail(LOOKBACK_WEEKS + 1)
+    top_now, port_ret, port_vol, port_sharpe, mean_a, cov_a = optimize_window(prices_now)
+
+    # Semana pasada: mismos datos truncados 1 semana atrás
+    prices_prev = prices.loc[: end_prev.strftime("%Y-%m-%d")].tail(LOOKBACK_WEEKS + 1)
+    top_prev, *_rest = optimize_window(prices_prev)
 
     stocks = [
-        stock_snapshot(ticker, w, prices[ticker], mean_a, cov_a)
-        for ticker, w in top_weights.items()
+        stock_snapshot(ticker, w, prices_now[ticker], mean_a, cov_a)
+        for ticker, w in top_now.items()
     ]
+    stocks = attach_order_validity(stocks, end)
+    comparison = compare_top5(top_now, top_prev)
+    status_by_ticker = {e["ticker"]: "new" for e in comparison["entered"]}
+    for k in comparison["kept"]:
+        status_by_ticker[k["ticker"]] = "kept"
+    for s in stocks:
+        s["vs_last_week"] = status_by_ticker.get(s["ticker"], "kept")
+
+    frontier = simulate_frontier(mean_a, cov_a, MONTE_CARLO_SAMPLES)
 
     result = {
         "updated_at": end.strftime("%Y-%m-%d"),
         "lookback_weeks": LOOKBACK_WEEKS,
         "schedule": "semanal",
-        "universe_size": len(valid),
+        "universe_size": len(mean_a),
         "risk_free_rate": RISK_FREE_RATE,
+        "order_validity_window_days": 7,
+        "order_validity_note": (
+            "Vigencia sugerida de cada orden dentro de los próximos 7 días: "
+            "mayor volatilidad = vence antes."
+        ),
         "portfolio": {
             "sharpe_ratio": round(port_sharpe, 3),
             "annual_return_pct": round(port_ret * 100, 2),
             "annual_volatility_pct": round(port_vol * 100, 2),
-            "weights": {t: round(float(w), 4) for t, w in top_weights.items()},
+            "weights": {t: round(float(w), 4) for t, w in top_now.items()},
         },
         "max_sharpe_point": {
             "volatility_pct": round(port_vol * 100, 2),
@@ -263,6 +388,8 @@ def run() -> dict:
         "frontier": downsample_frontier(frontier, max_points=CLOUD_DISPLAY_POINTS),
         "frontier_curve": extract_efficient_curve(frontier, n_bins=CURVE_BINS),
         "stocks": stocks,
+        "previous_week": week_portfolio_summary(top_prev, end_prev.strftime("%Y-%m-%d")),
+        "comparison": comparison,
     }
     return result
 
@@ -273,7 +400,19 @@ def main() -> None:
     out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Portafolio óptimo (Sharpe {output['portfolio']['sharpe_ratio']}):")
     for s in output["stocks"]:
-        print(f"  {s['label']:16} {s['weight']*100:5.1f}%  ${s['price']:>8.2f}  ({s['change_pct']:+.2f}%)")
+        tag = "NUEVA" if s.get("vs_last_week") == "new" else "igual"
+        print(
+            f"  [{tag:5}] {s['label']:16} {s['weight']*100:5.1f}%  ${s['price']:>8.2f}  "
+            f"vigencia hasta {s.get('order_valid_label', '-')}"
+        )
+    cmp_ = output["comparison"]
+    if cmp_["unchanged"]:
+        print("\nSin cambios vs semana pasada.")
+    else:
+        if cmp_["entered"]:
+            print("Entraron:", ", ".join(e["label"] for e in cmp_["entered"]))
+        if cmp_["exited"]:
+            print("Salieron:", ", ".join(e["label"] for e in cmp_["exited"]))
     print(f"\nGuardado en {out_path}")
 
 
