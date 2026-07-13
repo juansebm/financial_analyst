@@ -1,68 +1,64 @@
-# Financial Analyst - Análisis de Acciones del IPSA
+# IPSA — Frontera Eficiente
 
-## Descripción
-Este proyecto permite descargar, analizar y evaluar el desempeño de las principales acciones del índice IPSA (Chile) utilizando datos de **Yahoo Finance**. Además, incorpora inteligencia artificial basada en **LangChain** y **OpenAI GPT-4o-mini** para generar recomendaciones financieras fundamentadas.
+Visualizador semanal del portafolio de **máximo ratio de Sharpe** sobre acciones del IPSA (Chile).
 
-## Características Principales
-- Descarga datos históricos de las acciones del IPSA en un solo request.
-- Cálculo del **RSI** (*Relative Strength Index*) para cada acción.
-- Obtención de métricas financieras clave como **P/E Ratio** y **Debt/Equity**.
-- Generación de análisis automatizados y recomendaciones con IA.
-- Exportación de los resultados en formato JSON.
+## Qué hace
+
+1. Descarga precios semanales de ~29 acciones IPSA (Yahoo Finance).
+2. Simula portafolios aleatorios y construye la **frontera eficiente** (riesgo vs retorno).
+3. Selecciona el portafolio de **máximo Sharpe** y extrae las **5 acciones** con mayor peso.
+4. Publica resultados en GitHub Pages con gráfico interactivo y cinta tipo **prompter de bolsa**.
 
 ## Instalación
-### 1. Clonar el repositorio
+
 ```sh
-    git clone https://github.com/tu_usuario/financial_analyst.git
-    cd financial_analyst
-```
-### 2. Crear y activar entorno virtual
-```sh
-    python3 -m venv venv
-    source venv/bin/activate  # Mac/Linux
-    venv\Scripts\activate     # Windows
-```
-### 3. Instalar dependencias
-```sh
-    pip install -r requirements.txt
+git clone https://github.com/juansebm/financial_analyst.git
+cd financial_analyst
+python -m venv venv
+venv\Scripts\activate        # Windows
+pip install -r requirements.txt
 ```
 
-## Configuración
-### Variables de entorno
-Es necesario configurar la clave de API de **OpenAI**. Crear un archivo `.env` en el directorio principal y añadir:
-```env
-OPENAI_API_KEY = "..."
-```
+## Uso local
 
-## Uso
-Para ejecutar el *IPSA financial analyst*, simplemente ejecutar:
 ```sh
-python3 financial_analyst.py
+python financial_analyst.py
+cp results.json docs/results.json   # opcional, para previsualizar el sitio
 ```
-El script descargará datos, calculará métricas y generará un informe detallado con recomendaciones.
 
-## Salida esperada
-El script generará un archivo `results.json` con los datos procesados y el análisis generado por IA. Ejemplo de salida:
+Abre `docs/index.html` en el navegador (o sirve `docs/` con un servidor estático).
+
+## GitHub Pages
+
+El workflow `.github/workflows/update_results.yml` corre **cada lunes** y actualiza `results.json` + `docs/results.json`.
+
+Configura Pages en el repo: **Settings → Pages → Source: Deploy from branch → `/docs`**.
+
+## Salida (`results.json`)
+
 ```json
 {
-    "data": [
-        {"Stock": "SQM-B.SN", "Último Precio": 50.32, "RSI": 68.5, "P/E Ratio": 10.5, "Debt/Equity": 1.2},
-        {"Stock": "CHILE.SN", "Último Precio": 15.48, "RSI": 55.3, "P/E Ratio": 8.7, "Debt/Equity": 0.8}
-    ],
-    "analysis": "Basado en los datos, se recomienda invertir en..."
+  "updated_at": "2026-07-12",
+  "portfolio": {
+    "sharpe_ratio": 1.12,
+    "annual_return_pct": 14.5,
+    "annual_volatility_pct": 9.3,
+    "weights": { "SQM-B.SN": 0.22, "...": 0.18 }
+  },
+  "frontier": [{ "volatility": 8.1, "return": 6.2, "sharpe": 0.27 }],
+  "stocks": [{ "label": "SQM", "price": 42000, "change_pct": 1.2, "weight": 0.22 }]
 }
 ```
 
 ## Dependencias
-- `yfinance` - Para obtener datos financieros de Yahoo Finance.
-- `pandas` - Para manipulación y análisis de datos.
-- `dotenv` - Para manejar variables de entorno.
-- `langchain_openai` - Para conectar con GPT-4o-mini o el modelo deseado.
-- `langgraph` - Para crear el flujo de análisis con IA.
+
+- `yfinance` — datos de mercado
+- `pandas` / `numpy` — optimización por simulación Monte Carlo
 
 ## Autor
-**juansma** - [GitHub](https://github.com/juansebm)
+
+**juansma** — [GitHub](https://github.com/juansebm)
 
 ## Licencia
-Este proyecto se distribuye bajo la licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
+MIT

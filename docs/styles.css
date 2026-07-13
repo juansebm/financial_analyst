@@ -1,152 +1,239 @@
-/* ---------------------
-   ALTURA DE VENTANA
----------------------- */
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: #fafafa;
-  color: #333;
-  overflow: hidden; /* Evita scroll global */
+  background-color: #0d1117;
+  color: #e6edf3;
+  overflow: hidden;
 }
 
-/* ---------------------
-   ENCABEZADO
----------------------- */
-header {
-  display: flex;
-  align-items: center;       /* Centra verticalmente */
-  justify-content: space-between; /* Título a la izq, fecha a la der */
-  background-color: #002C54;
-  padding: 1rem;
-  margin: 0;
-}
-
-.header-title {
-  margin: 0;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-
-.header-date {
-  color: #fff;
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-/* ---------------------
-   LAYOUT PRINCIPAL
----------------------- */
 body {
   display: flex;
   flex-direction: column;
 }
 
-/* main (.container) ocupa el espacio sobrante del header */
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #002C54 0%, #004080 100%);
+  padding: 0.85rem 1.25rem;
+  flex-shrink: 0;
+}
+
+.header-title {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.header-sub {
+  margin: 0.15rem 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+}
+
+.header-date {
+  color: #ffc107;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+/* Ticker / prompter */
+.ticker-wrap {
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #000;
+  border-bottom: 2px solid #ffc107;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: ticker-scroll 40s linear infinite;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ticker-item {
+  padding: 0 1.5rem;
+}
+
+.ticker-item.up { color: #3fb950; }
+.ticker-item.down { color: #f85149; }
+
+.ticker-sep {
+  color: #ffc107;
+  opacity: 0.6;
+  padding: 0 0.25rem;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Layout */
 .container {
   flex: 1;
-  display: flex;       /* 2 columnas: analysis / charts */
-  overflow: hidden;    /* Sin scroll global, cada columna hace scroll interno */
+  display: flex;
   gap: 1rem;
   padding: 1rem;
+  overflow: hidden;
+  min-height: 0;
 }
 
-/* ---------------------
-   COLUMNAS
----------------------- */
-.analysis-section, 
+.info-section,
 .chart-section {
   flex: 1;
-  min-width: 300px;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
-  /* Scroll interno si sobrepasa el alto */
+  min-width: 280px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
   overflow-y: auto;
-  overflow-x: hidden;
-  padding: 1rem;
+  padding: 1rem 1.25rem;
 }
 
-/* ---------------------
-   ESTILO DE MARKDOWN
----------------------- */
-.analysis-section ul,
-.analysis-section ol {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+.info-section h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: #ffc107;
 }
 
-.analysis-section h1,
-.analysis-section h2,
-.analysis-section h3,
-.analysis-section h4,
-.analysis-section h5,
-.analysis-section h6 {
-  margin-top: 1rem;
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.metric {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #8b949e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #58a6ff;
+}
+
+.note {
+  font-size: 0.75rem;
+  color: #8b949e;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.stock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.6rem;
+}
+
+.stock-card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+}
+
+.stock-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.stock-ticker {
+  font-size: 0.65rem;
+  color: #8b949e;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.stock-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+.stock-change {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
-.analysis-section p,
-.analysis-section ul,
-.analysis-section ol {
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+.stock-change.up { color: #3fb950; }
+.stock-change.down { color: #f85149; }
+
+.stock-weight {
+  font-size: 0.7rem;
+  color: #8b949e;
+  margin-top: 0.2rem;
 }
 
-/* ---------------------
-   GRÁFICOS
----------------------- */
+/* Chart */
 .chart-section {
-  /* display: flex;  <-- Se aplica inline en index.html 
-     flex-direction: column; 
-     gap: 1rem; */
-  align-items: center;
-  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .chart-section canvas {
-  width: 100%;
-  height: 300px; /* Ajusta la altura de cada canvas a tu preferencia */
+  flex: 1;
+  min-height: 280px;
+  width: 100% !important;
 }
 
-/* ---------------------
-   RESPONSIVIDAD
----------------------- */
-@media (max-width: 700px) {
-  /* Apila las columnas en pantallas pequeñas */
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #8b949e;
+  margin-top: 0.5rem;
+  justify-content: center;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+.dot-frontier { background: rgba(0, 44, 84, 0.6); }
+.dot-optimal { background: #ffc107; }
+.dot-selected { background: #00b478; }
+
+@media (max-width: 800px) {
   .container {
     flex-direction: column;
   }
-  .analysis-section, 
+  .info-section,
   .chart-section {
     flex: none;
-    width: 100%;
-    height: 50%; /* Cada sección ocupa la mitad de la pantalla en vertical */
+    max-height: 45vh;
   }
-  /* Ajusta la altura de los gráficos en móviles */
-  .chart-section canvas {
-    height: 200px;
-  }
-}
-
-.legend-rsi {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;       /* Permite que se envuelva en varias líneas si es necesario */
-  gap: 0.5rem;           /* Separación entre elementos */
-  margin-bottom: 0.5rem; /* Espacio debajo de la leyenda */
-  font-size: 0.8rem;     /* Texto pequeño */
-}
-
-.legend-box {
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  border-radius: 2px;    /* Esquinas ligeramente redondeadas (opcional) */
-  margin-right: 0.25rem;
 }

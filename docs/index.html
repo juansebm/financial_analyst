@@ -3,56 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IPSA Analyst</title>
-
-  <!-- Fuente Montserrat (ejecutiva) -->
+  <title>IPSA — Frontera Eficiente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" 
-    rel="stylesheet"
-  >
-
-  <!-- Hoja de estilos principal -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Librería Marked para convertir Markdown a HTML -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <!-- Librería Chart.js para gráficas -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Plugin de anotación (versión compatible con Chart.js 3/4) -->
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1"></script>
 </head>
 <body>
   <header>
-    <h1 class="header-title">🤖📈 IA Powered IPSA Stock Analyst</h1>
+    <div class="header-left">
+      <h1 class="header-title">IPSA · Frontera Eficiente</h1>
+      <p class="header-sub">Portafolio de máximo Sharpe · actualización semanal</p>
+    </div>
     <div class="header-date" id="dateContainer"></div>
   </header>
 
-  <main class="container">
-    <!-- Columna Izquierda: análisis en Markdown -->
-    <section id="analysisContainer" class="analysis-section"></section>
+  <div class="ticker-wrap" aria-label="Cinta de cotizaciones">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
 
-    <!-- Columna Derecha: 2 gráficos, uno encima del otro -->
-    <section class="chart-section" style="display: flex; flex-direction: column; gap: 1rem;">
-      <!-- Primer gráfico (arriba): RSI vertical -->
-      <div class="legend-rsi">
-        <span class="legend-box" style="background-color: rgba(255, 0, 0, 0.7);"></span>
-        <small>RSI ≥ 70 (Sobrecompra)</small>
-      
-        <span class="legend-box" style="background-color: rgba(0, 128, 0, 0.7);"></span>
-        <small>RSI ≤ 30 (Sobreventa)</small>
-      
-        <span class="legend-box" style="background-color: rgba(0, 44, 84, 0.7);"></span>
-        <small>Neutral</small>
+  <main class="container">
+    <section class="info-section" id="portfolioInfo"></section>
+    <section class="chart-section">
+      <canvas id="chartFrontier"></canvas>
+      <div class="chart-legend">
+        <span class="dot dot-frontier"></span> Portafolios simulados
+        <span class="dot dot-optimal"></span> Máximo Sharpe
+        <span class="dot dot-selected"></span> Top 5 acciones
       </div>
-      <canvas id="chartRSI"></canvas>
-      <!-- Segundo gráfico (abajo): Índices técnicos en barras horizontales -->
-      <canvas id="chartIndices"></canvas>
     </section>
   </main>
 
-  <!-- Script principal -->
   <script src="app.js"></script>
 </body>
 </html>

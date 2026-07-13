@@ -1,353 +1,2078 @@
 {
-  "data": [
+  "updated_at": "2026-07-12",
+  "lookback_weeks": 52,
+  "schedule": "semanal",
+  "universe_size": 29,
+  "risk_free_rate": 0.04,
+  "portfolio": {
+    "sharpe_ratio": 2.205,
+    "annual_return_pct": 42.18,
+    "annual_volatility_pct": 17.31,
+    "weights": {
+      "MALLPLAZA.SN": 0.3004,
+      "ENTEL.SN": 0.2146,
+      "CAP.SN": 0.1756,
+      "SQM-B.SN": 0.1683,
+      "BSANTANDER.SN": 0.1411
+    }
+  },
+  "max_sharpe_point": {
+    "volatility_pct": 17.31,
+    "return_pct": 42.18,
+    "sharpe": 2.205
+  },
+  "frontier": [
     {
-      "Stock": "SQM-B.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.108,
+      "return": 22.32,
+      "sharpe": 1.137
     },
     {
-      "Stock": "CHILE.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 14.668,
+      "return": 29.041,
+      "sharpe": 1.707
     },
     {
-      "Stock": "BSANTANDER.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.073,
+      "return": 28.737,
+      "sharpe": 1.641
     },
     {
-      "Stock": "COPEC.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 17.145,
+      "return": 25.54,
+      "sharpe": 1.256
     },
     {
-      "Stock": "ENELAM.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.248,
+      "return": 24.579,
+      "sharpe": 1.267
     },
     {
-      "Stock": "CENCOSUD.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.627,
+      "return": 27.586,
+      "sharpe": 1.418
     },
     {
-      "Stock": "CMPC.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.094,
+      "return": 16.119,
+      "sharpe": 0.753
     },
     {
-      "Stock": "BCI.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 17.571,
+      "return": 29.926,
+      "sharpe": 1.476
     },
     {
-      "Stock": "FALABELLA.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.403,
+      "return": 23.465,
+      "sharpe": 1.187
     },
     {
-      "Stock": "ENELCHILE.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.401,
+      "return": 24.144,
+      "sharpe": 1.228
     },
     {
-      "Stock": "PARAUCO.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.973,
+      "return": 27.713,
+      "sharpe": 1.485
     },
     {
-      "Stock": "COLBUN.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.011,
+      "return": 14.527,
+      "sharpe": 0.701
     },
     {
-      "Stock": "CCU.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.694,
+      "return": 28.911,
+      "sharpe": 1.492
     },
     {
-      "Stock": "ANDINA-B.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.256,
+      "return": 24.269,
+      "sharpe": 1.329
     },
     {
-      "Stock": "VAPORES.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.941,
+      "return": 17.69,
+      "sharpe": 0.859
     },
     {
-      "Stock": "AGUAS-A.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 14.61,
+      "return": 19.542,
+      "sharpe": 1.064
     },
     {
-      "Stock": "QUINENCO.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.333,
+      "return": 25.612,
+      "sharpe": 1.41
     },
     {
-      "Stock": "CENCOMALLS.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.93,
+      "return": 27.397,
+      "sharpe": 1.469
     },
     {
-      "Stock": "LTM.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 14.857,
+      "return": 20.553,
+      "sharpe": 1.114
     },
     {
-      "Stock": "CONCHATORO.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 17.595,
+      "return": 24.357,
+      "sharpe": 1.157
     },
     {
-      "Stock": "ENTEL.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 14.175,
+      "return": 24.143,
+      "sharpe": 1.421
     },
     {
-      "Stock": "CAP.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.755,
+      "return": 24.583,
+      "sharpe": 1.306
     },
     {
-      "Stock": "MALLPLAZA.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.237,
+      "return": 13.705,
+      "sharpe": 0.598
     },
     {
-      "Stock": "ECL.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.471,
+      "return": 18.462,
+      "sharpe": 0.935
     },
     {
-      "Stock": "IAM.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 17.691,
+      "return": 18.945,
+      "sharpe": 0.845
     },
     {
-      "Stock": "SMU.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.253,
+      "return": 26.829,
+      "sharpe": 1.405
     },
     {
-      "Stock": "ITAUCL.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 16.874,
+      "return": 24.708,
+      "sharpe": 1.227
     },
     {
-      "Stock": "SONDA.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 15.981,
+      "return": 18.715,
+      "sharpe": 0.921
     },
     {
-      "Stock": "RIPLEY.SN",
-      "Último Precio": "No disponible",
-      "RSI": "No disponible",
-      "P/E Ratio": "No disponible",
-      "Debt/Equity": "No disponible",
-      "VI_plus": "No disponible",
-      "VI_minus": "No disponible",
-      "Bollinger_Up": "No disponible",
-      "Bollinger_Down": "No disponible",
-      "CCI": "No disponible"
+      "volatility": 17.47,
+      "return": 25.075,
+      "sharpe": 1.206
+    },
+    {
+      "volatility": 17.262,
+      "return": 28.02,
+      "sharpe": 1.391
+    },
+    {
+      "volatility": 14.855,
+      "return": 19.31,
+      "sharpe": 1.031
+    },
+    {
+      "volatility": 16.644,
+      "return": 16.736,
+      "sharpe": 0.765
+    },
+    {
+      "volatility": 16.706,
+      "return": 25.424,
+      "sharpe": 1.282
+    },
+    {
+      "volatility": 16.694,
+      "return": 26.32,
+      "sharpe": 1.337
+    },
+    {
+      "volatility": 15.3,
+      "return": 14.541,
+      "sharpe": 0.689
+    },
+    {
+      "volatility": 14.679,
+      "return": 22.226,
+      "sharpe": 1.242
+    },
+    {
+      "volatility": 16.257,
+      "return": 16.957,
+      "sharpe": 0.797
+    },
+    {
+      "volatility": 14.088,
+      "return": 23.78,
+      "sharpe": 1.404
+    },
+    {
+      "volatility": 15.117,
+      "return": 15.451,
+      "sharpe": 0.757
+    },
+    {
+      "volatility": 15.999,
+      "return": 20.788,
+      "sharpe": 1.049
+    },
+    {
+      "volatility": 16.404,
+      "return": 23.457,
+      "sharpe": 1.186
+    },
+    {
+      "volatility": 15.644,
+      "return": 15.08,
+      "sharpe": 0.708
+    },
+    {
+      "volatility": 16.067,
+      "return": 25.752,
+      "sharpe": 1.354
+    },
+    {
+      "volatility": 15.847,
+      "return": 17.396,
+      "sharpe": 0.845
+    },
+    {
+      "volatility": 14.585,
+      "return": 26.244,
+      "sharpe": 1.525
+    },
+    {
+      "volatility": 18.276,
+      "return": 31.091,
+      "sharpe": 1.482
+    },
+    {
+      "volatility": 14.314,
+      "return": 12.887,
+      "sharpe": 0.621
+    },
+    {
+      "volatility": 16.333,
+      "return": 17.824,
+      "sharpe": 0.846
+    },
+    {
+      "volatility": 15.547,
+      "return": 16.952,
+      "sharpe": 0.833
+    },
+    {
+      "volatility": 14.728,
+      "return": 18.52,
+      "sharpe": 0.986
+    },
+    {
+      "volatility": 15.937,
+      "return": 26.605,
+      "sharpe": 1.418
+    },
+    {
+      "volatility": 16.218,
+      "return": 24.424,
+      "sharpe": 1.259
+    },
+    {
+      "volatility": 15.977,
+      "return": 15.909,
+      "sharpe": 0.745
+    },
+    {
+      "volatility": 16.407,
+      "return": 25.574,
+      "sharpe": 1.315
+    },
+    {
+      "volatility": 15.389,
+      "return": 17.529,
+      "sharpe": 0.879
+    },
+    {
+      "volatility": 15.473,
+      "return": 22.048,
+      "sharpe": 1.166
+    },
+    {
+      "volatility": 16.074,
+      "return": 15.441,
+      "sharpe": 0.712
+    },
+    {
+      "volatility": 16.798,
+      "return": 18.445,
+      "sharpe": 0.86
+    },
+    {
+      "volatility": 16.131,
+      "return": 25.852,
+      "sharpe": 1.355
+    },
+    {
+      "volatility": 15.559,
+      "return": 31.097,
+      "sharpe": 1.742
+    },
+    {
+      "volatility": 15.574,
+      "return": 27.247,
+      "sharpe": 1.493
+    },
+    {
+      "volatility": 15.333,
+      "return": 22.673,
+      "sharpe": 1.218
+    },
+    {
+      "volatility": 14.448,
+      "return": 22.087,
+      "sharpe": 1.252
+    },
+    {
+      "volatility": 16.965,
+      "return": 31.347,
+      "sharpe": 1.612
+    },
+    {
+      "volatility": 16.736,
+      "return": 29.742,
+      "sharpe": 1.538
+    },
+    {
+      "volatility": 16.163,
+      "return": 29.786,
+      "sharpe": 1.595
+    },
+    {
+      "volatility": 16.32,
+      "return": 26.262,
+      "sharpe": 1.364
+    },
+    {
+      "volatility": 15.333,
+      "return": 23.539,
+      "sharpe": 1.274
+    },
+    {
+      "volatility": 15.045,
+      "return": 22.53,
+      "sharpe": 1.232
+    },
+    {
+      "volatility": 16.43,
+      "return": 23.065,
+      "sharpe": 1.16
+    },
+    {
+      "volatility": 15.967,
+      "return": 28.301,
+      "sharpe": 1.522
+    },
+    {
+      "volatility": 14.865,
+      "return": 22.748,
+      "sharpe": 1.261
+    },
+    {
+      "volatility": 14.533,
+      "return": 18.205,
+      "sharpe": 0.977
+    },
+    {
+      "volatility": 15.21,
+      "return": 27.536,
+      "sharpe": 1.547
+    },
+    {
+      "volatility": 15.978,
+      "return": 22.329,
+      "sharpe": 1.147
+    },
+    {
+      "volatility": 16.623,
+      "return": 21.808,
+      "sharpe": 1.071
+    },
+    {
+      "volatility": 16.557,
+      "return": 25.436,
+      "sharpe": 1.295
+    },
+    {
+      "volatility": 16.75,
+      "return": 24.134,
+      "sharpe": 1.202
+    },
+    {
+      "volatility": 17.085,
+      "return": 33.242,
+      "sharpe": 1.712
+    },
+    {
+      "volatility": 15.525,
+      "return": 22.144,
+      "sharpe": 1.169
+    },
+    {
+      "volatility": 15.878,
+      "return": 27.023,
+      "sharpe": 1.45
+    },
+    {
+      "volatility": 16.471,
+      "return": 17.1,
+      "sharpe": 0.795
+    },
+    {
+      "volatility": 15.23,
+      "return": 26.646,
+      "sharpe": 1.487
+    },
+    {
+      "volatility": 17.718,
+      "return": 27.281,
+      "sharpe": 1.314
+    },
+    {
+      "volatility": 15.271,
+      "return": 27.644,
+      "sharpe": 1.548
+    },
+    {
+      "volatility": 15.952,
+      "return": 29.157,
+      "sharpe": 1.577
+    },
+    {
+      "volatility": 15.258,
+      "return": 11.373,
+      "sharpe": 0.483
+    },
+    {
+      "volatility": 16.843,
+      "return": 24.651,
+      "sharpe": 1.226
+    },
+    {
+      "volatility": 17.681,
+      "return": 27.418,
+      "sharpe": 1.324
+    },
+    {
+      "volatility": 16.36,
+      "return": 26.891,
+      "sharpe": 1.399
+    },
+    {
+      "volatility": 14.847,
+      "return": 20.525,
+      "sharpe": 1.113
+    },
+    {
+      "volatility": 17.845,
+      "return": 31.677,
+      "sharpe": 1.551
+    },
+    {
+      "volatility": 16.248,
+      "return": 27.652,
+      "sharpe": 1.456
+    },
+    {
+      "volatility": 16.385,
+      "return": 18.878,
+      "sharpe": 0.908
+    },
+    {
+      "volatility": 17.061,
+      "return": 22.035,
+      "sharpe": 1.057
+    },
+    {
+      "volatility": 14.765,
+      "return": 20.059,
+      "sharpe": 1.088
+    },
+    {
+      "volatility": 15.472,
+      "return": 23.196,
+      "sharpe": 1.241
+    },
+    {
+      "volatility": 16.183,
+      "return": 19.709,
+      "sharpe": 0.971
+    },
+    {
+      "volatility": 16.222,
+      "return": 28.446,
+      "sharpe": 1.507
+    },
+    {
+      "volatility": 15.264,
+      "return": 27.785,
+      "sharpe": 1.558
+    },
+    {
+      "volatility": 16.649,
+      "return": 18.369,
+      "sharpe": 0.863
+    },
+    {
+      "volatility": 17.003,
+      "return": 27.874,
+      "sharpe": 1.404
+    },
+    {
+      "volatility": 16.797,
+      "return": 24.237,
+      "sharpe": 1.205
+    },
+    {
+      "volatility": 15.537,
+      "return": 17.71,
+      "sharpe": 0.882
+    },
+    {
+      "volatility": 14.726,
+      "return": 14.033,
+      "sharpe": 0.681
+    },
+    {
+      "volatility": 16.029,
+      "return": 29.002,
+      "sharpe": 1.56
+    },
+    {
+      "volatility": 15.201,
+      "return": 15.785,
+      "sharpe": 0.775
+    },
+    {
+      "volatility": 15.913,
+      "return": 14.688,
+      "sharpe": 0.672
+    },
+    {
+      "volatility": 16.939,
+      "return": 27.742,
+      "sharpe": 1.402
+    },
+    {
+      "volatility": 14.896,
+      "return": 24.114,
+      "sharpe": 1.35
+    },
+    {
+      "volatility": 15.905,
+      "return": 22.566,
+      "sharpe": 1.167
+    },
+    {
+      "volatility": 14.81,
+      "return": 18.0,
+      "sharpe": 0.945
+    },
+    {
+      "volatility": 17.051,
+      "return": 32.025,
+      "sharpe": 1.644
+    },
+    {
+      "volatility": 15.462,
+      "return": 23.906,
+      "sharpe": 1.287
+    },
+    {
+      "volatility": 16.419,
+      "return": 25.729,
+      "sharpe": 1.323
+    },
+    {
+      "volatility": 16.797,
+      "return": 24.512,
+      "sharpe": 1.221
+    },
+    {
+      "volatility": 15.635,
+      "return": 22.196,
+      "sharpe": 1.164
+    },
+    {
+      "volatility": 15.772,
+      "return": 18.419,
+      "sharpe": 0.914
+    },
+    {
+      "volatility": 16.216,
+      "return": 17.918,
+      "sharpe": 0.858
+    },
+    {
+      "volatility": 15.642,
+      "return": 18.05,
+      "sharpe": 0.898
+    },
+    {
+      "volatility": 16.123,
+      "return": 21.907,
+      "sharpe": 1.111
+    },
+    {
+      "volatility": 16.879,
+      "return": 31.749,
+      "sharpe": 1.644
+    },
+    {
+      "volatility": 16.903,
+      "return": 22.538,
+      "sharpe": 1.097
+    },
+    {
+      "volatility": 15.397,
+      "return": 15.539,
+      "sharpe": 0.749
+    },
+    {
+      "volatility": 16.569,
+      "return": 23.0,
+      "sharpe": 1.147
+    },
+    {
+      "volatility": 18.105,
+      "return": 36.341,
+      "sharpe": 1.786
+    },
+    {
+      "volatility": 16.365,
+      "return": 19.696,
+      "sharpe": 0.959
+    },
+    {
+      "volatility": 15.622,
+      "return": 21.224,
+      "sharpe": 1.103
+    },
+    {
+      "volatility": 15.69,
+      "return": 23.734,
+      "sharpe": 1.258
+    },
+    {
+      "volatility": 15.89,
+      "return": 26.487,
+      "sharpe": 1.415
+    },
+    {
+      "volatility": 17.221,
+      "return": 31.472,
+      "sharpe": 1.595
+    },
+    {
+      "volatility": 15.799,
+      "return": 21.915,
+      "sharpe": 1.134
+    },
+    {
+      "volatility": 15.393,
+      "return": 19.371,
+      "sharpe": 0.999
+    },
+    {
+      "volatility": 14.435,
+      "return": 14.098,
+      "sharpe": 0.7
+    },
+    {
+      "volatility": 16.865,
+      "return": 17.913,
+      "sharpe": 0.825
+    },
+    {
+      "volatility": 14.544,
+      "return": 8.358,
+      "sharpe": 0.3
+    },
+    {
+      "volatility": 15.321,
+      "return": 13.116,
+      "sharpe": 0.595
+    },
+    {
+      "volatility": 16.829,
+      "return": 26.839,
+      "sharpe": 1.357
+    },
+    {
+      "volatility": 16.662,
+      "return": 21.204,
+      "sharpe": 1.033
+    },
+    {
+      "volatility": 16.051,
+      "return": 27.386,
+      "sharpe": 1.457
+    },
+    {
+      "volatility": 15.959,
+      "return": 16.035,
+      "sharpe": 0.754
+    },
+    {
+      "volatility": 16.771,
+      "return": 30.021,
+      "sharpe": 1.552
+    },
+    {
+      "volatility": 15.965,
+      "return": 22.505,
+      "sharpe": 1.159
+    },
+    {
+      "volatility": 15.902,
+      "return": 24.298,
+      "sharpe": 1.276
+    },
+    {
+      "volatility": 14.555,
+      "return": 16.475,
+      "sharpe": 0.857
+    },
+    {
+      "volatility": 15.398,
+      "return": 22.565,
+      "sharpe": 1.206
+    },
+    {
+      "volatility": 14.152,
+      "return": 25.63,
+      "sharpe": 1.528
+    },
+    {
+      "volatility": 16.2,
+      "return": 29.88,
+      "sharpe": 1.598
+    },
+    {
+      "volatility": 16.1,
+      "return": 25.88,
+      "sharpe": 1.359
+    },
+    {
+      "volatility": 16.246,
+      "return": 18.409,
+      "sharpe": 0.887
+    },
+    {
+      "volatility": 16.218,
+      "return": 20.981,
+      "sharpe": 1.047
+    },
+    {
+      "volatility": 16.977,
+      "return": 23.358,
+      "sharpe": 1.14
+    },
+    {
+      "volatility": 16.861,
+      "return": 29.016,
+      "sharpe": 1.484
+    },
+    {
+      "volatility": 16.4,
+      "return": 25.848,
+      "sharpe": 1.332
+    },
+    {
+      "volatility": 16.052,
+      "return": 25.788,
+      "sharpe": 1.357
+    },
+    {
+      "volatility": 15.134,
+      "return": 23.567,
+      "sharpe": 1.293
+    },
+    {
+      "volatility": 17.665,
+      "return": 30.683,
+      "sharpe": 1.51
+    },
+    {
+      "volatility": 16.073,
+      "return": 17.465,
+      "sharpe": 0.838
+    },
+    {
+      "volatility": 16.034,
+      "return": 17.952,
+      "sharpe": 0.87
+    },
+    {
+      "volatility": 16.003,
+      "return": 30.477,
+      "sharpe": 1.654
+    },
+    {
+      "volatility": 15.617,
+      "return": 22.621,
+      "sharpe": 1.192
+    },
+    {
+      "volatility": 14.805,
+      "return": 21.33,
+      "sharpe": 1.171
+    },
+    {
+      "volatility": 15.592,
+      "return": 17.933,
+      "sharpe": 0.894
+    },
+    {
+      "volatility": 16.457,
+      "return": 18.279,
+      "sharpe": 0.868
+    },
+    {
+      "volatility": 16.04,
+      "return": 29.722,
+      "sharpe": 1.604
+    },
+    {
+      "volatility": 14.604,
+      "return": 18.337,
+      "sharpe": 0.982
+    },
+    {
+      "volatility": 16.917,
+      "return": 22.462,
+      "sharpe": 1.091
+    },
+    {
+      "volatility": 16.468,
+      "return": 24.767,
+      "sharpe": 1.261
+    },
+    {
+      "volatility": 18.567,
+      "return": 28.354,
+      "sharpe": 1.312
+    },
+    {
+      "volatility": 18.084,
+      "return": 26.707,
+      "sharpe": 1.256
+    },
+    {
+      "volatility": 15.948,
+      "return": 27.037,
+      "sharpe": 1.444
+    },
+    {
+      "volatility": 15.673,
+      "return": 27.302,
+      "sharpe": 1.487
+    },
+    {
+      "volatility": 16.391,
+      "return": 24.155,
+      "sharpe": 1.23
+    },
+    {
+      "volatility": 16.418,
+      "return": 27.207,
+      "sharpe": 1.413
+    },
+    {
+      "volatility": 16.727,
+      "return": 30.34,
+      "sharpe": 1.575
+    },
+    {
+      "volatility": 14.787,
+      "return": 6.292,
+      "sharpe": 0.155
+    },
+    {
+      "volatility": 14.891,
+      "return": 25.749,
+      "sharpe": 1.461
+    },
+    {
+      "volatility": 16.065,
+      "return": 27.314,
+      "sharpe": 1.451
+    },
+    {
+      "volatility": 16.203,
+      "return": 20.52,
+      "sharpe": 1.02
+    },
+    {
+      "volatility": 16.11,
+      "return": 21.713,
+      "sharpe": 1.099
+    },
+    {
+      "volatility": 15.239,
+      "return": 20.034,
+      "sharpe": 1.052
+    },
+    {
+      "volatility": 16.317,
+      "return": 25.309,
+      "sharpe": 1.306
+    },
+    {
+      "volatility": 15.144,
+      "return": 14.652,
+      "sharpe": 0.703
+    },
+    {
+      "volatility": 16.953,
+      "return": 30.226,
+      "sharpe": 1.547
+    },
+    {
+      "volatility": 16.64,
+      "return": 31.141,
+      "sharpe": 1.631
+    },
+    {
+      "volatility": 14.684,
+      "return": 28.412,
+      "sharpe": 1.662
+    },
+    {
+      "volatility": 16.786,
+      "return": 24.701,
+      "sharpe": 1.233
+    },
+    {
+      "volatility": 18.105,
+      "return": 31.329,
+      "sharpe": 1.509
+    },
+    {
+      "volatility": 14.897,
+      "return": 15.272,
+      "sharpe": 0.757
+    },
+    {
+      "volatility": 15.062,
+      "return": 22.636,
+      "sharpe": 1.237
+    },
+    {
+      "volatility": 15.253,
+      "return": 13.535,
+      "sharpe": 0.625
+    },
+    {
+      "volatility": 16.532,
+      "return": 25.716,
+      "sharpe": 1.314
+    },
+    {
+      "volatility": 14.492,
+      "return": 26.075,
+      "sharpe": 1.523
+    },
+    {
+      "volatility": 15.73,
+      "return": 12.772,
+      "sharpe": 0.558
+    },
+    {
+      "volatility": 17.008,
+      "return": 25.096,
+      "sharpe": 1.24
+    },
+    {
+      "volatility": 15.82,
+      "return": 20.492,
+      "sharpe": 1.042
+    },
+    {
+      "volatility": 17.145,
+      "return": 28.187,
+      "sharpe": 1.411
+    },
+    {
+      "volatility": 15.387,
+      "return": 19.899,
+      "sharpe": 1.033
+    },
+    {
+      "volatility": 18.3,
+      "return": 33.391,
+      "sharpe": 1.606
+    },
+    {
+      "volatility": 17.181,
+      "return": 34.297,
+      "sharpe": 1.763
+    },
+    {
+      "volatility": 16.032,
+      "return": 31.391,
+      "sharpe": 1.709
+    },
+    {
+      "volatility": 17.427,
+      "return": 31.892,
+      "sharpe": 1.601
+    },
+    {
+      "volatility": 14.002,
+      "return": 18.528,
+      "sharpe": 1.038
+    },
+    {
+      "volatility": 15.413,
+      "return": 19.332,
+      "sharpe": 0.995
+    },
+    {
+      "volatility": 17.645,
+      "return": 25.484,
+      "sharpe": 1.218
+    },
+    {
+      "volatility": 17.138,
+      "return": 18.292,
+      "sharpe": 0.834
+    },
+    {
+      "volatility": 16.196,
+      "return": 26.977,
+      "sharpe": 1.419
+    },
+    {
+      "volatility": 16.462,
+      "return": 24.379,
+      "sharpe": 1.238
+    },
+    {
+      "volatility": 15.312,
+      "return": 19.187,
+      "sharpe": 0.992
+    },
+    {
+      "volatility": 15.365,
+      "return": 13.576,
+      "sharpe": 0.623
+    },
+    {
+      "volatility": 16.501,
+      "return": 30.05,
+      "sharpe": 1.579
+    },
+    {
+      "volatility": 14.325,
+      "return": 22.155,
+      "sharpe": 1.267
+    },
+    {
+      "volatility": 14.834,
+      "return": 17.511,
+      "sharpe": 0.911
+    },
+    {
+      "volatility": 15.769,
+      "return": 23.629,
+      "sharpe": 1.245
+    },
+    {
+      "volatility": 15.004,
+      "return": 20.031,
+      "sharpe": 1.068
+    },
+    {
+      "volatility": 16.133,
+      "return": 17.844,
+      "sharpe": 0.858
+    },
+    {
+      "volatility": 17.84,
+      "return": 26.589,
+      "sharpe": 1.266
+    },
+    {
+      "volatility": 15.822,
+      "return": 24.605,
+      "sharpe": 1.302
+    },
+    {
+      "volatility": 15.423,
+      "return": 18.868,
+      "sharpe": 0.964
+    },
+    {
+      "volatility": 16.807,
+      "return": 29.129,
+      "sharpe": 1.495
+    },
+    {
+      "volatility": 16.498,
+      "return": 33.834,
+      "sharpe": 1.808
+    },
+    {
+      "volatility": 15.263,
+      "return": 14.67,
+      "sharpe": 0.699
+    },
+    {
+      "volatility": 17.068,
+      "return": 30.321,
+      "sharpe": 1.542
+    },
+    {
+      "volatility": 14.98,
+      "return": 16.959,
+      "sharpe": 0.865
+    },
+    {
+      "volatility": 15.608,
+      "return": 22.801,
+      "sharpe": 1.205
+    },
+    {
+      "volatility": 16.076,
+      "return": 26.195,
+      "sharpe": 1.381
+    },
+    {
+      "volatility": 15.567,
+      "return": 21.138,
+      "sharpe": 1.101
+    },
+    {
+      "volatility": 16.016,
+      "return": 17.065,
+      "sharpe": 0.816
+    },
+    {
+      "volatility": 15.702,
+      "return": 24.369,
+      "sharpe": 1.297
+    },
+    {
+      "volatility": 17.873,
+      "return": 31.915,
+      "sharpe": 1.562
+    },
+    {
+      "volatility": 15.458,
+      "return": 20.146,
+      "sharpe": 1.044
+    },
+    {
+      "volatility": 15.429,
+      "return": 25.117,
+      "sharpe": 1.369
+    },
+    {
+      "volatility": 15.37,
+      "return": 15.458,
+      "sharpe": 0.745
+    },
+    {
+      "volatility": 16.671,
+      "return": 24.161,
+      "sharpe": 1.209
+    },
+    {
+      "volatility": 15.261,
+      "return": 20.335,
+      "sharpe": 1.07
+    },
+    {
+      "volatility": 16.314,
+      "return": 22.148,
+      "sharpe": 1.112
+    },
+    {
+      "volatility": 16.852,
+      "return": 25.066,
+      "sharpe": 1.25
+    },
+    {
+      "volatility": 16.326,
+      "return": 13.109,
+      "sharpe": 0.558
+    },
+    {
+      "volatility": 15.462,
+      "return": 17.671,
+      "sharpe": 0.884
+    },
+    {
+      "volatility": 15.458,
+      "return": 19.834,
+      "sharpe": 1.024
+    },
+    {
+      "volatility": 16.244,
+      "return": 30.366,
+      "sharpe": 1.623
+    },
+    {
+      "volatility": 16.276,
+      "return": 25.033,
+      "sharpe": 1.292
+    },
+    {
+      "volatility": 14.399,
+      "return": 15.022,
+      "sharpe": 0.766
+    },
+    {
+      "volatility": 14.815,
+      "return": 22.735,
+      "sharpe": 1.265
+    },
+    {
+      "volatility": 15.385,
+      "return": 20.953,
+      "sharpe": 1.102
+    },
+    {
+      "volatility": 16.765,
+      "return": 34.553,
+      "sharpe": 1.822
+    },
+    {
+      "volatility": 17.437,
+      "return": 24.975,
+      "sharpe": 1.203
+    },
+    {
+      "volatility": 14.791,
+      "return": 19.795,
+      "sharpe": 1.068
+    },
+    {
+      "volatility": 13.925,
+      "return": 20.07,
+      "sharpe": 1.154
+    },
+    {
+      "volatility": 14.759,
+      "return": 19.711,
+      "sharpe": 1.064
+    },
+    {
+      "volatility": 16.095,
+      "return": 16.923,
+      "sharpe": 0.803
+    },
+    {
+      "volatility": 16.073,
+      "return": 19.38,
+      "sharpe": 0.957
+    },
+    {
+      "volatility": 17.259,
+      "return": 25.898,
+      "sharpe": 1.269
+    },
+    {
+      "volatility": 15.931,
+      "return": 21.726,
+      "sharpe": 1.113
+    },
+    {
+      "volatility": 17.243,
+      "return": 40.821,
+      "sharpe": 2.135
+    },
+    {
+      "volatility": 16.291,
+      "return": 19.069,
+      "sharpe": 0.925
+    },
+    {
+      "volatility": 14.921,
+      "return": 28.398,
+      "sharpe": 1.635
+    },
+    {
+      "volatility": 16.323,
+      "return": 26.472,
+      "sharpe": 1.377
+    },
+    {
+      "volatility": 15.465,
+      "return": 23.058,
+      "sharpe": 1.232
+    },
+    {
+      "volatility": 14.426,
+      "return": 17.899,
+      "sharpe": 0.963
+    },
+    {
+      "volatility": 15.416,
+      "return": 12.77,
+      "sharpe": 0.569
+    },
+    {
+      "volatility": 14.803,
+      "return": 16.404,
+      "sharpe": 0.838
+    },
+    {
+      "volatility": 17.357,
+      "return": 21.519,
+      "sharpe": 1.009
+    },
+    {
+      "volatility": 16.627,
+      "return": 17.346,
+      "sharpe": 0.803
+    },
+    {
+      "volatility": 15.828,
+      "return": 22.987,
+      "sharpe": 1.2
+    },
+    {
+      "volatility": 14.438,
+      "return": 20.568,
+      "sharpe": 1.147
+    },
+    {
+      "volatility": 15.997,
+      "return": 18.722,
+      "sharpe": 0.92
+    },
+    {
+      "volatility": 15.929,
+      "return": 23.382,
+      "sharpe": 1.217
+    },
+    {
+      "volatility": 15.687,
+      "return": 22.161,
+      "sharpe": 1.158
+    },
+    {
+      "volatility": 14.684,
+      "return": 21.325,
+      "sharpe": 1.18
+    },
+    {
+      "volatility": 14.695,
+      "return": 22.2,
+      "sharpe": 1.239
+    },
+    {
+      "volatility": 15.898,
+      "return": 23.542,
+      "sharpe": 1.229
+    },
+    {
+      "volatility": 15.844,
+      "return": 24.582,
+      "sharpe": 1.299
+    },
+    {
+      "volatility": 16.969,
+      "return": 14.8,
+      "sharpe": 0.636
+    },
+    {
+      "volatility": 14.568,
+      "return": 19.39,
+      "sharpe": 1.056
+    },
+    {
+      "volatility": 15.661,
+      "return": 16.264,
+      "sharpe": 0.783
+    },
+    {
+      "volatility": 15.561,
+      "return": 18.651,
+      "sharpe": 0.942
+    },
+    {
+      "volatility": 15.508,
+      "return": 24.277,
+      "sharpe": 1.308
+    },
+    {
+      "volatility": 16.492,
+      "return": 19.535,
+      "sharpe": 0.942
+    },
+    {
+      "volatility": 14.695,
+      "return": 18.57,
+      "sharpe": 0.991
+    },
+    {
+      "volatility": 15.637,
+      "return": 26.083,
+      "sharpe": 1.412
+    },
+    {
+      "volatility": 16.259,
+      "return": 14.122,
+      "sharpe": 0.623
+    },
+    {
+      "volatility": 15.202,
+      "return": 27.24,
+      "sharpe": 1.529
+    },
+    {
+      "volatility": 16.032,
+      "return": 28.285,
+      "sharpe": 1.515
+    },
+    {
+      "volatility": 15.789,
+      "return": 17.522,
+      "sharpe": 0.856
+    },
+    {
+      "volatility": 15.929,
+      "return": 19.014,
+      "sharpe": 0.943
+    },
+    {
+      "volatility": 17.032,
+      "return": 17.871,
+      "sharpe": 0.814
+    },
+    {
+      "volatility": 16.412,
+      "return": 22.364,
+      "sharpe": 1.119
+    },
+    {
+      "volatility": 18.025,
+      "return": 29.533,
+      "sharpe": 1.417
+    },
+    {
+      "volatility": 16.609,
+      "return": 27.436,
+      "sharpe": 1.411
+    },
+    {
+      "volatility": 15.519,
+      "return": 18.623,
+      "sharpe": 0.942
+    },
+    {
+      "volatility": 16.092,
+      "return": 21.817,
+      "sharpe": 1.107
+    },
+    {
+      "volatility": 14.756,
+      "return": 17.33,
+      "sharpe": 0.903
+    },
+    {
+      "volatility": 15.483,
+      "return": 28.061,
+      "sharpe": 1.554
+    },
+    {
+      "volatility": 15.614,
+      "return": 25.258,
+      "sharpe": 1.362
+    },
+    {
+      "volatility": 16.059,
+      "return": 27.125,
+      "sharpe": 1.44
+    },
+    {
+      "volatility": 17.265,
+      "return": 31.337,
+      "sharpe": 1.583
+    },
+    {
+      "volatility": 14.421,
+      "return": 11.725,
+      "sharpe": 0.536
+    },
+    {
+      "volatility": 16.394,
+      "return": 18.858,
+      "sharpe": 0.906
+    },
+    {
+      "volatility": 17.219,
+      "return": 32.704,
+      "sharpe": 1.667
+    },
+    {
+      "volatility": 15.376,
+      "return": 16.901,
+      "sharpe": 0.839
+    },
+    {
+      "volatility": 16.491,
+      "return": 19.455,
+      "sharpe": 0.937
+    },
+    {
+      "volatility": 18.752,
+      "return": 25.643,
+      "sharpe": 1.154
+    },
+    {
+      "volatility": 15.835,
+      "return": 23.338,
+      "sharpe": 1.221
+    },
+    {
+      "volatility": 16.844,
+      "return": 17.884,
+      "sharpe": 0.824
+    },
+    {
+      "volatility": 17.82,
+      "return": 30.943,
+      "sharpe": 1.512
+    },
+    {
+      "volatility": 16.653,
+      "return": 28.64,
+      "sharpe": 1.48
+    },
+    {
+      "volatility": 15.47,
+      "return": 21.962,
+      "sharpe": 1.161
+    },
+    {
+      "volatility": 16.349,
+      "return": 20.646,
+      "sharpe": 1.018
+    },
+    {
+      "volatility": 15.787,
+      "return": 29.699,
+      "sharpe": 1.628
+    },
+    {
+      "volatility": 20.369,
+      "return": 40.196,
+      "sharpe": 1.777
+    },
+    {
+      "volatility": 18.51,
+      "return": 37.837,
+      "sharpe": 1.828
+    },
+    {
+      "volatility": 15.052,
+      "return": 18.997,
+      "sharpe": 0.996
+    },
+    {
+      "volatility": 15.946,
+      "return": 23.638,
+      "sharpe": 1.232
+    },
+    {
+      "volatility": 17.065,
+      "return": 22.034,
+      "sharpe": 1.057
+    },
+    {
+      "volatility": 16.654,
+      "return": 20.946,
+      "sharpe": 1.018
+    },
+    {
+      "volatility": 16.203,
+      "return": 29.873,
+      "sharpe": 1.597
+    },
+    {
+      "volatility": 16.261,
+      "return": 23.043,
+      "sharpe": 1.171
+    },
+    {
+      "volatility": 16.494,
+      "return": 21.766,
+      "sharpe": 1.077
+    },
+    {
+      "volatility": 16.254,
+      "return": 21.305,
+      "sharpe": 1.065
+    },
+    {
+      "volatility": 17.279,
+      "return": 22.039,
+      "sharpe": 1.044
+    },
+    {
+      "volatility": 16.247,
+      "return": 21.777,
+      "sharpe": 1.094
+    },
+    {
+      "volatility": 15.682,
+      "return": 30.644,
+      "sharpe": 1.699
+    },
+    {
+      "volatility": 16.46,
+      "return": 24.433,
+      "sharpe": 1.241
+    },
+    {
+      "volatility": 16.214,
+      "return": 24.672,
+      "sharpe": 1.275
+    },
+    {
+      "volatility": 16.829,
+      "return": 32.094,
+      "sharpe": 1.669
+    },
+    {
+      "volatility": 15.134,
+      "return": 17.731,
+      "sharpe": 0.907
+    },
+    {
+      "volatility": 15.997,
+      "return": 20.136,
+      "sharpe": 1.009
+    },
+    {
+      "volatility": 18.112,
+      "return": 24.942,
+      "sharpe": 1.156
+    },
+    {
+      "volatility": 16.569,
+      "return": 25.333,
+      "sharpe": 1.288
+    },
+    {
+      "volatility": 16.01,
+      "return": 20.37,
+      "sharpe": 1.022
+    },
+    {
+      "volatility": 15.248,
+      "return": 15.241,
+      "sharpe": 0.737
+    },
+    {
+      "volatility": 16.301,
+      "return": 29.951,
+      "sharpe": 1.592
+    },
+    {
+      "volatility": 16.101,
+      "return": 28.503,
+      "sharpe": 1.522
+    },
+    {
+      "volatility": 14.832,
+      "return": 20.324,
+      "sharpe": 1.101
+    },
+    {
+      "volatility": 14.555,
+      "return": 24.119,
+      "sharpe": 1.382
+    },
+    {
+      "volatility": 16.571,
+      "return": 25.551,
+      "sharpe": 1.301
+    },
+    {
+      "volatility": 14.716,
+      "return": 22.699,
+      "sharpe": 1.271
+    },
+    {
+      "volatility": 16.025,
+      "return": 23.46,
+      "sharpe": 1.214
+    },
+    {
+      "volatility": 15.128,
+      "return": 24.766,
+      "sharpe": 1.373
+    },
+    {
+      "volatility": 16.722,
+      "return": 24.741,
+      "sharpe": 1.24
+    },
+    {
+      "volatility": 15.837,
+      "return": 28.936,
+      "sharpe": 1.575
+    },
+    {
+      "volatility": 16.737,
+      "return": 27.012,
+      "sharpe": 1.375
+    },
+    {
+      "volatility": 15.066,
+      "return": 20.034,
+      "sharpe": 1.064
+    },
+    {
+      "volatility": 18.309,
+      "return": 33.991,
+      "sharpe": 1.638
+    },
+    {
+      "volatility": 15.013,
+      "return": 19.318,
+      "sharpe": 1.02
+    },
+    {
+      "volatility": 16.314,
+      "return": 25.89,
+      "sharpe": 1.342
+    },
+    {
+      "volatility": 16.784,
+      "return": 20.898,
+      "sharpe": 1.007
+    },
+    {
+      "volatility": 15.505,
+      "return": 21.88,
+      "sharpe": 1.153
+    },
+    {
+      "volatility": 14.855,
+      "return": 23.352,
+      "sharpe": 1.303
+    },
+    {
+      "volatility": 16.205,
+      "return": 24.764,
+      "sharpe": 1.281
+    },
+    {
+      "volatility": 14.812,
+      "return": 13.716,
+      "sharpe": 0.656
+    },
+    {
+      "volatility": 15.142,
+      "return": 16.128,
+      "sharpe": 0.801
+    },
+    {
+      "volatility": 16.304,
+      "return": 20.608,
+      "sharpe": 1.019
+    },
+    {
+      "volatility": 15.349,
+      "return": 17.145,
+      "sharpe": 0.856
+    },
+    {
+      "volatility": 15.151,
+      "return": 17.641,
+      "sharpe": 0.9
+    },
+    {
+      "volatility": 15.256,
+      "return": 20.117,
+      "sharpe": 1.056
+    },
+    {
+      "volatility": 16.775,
+      "return": 29.857,
+      "sharpe": 1.541
+    },
+    {
+      "volatility": 15.785,
+      "return": 24.013,
+      "sharpe": 1.268
+    },
+    {
+      "volatility": 15.65,
+      "return": 24.711,
+      "sharpe": 1.323
+    },
+    {
+      "volatility": 15.372,
+      "return": 18.629,
+      "sharpe": 0.952
+    },
+    {
+      "volatility": 17.308,
+      "return": 29.305,
+      "sharpe": 1.462
+    },
+    {
+      "volatility": 14.852,
+      "return": 16.822,
+      "sharpe": 0.863
+    },
+    {
+      "volatility": 16.906,
+      "return": 18.66,
+      "sharpe": 0.867
+    },
+    {
+      "volatility": 15.722,
+      "return": 19.859,
+      "sharpe": 1.009
+    },
+    {
+      "volatility": 17.101,
+      "return": 32.364,
+      "sharpe": 1.659
+    },
+    {
+      "volatility": 15.791,
+      "return": 14.783,
+      "sharpe": 0.683
+    },
+    {
+      "volatility": 15.259,
+      "return": 25.507,
+      "sharpe": 1.41
+    },
+    {
+      "volatility": 15.225,
+      "return": 22.618,
+      "sharpe": 1.223
+    },
+    {
+      "volatility": 15.632,
+      "return": 32.926,
+      "sharpe": 1.85
+    },
+    {
+      "volatility": 16.668,
+      "return": 18.233,
+      "sharpe": 0.854
+    },
+    {
+      "volatility": 15.696,
+      "return": 23.032,
+      "sharpe": 1.213
+    },
+    {
+      "volatility": 15.049,
+      "return": 23.482,
+      "sharpe": 1.295
+    },
+    {
+      "volatility": 15.865,
+      "return": 20.441,
+      "sharpe": 1.036
+    },
+    {
+      "volatility": 15.028,
+      "return": 26.487,
+      "sharpe": 1.496
+    },
+    {
+      "volatility": 15.129,
+      "return": 16.251,
+      "sharpe": 0.81
+    },
+    {
+      "volatility": 16.629,
+      "return": 29.365,
+      "sharpe": 1.525
+    },
+    {
+      "volatility": 16.744,
+      "return": 29.484,
+      "sharpe": 1.522
+    },
+    {
+      "volatility": 18.125,
+      "return": 27.664,
+      "sharpe": 1.306
+    },
+    {
+      "volatility": 16.501,
+      "return": 18.857,
+      "sharpe": 0.9
+    },
+    {
+      "volatility": 16.518,
+      "return": 28.61,
+      "sharpe": 1.49
+    },
+    {
+      "volatility": 16.817,
+      "return": 16.651,
+      "sharpe": 0.752
+    },
+    {
+      "volatility": 16.591,
+      "return": 31.322,
+      "sharpe": 1.647
+    },
+    {
+      "volatility": 17.732,
+      "return": 22.568,
+      "sharpe": 1.047
+    },
+    {
+      "volatility": 14.31,
+      "return": 22.952,
+      "sharpe": 1.324
+    },
+    {
+      "volatility": 14.872,
+      "return": 21.651,
+      "sharpe": 1.187
+    },
+    {
+      "volatility": 16.833,
+      "return": 22.315,
+      "sharpe": 1.088
+    },
+    {
+      "volatility": 16.417,
+      "return": 19.716,
+      "sharpe": 0.957
+    },
+    {
+      "volatility": 15.982,
+      "return": 26.461,
+      "sharpe": 1.405
+    },
+    {
+      "volatility": 17.417,
+      "return": 32.504,
+      "sharpe": 1.637
+    },
+    {
+      "volatility": 15.995,
+      "return": 25.355,
+      "sharpe": 1.335
+    },
+    {
+      "volatility": 15.129,
+      "return": 17.524,
+      "sharpe": 0.894
+    },
+    {
+      "volatility": 13.967,
+      "return": 21.029,
+      "sharpe": 1.219
+    },
+    {
+      "volatility": 17.252,
+      "return": 32.355,
+      "sharpe": 1.644
+    },
+    {
+      "volatility": 15.482,
+      "return": 22.679,
+      "sharpe": 1.207
+    },
+    {
+      "volatility": 14.997,
+      "return": 19.484,
+      "sharpe": 1.032
+    },
+    {
+      "volatility": 17.13,
+      "return": 33.599,
+      "sharpe": 1.728
+    },
+    {
+      "volatility": 13.976,
+      "return": 17.501,
+      "sharpe": 0.966
+    },
+    {
+      "volatility": 16.237,
+      "return": 18.589,
+      "sharpe": 0.898
+    },
+    {
+      "volatility": 16.379,
+      "return": 27.31,
+      "sharpe": 1.423
     }
   ],
-  "analysis": "### 1) Resumen de puntos clave\n- Todos los datos de las acciones analizadas están marcados como \"No disponible\", lo que impide realizar un análisis cuantitativo o cualitativo efectivo.\n- No se puede evaluar el rendimiento, la valoración o la salud financiera de las empresas listadas.\n- La falta de información limita la capacidad de realizar comparaciones entre las acciones y de identificar tendencias en el mercado.\n\n### 2) Fortalezas o debilidades observadas\n- **Fortalezas**: No se pueden identificar fortalezas debido a la falta de datos.\n- **Debilidades**: La ausencia de información crítica como precios, ratios financieros y otros indicadores técnicos impide cualquier análisis significativo. Esto puede ser un reflejo de problemas en la recopilación de datos o en la transparencia del mercado.\n\n### 3) Recomendación objetiva basada en los datos\nDada la falta de información disponible, no se puede proporcionar una recomendación objetiva sobre la compra o venta de acciones. Es fundamental contar con datos actualizados y precisos para tomar decisiones informadas en el mercado de valores.\n\n### 4) Listado de las mejores acciones según el Commodity Channel Index (CCI), el Vortex Indicator (VI) y las Bollinger Bands\nNo se puede proporcionar un listado de las mejores acciones basadas en CCI, VI y Bollinger Bands, ya que todos los datos necesarios para realizar este análisis están ausentes.\n\n### 5) Lista de cinco acciones recomendadas\nSin datos disponibles, no es posible recomendar cinco acciones específicas. Sin embargo, en un contexto normal, se recomendaría diversificar en diferentes sectores, como:\n1. **Sector Energético**: Empresas como Enel o Copec.\n2. **Sector Financiero**: Bancos como BCI o Santander.\n3. **Sector Retail**: Cencosud o Falabella.\n4. **Sector de Recursos Naturales**: SQM o CMPC.\n5. **Sector de Telecomunicaciones**: Entel o Claro.\n\nEs importante que los inversores busquen información actualizada y realicen un análisis exhaustivo antes de tomar decisiones de inversión."
+  "stocks": [
+    {
+      "ticker": "MALLPLAZA.SN",
+      "label": "Mall Plaza",
+      "weight": 0.3004,
+      "price": 3901.0,
+      "change_pct": -0.48,
+      "week_change_pct": 5.09,
+      "annual_return_pct": 72.39,
+      "annual_volatility_pct": 31.42
+    },
+    {
+      "ticker": "ENTEL.SN",
+      "label": "Entel",
+      "weight": 0.2146,
+      "price": 3765.0,
+      "change_pct": 5.75,
+      "week_change_pct": 5.19,
+      "annual_return_pct": 36.9,
+      "annual_volatility_pct": 40.38
+    },
+    {
+      "ticker": "CAP.SN",
+      "label": "CAP",
+      "weight": 0.1756,
+      "price": 6579.0,
+      "change_pct": 2.33,
+      "week_change_pct": 1.45,
+      "annual_return_pct": 37.88,
+      "annual_volatility_pct": 31.36
+    },
+    {
+      "ticker": "SQM-B.SN",
+      "label": "SQM",
+      "weight": 0.1683,
+      "price": 67750.0,
+      "change_pct": 1.13,
+      "week_change_pct": -10.26,
+      "annual_return_pct": 74.05,
+      "annual_volatility_pct": 49.1
+    },
+    {
+      "ticker": "BSANTANDER.SN",
+      "label": "Santander",
+      "weight": 0.1411,
+      "price": 79.0,
+      "change_pct": 5.26,
+      "week_change_pct": 7.34,
+      "annual_return_pct": 39.85,
+      "annual_volatility_pct": 19.63
+    }
+  ]
 }

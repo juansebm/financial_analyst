@@ -1,243 +1,161 @@
 /******************************************
- * app.js
- * Código completo sin duplicaciones
+ * app.js — Frontera eficiente + ticker IPSA
  ******************************************/
 
-// 1. Función para formatear texto de "analysis" (opcional)
-function formatAnalysis(text) {
-  // Div contenedor
-  const container = document.createElement('div');
-  // Separar líneas
-  const lines = text.split('\n');
-  let currentList = null;
+const fmtPct = (v, digits = 2) =>
+  v == null || Number.isNaN(v) ? '—' : `${v >= 0 ? '+' : ''}${Number(v).toFixed(digits)}%`;
 
-  lines.forEach(line => {
-    const trimmed = line.trim();
-    // Ignorar líneas vacías
-    if (!trimmed) {
-      if (currentList) {
-        container.appendChild(currentList);
-        currentList = null;
-      }
-      return;
-    }
-    // Títulos con "### "
-    if (trimmed.startsWith('###')) {
-      if (currentList) {
-        container.appendChild(currentList);
-        currentList = null;
-      }
-      const h3 = document.createElement('h3');
-      h3.textContent = trimmed.replace(/^###\s*/, '');
-      container.appendChild(h3);
-    }
-    // Listas con "- "
-    else if (trimmed.startsWith('- ')) {
-      if (!currentList) {
-        currentList = document.createElement('ul');
-      }
-      const li = document.createElement('li');
-      li.textContent = trimmed.replace(/^- /, '');
-      currentList.appendChild(li);
-    }
-    else {
-      if (currentList) {
-        container.appendChild(currentList);
-        currentList = null;
-      }
-      const p = document.createElement('p');
-      p.textContent = trimmed;
-      container.appendChild(p);
-    }
-  });
+const fmtNum = (v) =>
+  v == null || Number.isNaN(v) ? '—' : Number(v).toLocaleString('es-CL', { maximumFractionDigits: 2 });
 
-  if (currentList) {
-    container.appendChild(currentList);
-  }
-  return container.innerHTML;
+function buildTickerItems(stocks) {
+  return stocks.flatMap((s) => [
+    {
+      label: s.label,
+      text: `${s.label}  $${fmtNum(s.price)}  ${fmtPct(s.change_pct)}  sem ${fmtPct(s.week_change_pct)}  peso ${(s.weight * 100).toFixed(1)}%`,
+      up: s.change_pct >= 0,
+    },
+  ]);
 }
 
-// 2. Hacemos fetch al JSON
-fetch('./results.json')
-  .then(response => response.json())
-  .then(data => {
-    // --- A) Mostrar "analysis" como Markdown con Marked ---
-    const analysisContainer = document.getElementById('analysisContainer');
-    let rawHTML = marked.parse(data.analysis || '');
-    // Elimina numeraciones tipo "1) " en títulos, si no quieres verlas
-    rawHTML = rawHTML.replace(/<h[1-6]>(\d+\)\s+)/g, match => match.replace(/\d+\)\s+/, ''));
-    analysisContainer.innerHTML = rawHTML;
+function renderTicker(stocks) {
+  const track = document.getElementById('tickerTrack');
+  const items = buildTickerItems(stocks);
+  const html = items
+    .map(
+      (item) =>
+        `<span class="ticker-item ${item.up ? 'up' : 'down'}">${item.text}</span>`
+    )
+    .join('<span class="ticker-sep">◆</span>');
+  // Duplicamos para loop continuo
+  track.innerHTML = html + '<span class="ticker-sep">◆</span>' + html;
+}
 
-    // --- B) Mostrar fecha actual en el header (opcional) ---
-    const dateEl = document.getElementById('dateContainer');
-    const now = new Date();
-    dateEl.textContent = now.toLocaleDateString('es-CL', { dateStyle: 'long' });
+function renderPortfolioInfo(data) {
+  const el = document.getElementById('portfolioInfo');
+  const p = data.portfolio;
+  const stocksHtml = (data.stocks || [])
+    .map(
+      (s) => `
+      <div class="stock-card">
+        <div class="stock-name">${s.label}</div>
+        <div class="stock-ticker">${s.ticker}</div>
+        <div class="stock-price">$${fmtNum(s.price)}</div>
+        <div class="stock-change ${s.change_pct >= 0 ? 'up' : 'down'}">${fmtPct(s.change_pct)}</div>
+        <div class="stock-weight">${(s.weight * 100).toFixed(1)}% del portafolio</div>
+      </div>`
+    )
+    .join('');
 
-    // --- C) Preparar datos para los gráficos ---
-    const rows = data.data || [];
-    const labels = rows.map(item => item.Stock);
+  el.innerHTML = `
+    <h2>Portafolio óptimo (5 acciones)</h2>
+    <div class="metrics">
+      <div class="metric"><span class="metric-label">Sharpe</span><span class="metric-value">${p.sharpe_ratio}</span></div>
+      <div class="metric"><span class="metric-label">Retorno anual</span><span class="metric-value">${p.annual_return_pct}%</span></div>
+      <div class="metric"><span class="metric-label">Volatilidad</span><span class="metric-value">${p.annual_volatility_pct}%</span></div>
+      <div class="metric"><span class="metric-label">Universo</span><span class="metric-value">${data.universe_size} acciones</span></div>
+    </div>
+    <p class="note">Selección por máximo ratio de Sharpe sobre ${data.universe_size} acciones del IPSA. Datos semanales, ${data.lookback_weeks || 52} semanas de historia.</p>
+    <div class="stock-grid">${stocksHtml}</div>
+  `;
+}
 
-    // === GRÁFICO 1: RSI (barras verticales) ===
-    const ctxRSI = document.getElementById('chartRSI').getContext('2d');
-    // Colores según RSI
-    const barColors = rows.map(item => {
-      if (item.RSI >= 70) {
-        return 'rgba(255, 0, 0, 0.7)';   // sobrecompra
-      } else if (item.RSI <= 30) {
-        return 'rgba(0, 128, 0, 0.7)';  // sobreventa
-      }
-      return 'rgba(0, 44, 84, 0.7)';     // neutro
-    });
+function renderFrontierChart(data) {
+  const ctx = document.getElementById('chartFrontier').getContext('2d');
+  const frontier = data.frontier || [];
+  const optimal = data.max_sharpe_point;
+  const selected = (data.stocks || []).map((s) => ({
+    x: null,
+    y: null,
+    label: s.label,
+  }));
 
-    new Chart(ctxRSI, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'RSI',
-          data: rows.map(item => item.RSI),
-          backgroundColor: barColors,
-          borderColor: '#002C54',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: 'RSI por Acción'
-          },
-          tooltip: {
-            enabled: true
-          }
+  // Puntos individuales de las 5 acciones (riesgo/retorno propios) no están en JSON;
+  // mostramos frontera + óptimo + pesos en tooltip del óptimo
+  new Chart(ctx, {
+    type: 'scatter',
+    data: {
+      datasets: [
+        {
+          label: 'Frontera simulada',
+          data: frontier.map((p) => ({ x: p.volatility, y: p.return })),
+          backgroundColor: 'rgba(0, 44, 84, 0.25)',
+          borderColor: 'rgba(0, 44, 84, 0.4)',
+          pointRadius: 3,
+          pointHoverRadius: 5,
         },
-        scales: {
-          y: {
-            beginAtZero: true,
-            max: 100
-          }
-        }
-      }
-    });
-
-    // === GRÁFICO 2: Índices Técnicos (barras horizontales) ===
-    // Necesitamos el plugin "chartjs-plugin-annotation" incluido en el HTML
-    const ctxIndices = document.getElementById('chartIndices').getContext('2d');
-
-    // Extraemos datos (VI+ / VI- / CCI)
-    const viPlusData = rows.map(item => item.VI_plus || 0);
-    const viMinusData = rows.map(item => item.VI_minus || 0);
-    const cciData = rows.map(item => item.CCI || 0);
-
-    new Chart(ctxIndices, {
-      type: 'bar',
-      data: {
-        labels: labels, // Eje Y: acciones
-        datasets: [
-          {
-            label: 'VI+',
-            data: viPlusData,
-            backgroundColor: 'rgba(255, 99, 132, 0.6)',
-            borderColor: 'rgb(255, 99, 132)',
-            borderWidth: 1,
-            xAxisID: 'xVI'   // ¡Irán al eje X "xVI"!
-          },
-          {
-            label: 'VI-',
-            data: viMinusData,
-            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-            borderColor: 'rgb(54, 162, 235)',
-            borderWidth: 1,
-            xAxisID: 'xVI'   // También en el eje "xVI"
-          },
-          {
-            label: 'CCI',
-            data: cciData,
-            backgroundColor: 'rgba(0, 200, 0, 0.6)',
-            borderColor: 'rgb(0, 200, 0)',
-            borderWidth: 1,
-            xAxisID: 'xCCI'  // ¡CCI va al segundo eje "xCCI"!
-          }
-        ]
-      },
-      options: {
-        indexAxis: 'y',  // barras horizontales
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          title: {
-            display: true,
-            text: 'Índices Técnicos (VI+/VI-/CCI)'
-          },
-          tooltip: {
-            enabled: true
-          },
-          annotation: {
-            annotations: {
-              cciUpper: {
-                type: 'line',
-                // x=+100 en el eje "xCCI"
-                scaleID: 'xCCI',
-                value: 100,
-                borderColor: 'red',
-                borderWidth: 1,
-                borderDash: [6, 6],
-                label: {
-                  enabled: true,
-                  content: 'CCI = +100',
-                  position: 'start',
-                  backgroundColor: 'rgba(255, 0, 0, 0.2)'
-                }
-              },
-              cciLower: {
-                type: 'line',
-                // x=-100 en el eje "xCCI"
-                scaleID: 'xCCI',
-                value: -100,
-                borderColor: 'blue',
-                borderWidth: 1,
-                borderDash: [6, 6],
-                label: {
-                  enabled: true,
-                  content: 'CCI = -100',
-                  position: 'start',
-                  backgroundColor: 'rgba(0, 0, 255, 0.2)'
-                }
+        {
+          label: 'Máximo Sharpe',
+          data: [{ x: optimal.volatility_pct, y: optimal.return_pct }],
+          backgroundColor: 'rgba(255, 193, 7, 1)',
+          borderColor: '#b8860b',
+          pointRadius: 10,
+          pointHoverRadius: 12,
+          pointStyle: 'star',
+        },
+        {
+          label: 'Acciones seleccionadas',
+          data: (data.stocks || []).map((s) => ({
+            x: s.annual_volatility_pct,
+            y: s.annual_return_pct,
+            label: s.label,
+            weight: s.weight,
+          })),
+          backgroundColor: 'rgba(0, 180, 120, 0.85)',
+          borderColor: '#007a52',
+          pointRadius: 8,
+          pointHoverRadius: 10,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Frontera eficiente — Riesgo vs Retorno (anualizado)',
+          font: { size: 16, weight: '600' },
+        },
+        legend: { position: 'bottom' },
+        tooltip: {
+          callbacks: {
+            label(ctx) {
+              const p = ctx.raw;
+              if (p.label) {
+                return `${p.label}: σ ${p.x.toFixed(1)}% · μ ${p.y.toFixed(1)}% · peso ${(p.weight * 100).toFixed(1)}%`;
               }
-            }
-          }
+              return `σ ${p.x.toFixed(2)}% · μ ${p.y.toFixed(2)}%`;
+            },
+          },
         },
-        scales: {
-          xVI: {
-            type: 'linear',
-            position: 'bottom',  // O 'top'
-            min: 0,             // Ajusta según valores típicos de VI
-            max: 2,
-            title: {
-              display: true,
-              text: 'VI Scale'
-            }
-          },
-          // Eje X para CCI
-          xCCI: {
-            type: 'linear',
-            position: 'top',    // O 'bottom'
-            min: -200,          // Rango para CCI
-            max: 300,
-            title: {
-              display: true,
-              text: 'CCI Scale'
-            }
-          },
-          y: {
-            // Muestra "labels" en eje Y
-          }
-        }
-      }
-    });
+      },
+      scales: {
+        x: {
+          title: { display: true, text: 'Volatilidad anual (%)' },
+        },
+        y: {
+          title: { display: true, text: 'Retorno anual (%)' },
+        },
+      },
+    },
+  });
+}
+
+fetch('./results.json')
+  .then((r) => r.json())
+  .then((data) => {
+    const dateEl = document.getElementById('dateContainer');
+    if (data.updated_at) {
+      const d = new Date(data.updated_at + 'T12:00:00');
+      dateEl.textContent = `Actualizado: ${d.toLocaleDateString('es-CL', { dateStyle: 'long' })}`;
+    }
+    renderTicker(data.stocks || []);
+    renderPortfolioInfo(data);
+    renderFrontierChart(data);
   })
-  .catch(error => {
-    console.error('Error fetching JSON:', error);
+  .catch((err) => {
+    console.error(err);
+    document.getElementById('portfolioInfo').innerHTML =
+      '<p>No se pudo cargar results.json. Ejecuta <code>python financial_analyst.py</code>.</p>';
   });
