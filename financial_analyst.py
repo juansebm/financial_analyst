@@ -9,13 +9,19 @@ import pandas as pd
 import yfinance as yf
 
 # ----------------------------------------
-# Parámetros
+# Parámetros (literatura mean-variance)
 # ----------------------------------------
-LOOKBACK_WEEKS = 52
+# Ventana: ~3 años semanales. Con N≈30, T≫N reduce error de Σ
+# (Jobson–Korkie; práctica semanal ≈ 60–120 obs. mensuales clásicas).
+LOOKBACK_WEEKS = 156
 PORTFOLIO_SIZE = 5
-MONTE_CARLO_SAMPLES = 8_000
+# Nube: densidad visual ∝ muestras MC, no ∝ semanas.
+MONTE_CARLO_SAMPLES = 60_000
+CLOUD_DISPLAY_POINTS = 2_500
+CURVE_BINS = 60
 RISK_FREE_RATE = 0.04  # tasa anual aprox. (CLP)
 TRADING_WEEKS = 52
+SHARPE_SEARCH_SAMPLES = 80_000
 
 IPSA_STOCKS = [
     "SQM-B.SN", "CHILE.SN", "BSANTANDER.SN", "COPEC.SN", "ENELAM.SN", "CENCOSUD.SN",
@@ -97,61 +103,51 @@ def sharpe_ratio(ret: float, vol: float, rf: float = RISK_FREE_RATE) -> float:
     return (ret - rf) / vol
 
 
-def _random_weights(rng: np.random.Generator, k: int, sparse: bool = False) -> np.ndarray:
-    """Dirichlet diversificado, o concentrado en 1–5 activos (cubre el extremo derecho)."""
-    if sparse:
+def _batch_stats(weights: np.ndarray, mean_returns: np.ndarray, cov: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    rets = weights @ mean_returns
+    # vol_i = sqrt(w_i' Σ w_i)
+    vols = np.sqrt(np.einsum("ij,jk,ik->i", weights, cov, weights))
+    return rets, vols
+
+
+def _sample_weights(rng: np.random.Generator, k: int, n: int) -> np.ndarray:
+    """Mitad Dirichlet pleno + mitad sparse 1–5 activos + vértices single-stock."""
+    n_div = n // 2
+    n_sparse = n - n_div
+    W = np.zeros((n + k, k))
+    W[:n_div] = rng.dirichlet(np.ones(k), size=n_div)
+    for i in range(n_sparse):
         n_active = int(rng.integers(1, 6))
         idx = rng.choice(k, size=n_active, replace=False)
-        w = np.zeros(k)
-        w[idx] = rng.dirichlet(np.ones(n_active))
-        return w
-    return rng.dirichlet(np.ones(k))
+        W[n_div + i, idx] = rng.dirichlet(np.ones(n_active))
+    W[n:] = np.eye(k)  # 100% cada acción
+    return W
 
 
 def simulate_frontier(mean_returns: pd.Series, cov: pd.DataFrame, n: int) -> pd.DataFrame:
-    tickers = mean_returns.index.tolist()
-    k = len(tickers)
     rng = np.random.default_rng(42)
-    rows = []
-
-    # Vértices: 100% en cada acción → extremos de la frontera
-    for i in range(k):
-        w = np.zeros(k)
-        w[i] = 1.0
-        ret, vol = portfolio_stats(w, mean_returns, cov)
-        rows.append({"volatility": vol, "return": ret, "sharpe": sharpe_ratio(ret, vol)})
-
-    # Mitad diversificados, mitad concentrados (si no, Dirichlet se queda en σ ~15%)
-    n_div = n // 2
-    for _ in range(n_div):
-        w = _random_weights(rng, k, sparse=False)
-        ret, vol = portfolio_stats(w, mean_returns, cov)
-        rows.append({"volatility": vol, "return": ret, "sharpe": sharpe_ratio(ret, vol)})
-    for _ in range(n - n_div):
-        w = _random_weights(rng, k, sparse=True)
-        ret, vol = portfolio_stats(w, mean_returns, cov)
-        rows.append({"volatility": vol, "return": ret, "sharpe": sharpe_ratio(ret, vol)})
-
-    return pd.DataFrame(rows)
+    mu = mean_returns.values
+    sigma = cov.values
+    k = len(mu)
+    W = _sample_weights(rng, k, n)
+    rets, vols = _batch_stats(W, mu, sigma)
+    sharpes = np.where(vols > 0, (rets - RISK_FREE_RATE) / vols, -np.inf)
+    return pd.DataFrame({"volatility": vols, "return": rets, "sharpe": sharpes})
 
 
 def max_sharpe_portfolio(mean_returns: pd.Series, cov: pd.DataFrame) -> tuple[pd.Series, float, float, float]:
-    # ponytail: Monte Carlo (diversificado + concentrado) en lugar de optimizador cuadrático
-    tickers = mean_returns.index.tolist()
-    k = len(tickers)
+    # ponytail: Monte Carlo denso en lugar de optimizador cuadrático
     rng = np.random.default_rng(7)
-    best_w = None
-    best_sharpe = float("-inf")
-    for i in range(25_000):
-        w = _random_weights(rng, k, sparse=(i % 2 == 1))
-        ret, vol = portfolio_stats(w, mean_returns, cov)
-        s = sharpe_ratio(ret, vol)
-        if s > best_sharpe:
-            best_sharpe = s
-            best_w = w
-    weights = pd.Series(best_w, index=tickers)
-    ret, vol = portfolio_stats(best_w, mean_returns, cov)
-    return weights, ret, vol, best_sharpe
+    tickers = mean_returns.index.tolist()
+    mu = mean_returns.values
+    sigma = cov.values
+    k = len(mu)
+    W = _sample_weights(rng, k, SHARPE_SEARCH_SAMPLES)
+    rets, vols = _batch_stats(W, mu, sigma)
+    sharpes = np.where(vols > 0, (rets - RISK_FREE_RATE) / vols, -np.inf)
+    best = int(np.argmax(sharpes))
+    w = W[best]
+    return pd.Series(w, index=tickers), float(rets[best]), float(vols[best]), float(sharpes[best])
 
 
 def pick_top_stocks(weights: pd.Series, n: int = PORTFOLIO_SIZE) -> pd.Series:
@@ -197,7 +193,7 @@ def _to_pct_points(df: pd.DataFrame) -> list[dict]:
     ]
 
 
-def downsample_frontier(df: pd.DataFrame, max_points: int = 400) -> list[dict]:
+def downsample_frontier(df: pd.DataFrame, max_points: int = CLOUD_DISPLAY_POINTS) -> list[dict]:
     if len(df) <= max_points:
         sample = df
     else:
@@ -205,7 +201,7 @@ def downsample_frontier(df: pd.DataFrame, max_points: int = 400) -> list[dict]:
     return _to_pct_points(sample)
 
 
-def extract_efficient_curve(df: pd.DataFrame, n_bins: int = 50) -> list[dict]:
+def extract_efficient_curve(df: pd.DataFrame, n_bins: int = CURVE_BINS) -> list[dict]:
     """Envolvente superior sobre todo el rango de volatilidad (bins equiespaciados)."""
     work = df.copy()
     vmin, vmax = work["volatility"].min(), work["volatility"].max()
@@ -264,8 +260,8 @@ def run() -> dict:
             "return_pct": round(port_ret * 100, 2),
             "sharpe": round(port_sharpe, 3),
         },
-        "frontier": downsample_frontier(frontier, max_points=300),
-        "frontier_curve": extract_efficient_curve(frontier),
+        "frontier": downsample_frontier(frontier, max_points=CLOUD_DISPLAY_POINTS),
+        "frontier_curve": extract_efficient_curve(frontier, n_bins=CURVE_BINS),
         "stocks": stocks,
     }
     return result

@@ -57,7 +57,7 @@ function renderPortfolioInfo(data) {
       <div class="metric"><span class="metric-label">Volatilidad</span><span class="metric-value">${p.annual_volatility_pct}%</span></div>
       <div class="metric"><span class="metric-label">Universo</span><span class="metric-value">${data.universe_size} acciones</span></div>
     </div>
-    <p class="note">Selección por máximo ratio de Sharpe sobre ${data.universe_size} acciones del IPSA. Datos semanales, ${data.lookback_weeks || 52} semanas de historia.</p>
+    <p class="note">Selección por máximo ratio de Sharpe sobre ${data.universe_size} acciones del IPSA. Datos semanales, ${data.lookback_weeks || 156} semanas (~3 años). Nube: simulación Monte Carlo.</p>
     <div class="stock-grid">${stocksHtml}</div>
   `;
 }
@@ -75,9 +75,9 @@ function renderFrontierChart(data) {
         {
           label: 'Portafolios simulados',
           data: cloud.map((p) => ({ x: p.volatility, y: p.return })),
-          backgroundColor: 'rgba(88, 166, 255, 0.18)',
-          pointRadius: 2,
-          pointHoverRadius: 4,
+          backgroundColor: 'rgba(88, 166, 255, 0.22)',
+          pointRadius: 1.5,
+          pointHoverRadius: 3,
           order: 3,
         },
         {
