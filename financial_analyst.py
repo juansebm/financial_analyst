@@ -97,27 +97,53 @@ def sharpe_ratio(ret: float, vol: float, rf: float = RISK_FREE_RATE) -> float:
     return (ret - rf) / vol
 
 
+def _random_weights(rng: np.random.Generator, k: int, sparse: bool = False) -> np.ndarray:
+    """Dirichlet diversificado, o concentrado en 1–5 activos (cubre el extremo derecho)."""
+    if sparse:
+        n_active = int(rng.integers(1, 6))
+        idx = rng.choice(k, size=n_active, replace=False)
+        w = np.zeros(k)
+        w[idx] = rng.dirichlet(np.ones(n_active))
+        return w
+    return rng.dirichlet(np.ones(k))
+
+
 def simulate_frontier(mean_returns: pd.Series, cov: pd.DataFrame, n: int) -> pd.DataFrame:
     tickers = mean_returns.index.tolist()
     k = len(tickers)
     rng = np.random.default_rng(42)
-    weights = rng.dirichlet(np.ones(k), size=n)
     rows = []
-    for w in weights:
+
+    # Vértices: 100% en cada acción → extremos de la frontera
+    for i in range(k):
+        w = np.zeros(k)
+        w[i] = 1.0
         ret, vol = portfolio_stats(w, mean_returns, cov)
         rows.append({"volatility": vol, "return": ret, "sharpe": sharpe_ratio(ret, vol)})
+
+    # Mitad diversificados, mitad concentrados (si no, Dirichlet se queda en σ ~15%)
+    n_div = n // 2
+    for _ in range(n_div):
+        w = _random_weights(rng, k, sparse=False)
+        ret, vol = portfolio_stats(w, mean_returns, cov)
+        rows.append({"volatility": vol, "return": ret, "sharpe": sharpe_ratio(ret, vol)})
+    for _ in range(n - n_div):
+        w = _random_weights(rng, k, sparse=True)
+        ret, vol = portfolio_stats(w, mean_returns, cov)
+        rows.append({"volatility": vol, "return": ret, "sharpe": sharpe_ratio(ret, vol)})
+
     return pd.DataFrame(rows)
 
 
 def max_sharpe_portfolio(mean_returns: pd.Series, cov: pd.DataFrame) -> tuple[pd.Series, float, float, float]:
-    # ponytail: Monte Carlo en lugar de optimizador cuadrático
+    # ponytail: Monte Carlo (diversificado + concentrado) en lugar de optimizador cuadrático
     tickers = mean_returns.index.tolist()
     k = len(tickers)
     rng = np.random.default_rng(7)
     best_w = None
     best_sharpe = float("-inf")
-    for _ in range(20_000):
-        w = rng.dirichlet(np.ones(k))
+    for i in range(25_000):
+        w = _random_weights(rng, k, sparse=(i % 2 == 1))
         ret, vol = portfolio_stats(w, mean_returns, cov)
         s = sharpe_ratio(ret, vol)
         if s > best_sharpe:
@@ -179,16 +205,20 @@ def downsample_frontier(df: pd.DataFrame, max_points: int = 400) -> list[dict]:
     return _to_pct_points(sample)
 
 
-def extract_efficient_curve(df: pd.DataFrame, n_bins: int = 40) -> list[dict]:
-    """Envolvente superior: máximo retorno por bucket de volatilidad."""
+def extract_efficient_curve(df: pd.DataFrame, n_bins: int = 50) -> list[dict]:
+    """Envolvente superior sobre todo el rango de volatilidad (bins equiespaciados)."""
     work = df.copy()
-    work["bin"] = pd.qcut(work["volatility"], q=min(n_bins, len(work)), duplicates="drop")
-    curve = (
-        work.groupby("bin", observed=True)
-        .apply(lambda g: g.loc[g["return"].idxmax()])
-        .reset_index(drop=True)
-        .sort_values("volatility")
-    )
+    vmin, vmax = work["volatility"].min(), work["volatility"].max()
+    edges = np.linspace(vmin, vmax, n_bins + 1)
+    work["bin"] = pd.cut(work["volatility"], bins=edges, include_lowest=True)
+    rows = []
+    for _, g in work.groupby("bin", observed=True):
+        if g.empty:
+            continue
+        rows.append(g.loc[g["return"].idxmax()])
+    curve = pd.DataFrame(rows).sort_values("volatility")
+    # Monótona no-decreciente en retorno (frontera eficiente clásica)
+    curve = curve[curve["return"] >= curve["return"].cummax().shift(1, fill_value=-np.inf)]
     return _to_pct_points(curve)
 
 
