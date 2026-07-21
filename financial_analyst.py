@@ -2,11 +2,13 @@
 
 import datetime as dt
 import json
+import time
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 import yfinance as yf
+from curl_cffi import requests as curl_requests
 
 # ----------------------------------------
 # Parámetros (literatura mean-variance)
@@ -81,24 +83,55 @@ MONTHS_ES = (
 )
 
 
-def download_prices(tickers: list[str], start: dt.datetime, end: dt.datetime) -> pd.DataFrame:
-    raw = yf.download(
-        tickers=tickers,
-        start=start,
-        end=end,
-        interval="1wk",
-        group_by="ticker",
-        auto_adjust=True,
-        threads=False,
-        progress=False,
-    )
-    closes = {}
-    for ticker in tickers:
-        if ticker not in raw:
+def _yf_session():
+    # Yahoo bloquea TLS de bot; chrome fingerprint evita YFRateLimit en CI
+    return curl_requests.Session(impersonate="chrome")
+
+
+def _download_one(ticker: str, start: dt.datetime, end: dt.datetime, session) -> pd.Series | None:
+    # ponytail: 1 ticker + backoff; ceiling = IP ban largo → otro proveedor
+    for attempt in range(5):
+        try:
+            raw = yf.download(
+                tickers=ticker,
+                start=start,
+                end=end,
+                interval="1wk",
+                auto_adjust=True,
+                threads=False,
+                progress=False,
+                session=session,
+            )
+        except Exception as exc:
+            if "Rate" not in type(exc).__name__ and "Rate" not in str(exc):
+                raise
+            time.sleep(2 ** attempt)
             continue
-        series = raw[ticker]["Close"] if len(tickers) > 1 else raw["Close"]
-        if series is not None and not series.dropna().empty:
-            closes[ticker] = series.dropna()
+        if raw is None or raw.empty:
+            time.sleep(2 ** attempt)
+            continue
+        try:
+            series = raw["Close"].squeeze()
+        except (KeyError, TypeError):
+            time.sleep(2 ** attempt)
+            continue
+        if isinstance(series, pd.DataFrame):
+            series = series.iloc[:, 0]
+        if not series.dropna().empty:
+            return series.dropna()
+        time.sleep(2 ** attempt)
+    return None
+
+
+def download_prices(tickers: list[str], start: dt.datetime, end: dt.datetime) -> pd.DataFrame:
+    session = _yf_session()
+    closes = {}
+    for i, ticker in enumerate(tickers):
+        if i:
+            time.sleep(0.4)  # throttle CI / shared IPs
+        series = _download_one(ticker, start, end, session)
+        if series is not None:
+            closes[ticker] = series
     if not closes:
         raise RuntimeError("No se descargaron precios válidos.")
     return pd.DataFrame(closes).dropna(how="all").ffill().dropna()
