@@ -399,7 +399,7 @@ def run() -> dict:
     result = {
         "updated_at": end.strftime("%Y-%m-%d"),
         "lookback_weeks": LOOKBACK_WEEKS,
-        "schedule": "semanal",
+        "schedule": "lunes_viernes",
         "universe_size": len(mean_a),
         "risk_free_rate": RISK_FREE_RATE,
         "order_validity_window_days": 7,

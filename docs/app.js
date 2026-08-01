@@ -22,6 +22,7 @@ function buildTickerItems(stocks) {
 }
 
 function renderTicker(stocks) {
+  const wrap = document.querySelector('.ticker-wrap');
   const track = document.getElementById('tickerTrack');
   const items = buildTickerItems(stocks);
   const html = items
@@ -31,6 +32,76 @@ function renderTicker(stocks) {
     )
     .join('<span class="ticker-sep">◆</span>');
   track.innerHTML = html + '<span class="ticker-sep">◆</span>' + html;
+
+  // Auto-scroll + arrastre; el contenido está duplicado → loop en halfWidth
+  let offset = 0;
+  let half = 0;
+  let paused = false;
+  let dragging = false;
+  let lastX = 0;
+  let lastTs = 0;
+  const pxPerSec = 48;
+
+  const apply = () => {
+    if (half > 0) {
+      offset = ((offset % half) + half) % half;
+      track.style.transform = `translateX(${-offset}px)`;
+    }
+  };
+
+  const measure = () => {
+    half = track.scrollWidth / 2;
+    apply();
+  };
+
+  const tick = (ts) => {
+    if (!lastTs) lastTs = ts;
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
+    if (!paused && !dragging && half > 0) {
+      offset += pxPerSec * dt;
+      apply();
+    }
+    requestAnimationFrame(tick);
+  };
+
+  wrap.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    paused = true;
+    lastX = e.clientX;
+    wrap.classList.add('is-dragging');
+    wrap.setPointerCapture(e.pointerId);
+  });
+  wrap.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    offset -= e.clientX - lastX;
+    lastX = e.clientX;
+    apply();
+  });
+  const endDrag = (e) => {
+    if (!dragging) return;
+    dragging = false;
+    wrap.classList.remove('is-dragging');
+    if (e && wrap.hasPointerCapture?.(e.pointerId)) {
+      wrap.releasePointerCapture(e.pointerId);
+    }
+    // reanuda si el mouse no sigue encima
+    paused = wrap.matches(':hover');
+  };
+  wrap.addEventListener('pointerup', endDrag);
+  wrap.addEventListener('pointercancel', endDrag);
+  wrap.addEventListener('pointerleave', () => {
+    if (!dragging) paused = false;
+  });
+  wrap.addEventListener('pointerenter', () => {
+    if (!dragging) paused = true;
+  });
+
+  requestAnimationFrame(() => {
+    measure();
+    requestAnimationFrame(tick);
+  });
+  window.addEventListener('resize', measure);
 }
 
 function fmtMoney(v) {
@@ -99,7 +170,7 @@ function renderPortfolioInfo(data) {
     .map(
       (s, i) => `
       <div class="stock-card ${s.vs_last_week === 'new' ? 'is-new' : 'is-kept'}">
-        <div class="stock-badge">${s.vs_last_week === 'new' ? 'NUEVA' : 'igual'}</div>
+        <div class="stock-badge">${s.vs_last_week === 'new' ? 'NUEVA' : 'IGUAL'}</div>
         <div class="stock-name">${s.label}</div>
         <div class="stock-ticker">${s.ticker}</div>
         <div class="stock-price">$${fmtNum(s.price)}</div>
@@ -116,13 +187,18 @@ function renderPortfolioInfo(data) {
     )
     .join('');
 
+  const rfPct = ((data.risk_free_rate ?? 0.04) * 100).toFixed(0);
   el.innerHTML = `
     <h2>Portafolio óptimo (5 acciones)</h2>
+    ${renderWeekComparison(data)}
     <div class="metrics">
-      <div class="metric"><span class="metric-label">Sharpe</span><span class="metric-value">${p.sharpe_ratio}</span></div>
+      <div class="metric metric-sharpe">
+        <span class="metric-label">Sharpe</span>
+        <span class="metric-value">${p.sharpe_ratio}</span>
+        <span class="metric-formula">(μ − r<sub>f</sub>) / σ = (${p.annual_return_pct}% − ${rfPct}%) / ${p.annual_volatility_pct}%</span>
+      </div>
       <div class="metric"><span class="metric-label">Retorno anual</span><span class="metric-value">${p.annual_return_pct}%</span></div>
       <div class="metric"><span class="metric-label">Volatilidad</span><span class="metric-value">${p.annual_volatility_pct}%</span></div>
-      <div class="metric"><span class="metric-label">Universo</span><span class="metric-value">${data.universe_size} acciones</span></div>
     </div>
     <div class="allocator">
       <label for="totalInput">Monto a invertir (CLP)</label>
@@ -132,8 +208,6 @@ function renderPortfolioInfo(data) {
       </div>
       <p class="allocator-hint">Se reparte según los pesos del portafolio de máximo Sharpe.</p>
     </div>
-    ${renderWeekComparison(data)}
-    <p class="note">${data.order_validity_note || 'Vigencia de órdenes dentro de los próximos 7 días.'} Universo: ${data.universe_size} acciones IPSA · ${data.lookback_weeks || 156} semanas.</p>
     <div class="stock-grid">${stocksHtml}</div>
   `;
 
@@ -149,27 +223,28 @@ function renderFrontierChart(data) {
   const curve = (data.frontier_curve || []).slice().sort((a, b) => a.volatility - b.volatility);
   const optimal = data.max_sharpe_point;
 
-  new Chart(ctx, {
+  const chart = new Chart(ctx, {
     type: 'scatter',
     data: {
       datasets: [
         {
           label: 'Portafolios simulados',
           data: cloud.map((p) => ({ x: p.volatility, y: p.return })),
-          backgroundColor: 'rgba(88, 166, 255, 0.22)',
-          pointRadius: 1.5,
+          backgroundColor: 'rgba(139, 148, 158, 0.28)',
+          pointRadius: 1.4,
           pointHoverRadius: 3,
+          pointHitRadius: 1,
           order: 3,
         },
         {
           type: 'line',
           label: 'Frontera eficiente',
           data: curve.map((p) => ({ x: p.volatility, y: p.return, sharpe: p.sharpe })),
-          borderColor: '#58a6ff',
-          backgroundColor: 'rgba(88, 166, 255, 0.12)',
-          borderWidth: 3,
+          borderColor: '#c9d1d9',
+          backgroundColor: 'rgba(201, 209, 217, 0.08)',
+          borderWidth: 2,
           pointRadius: 0,
-          pointHoverRadius: 5,
+          pointHoverRadius: 4,
           tension: 0.35,
           fill: false,
           showLine: true,
@@ -178,10 +253,10 @@ function renderFrontierChart(data) {
         {
           label: 'Máximo Sharpe',
           data: [{ x: optimal.volatility_pct, y: optimal.return_pct }],
-          backgroundColor: '#ffc107',
-          borderColor: '#ffdd57',
-          pointRadius: 11,
-          pointHoverRadius: 13,
+          backgroundColor: '#e6edf3',
+          borderColor: '#f0f3f6',
+          pointRadius: 8,
+          pointHoverRadius: 10,
           pointStyle: 'star',
           order: 1,
         },
@@ -193,10 +268,13 @@ function renderFrontierChart(data) {
             label: s.label,
             weight: s.weight,
           })),
-          backgroundColor: '#3fb950',
-          borderColor: '#56d364',
-          pointRadius: 7,
-          pointHoverRadius: 9,
+          backgroundColor: 'transparent',
+          borderColor: '#e6edf3',
+          borderWidth: 1.25,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          pointHitRadius: 8,
+          pointStyle: 'crossRot',
           order: 0,
         },
       ],
@@ -204,6 +282,9 @@ function renderFrontierChart(data) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      animation: false,
+      animations: { colors: false, x: false, y: false },
+      interaction: { mode: 'nearest', intersect: true },
       plugins: {
         title: {
           display: true,
@@ -229,14 +310,38 @@ function renderFrontierChart(data) {
             },
           },
         },
+        zoom: {
+          limits: {
+            x: { min: 'original', max: 'original' },
+            y: { min: 'original', max: 'original' },
+          },
+          pan: {
+            enabled: true,
+            mode: 'xy',
+            onPan({ chart: c }) {
+              c.draw();
+            },
+          },
+          zoom: {
+            wheel: { enabled: true },
+            pinch: { enabled: true },
+            drag: { enabled: false },
+            mode: 'xy',
+            onZoom({ chart: c }) {
+              c.draw();
+            },
+          },
+        },
       },
       scales: {
         x: {
+          type: 'linear',
           title: { display: true, text: 'Volatilidad anual (%)', color: '#8b949e' },
           ticks: { color: '#8b949e' },
           grid: { color: 'rgba(48, 54, 61, 0.8)' },
         },
         y: {
+          type: 'linear',
           title: { display: true, text: 'Retorno anual (%)', color: '#8b949e' },
           ticks: { color: '#8b949e' },
           grid: { color: 'rgba(48, 54, 61, 0.8)' },
@@ -244,16 +349,22 @@ function renderFrontierChart(data) {
       },
     },
   });
+
+  const resetBtn = document.getElementById('chartResetZoom');
+  if (resetBtn) {
+    resetBtn.onclick = () => chart.resetZoom();
+  }
 }
 
 fetch('./results.json')
   .then((r) => r.json())
   .then((data) => {
     const dateEl = document.getElementById('dateContainer');
-    if (data.updated_at) {
-      const d = new Date(data.updated_at + 'T12:00:00');
-      dateEl.textContent = `Actualizado: ${d.toLocaleDateString('es-CL', { dateStyle: 'long' })}`;
-    }
+    const dateLine = data.updated_at
+      ? `Actualizado: ${new Date(data.updated_at + 'T12:00:00').toLocaleDateString('es-CL', { dateStyle: 'long' })}`
+      : '';
+    const universeLine = `Universo: ${data.universe_size} acciones IPSA · ${data.lookback_weeks || 156} semanas.`;
+    dateEl.innerHTML = `${dateLine ? `<span>${dateLine}</span>` : ''}<span class="header-universe">${universeLine}</span>`;
     renderTicker(data.stocks || []);
     renderPortfolioInfo(data);
     renderFrontierChart(data);

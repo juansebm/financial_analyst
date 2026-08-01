@@ -6,17 +6,19 @@
   <title>IPSA — Frontera Eficiente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.min.js"></script>
 </head>
 <body>
   <header>
     <div class="header-left">
       <h1 class="header-title">IPSA · Frontera Eficiente</h1>
-      <p class="header-sub">Portafolio de máximo Sharpe · actualización semanal</p>
+      <p class="header-sub">Portafolio de máximo Sharpe · actualización lunes y viernes</p>
     </div>
-    <div class="header-date" id="dateContainer"></div>
+    <div class="header-meta" id="dateContainer"></div>
   </header>
 
   <div class="ticker-wrap" aria-label="Cinta de cotizaciones">
@@ -26,7 +28,12 @@
   <main class="container">
     <section class="info-section" id="portfolioInfo"></section>
     <section class="chart-section">
-      <canvas id="chartFrontier"></canvas>
+      <div class="chart-toolbar">
+        <button type="button" class="chart-reset" id="chartResetZoom">Reset zoom</button>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="chartFrontier"></canvas>
+      </div>
       <div class="chart-legend">
         <span class="dot dot-cloud"></span> Portafolios simulados
         <span class="dot dot-frontier"></span> Frontera eficiente

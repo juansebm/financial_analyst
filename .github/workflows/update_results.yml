@@ -1,8 +1,8 @@
-name: Update Portfolio (weekly)
+name: Update Portfolio (Mon/Fri)
 
 on:
   schedule:
-    - cron: '0 14 * * 1'  # Lunes 14:00 UTC
+    - cron: '0 14 * * 1,5'  # Lunes y viernes 14:00 UTC
   workflow_dispatch:
 
 permissions:

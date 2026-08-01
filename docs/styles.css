@@ -3,7 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   background-color: #0d1117;
   color: #e6edf3;
   overflow: hidden;
@@ -19,28 +19,39 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, #002C54 0%, #004080 100%);
+  background: linear-gradient(135deg, #1c2128 0%, #2d333b 100%);
+  border-bottom: 1px solid #444c56;
   padding: 0.85rem 1.25rem;
   flex-shrink: 0;
 }
 
 .header-title {
   margin: 0;
-  color: #fff;
+  color: #f0f3f6;
   font-weight: 700;
   font-size: 1.35rem;
+  letter-spacing: -0.01em;
 }
 
 .header-sub {
   margin: 0.15rem 0 0;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(240, 243, 246, 0.65);
   font-size: 0.8rem;
 }
 
-.header-date {
-  color: #ffc107;
-  font-family: 'JetBrains Mono', monospace;
+.header-meta {
+  text-align: right;
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.header-meta .header-universe {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 /* Ticker / prompter */
@@ -48,18 +59,25 @@ header {
   flex-shrink: 0;
   overflow: hidden;
   background: #000;
-  border-bottom: 2px solid #ffc107;
+  border-bottom: 1px solid #444c56;
   height: 2.4rem;
   display: flex;
   align-items: center;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.ticker-wrap.is-dragging {
+  cursor: grabbing;
 }
 
 .ticker-track {
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  animation: ticker-scroll 40s linear infinite;
-  font-family: 'JetBrains Mono', monospace;
+  will-change: transform;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -69,18 +87,13 @@ header {
   padding: 0 1.5rem;
 }
 
-.ticker-item.up { color: #3fb950; }
+.ticker-item.up { color: #8b949e; }
 .ticker-item.down { color: #f85149; }
 
 .ticker-sep {
-  color: #ffc107;
-  opacity: 0.6;
+  color: #6e7681;
+  opacity: 0.8;
   padding: 0 0.25rem;
-}
-
-@keyframes ticker-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* Layout */
@@ -107,7 +120,10 @@ header {
 .info-section h2 {
   margin: 0 0 0.75rem;
   font-size: 1.1rem;
-  color: #ffc107;
+  font-weight: 600;
+  color: #e6edf3;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 0.45rem;
 }
 
 .metrics {
@@ -133,10 +149,23 @@ header {
 }
 
 .metric-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #58a6ff;
+  color: #c9d1d9;
+}
+
+.metric-formula {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  color: #8b949e;
+  line-height: 1.35;
+}
+
+.metric-sharpe {
+  grid-column: 1 / -1;
 }
 
 .note {
@@ -174,8 +203,8 @@ header {
 }
 
 .allocator-prefix {
-  font-family: 'JetBrains Mono', monospace;
-  color: #58a6ff;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #adbac7;
   font-weight: 600;
 }
 
@@ -185,7 +214,7 @@ header {
   border: none;
   outline: none;
   color: #e6edf3;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 1.1rem;
   font-weight: 600;
   min-width: 0;
@@ -198,17 +227,17 @@ header {
 }
 
 .stock-alloc {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ffc107;
+  color: #d0d7de;
   margin-top: 0.35rem;
 }
 
 .stock-shares {
   font-size: 0.65rem;
   color: #8b949e;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .stock-validity {
@@ -228,10 +257,10 @@ header {
 }
 
 .validity-until {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #58a6ff;
+  color: #c9d1d9;
 }
 
 .validity-reason {
@@ -242,7 +271,7 @@ header {
 
 .stock-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.6rem;
 }
 
@@ -252,10 +281,11 @@ header {
   border-radius: 6px;
   padding: 0.6rem 0.75rem;
   position: relative;
+  min-width: 0;
 }
 
 .stock-card.is-new {
-  border-color: #3fb950;
+  border-color: #6e7681;
 }
 
 .stock-badge {
@@ -268,13 +298,14 @@ header {
   text-transform: uppercase;
   padding: 0.15rem 0.35rem;
   border-radius: 3px;
-  background: #21262d;
+  border: 1px solid #30363d;
+  background: transparent;
   color: #8b949e;
 }
 
 .stock-card.is-new .stock-badge {
-  background: rgba(63, 185, 80, 0.2);
-  color: #3fb950;
+  border-color: #8b949e;
+  color: #c9d1d9;
 }
 
 .week-compare {
@@ -294,7 +325,7 @@ header {
 .week-asof {
   color: #8b949e;
   font-weight: 400;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.75rem;
 }
 
@@ -305,7 +336,7 @@ header {
 }
 
 .compare-summary.same { color: #8b949e; }
-.compare-summary.changed { color: #ffc107; }
+.compare-summary.changed { color: #d0d7de; }
 
 .prev-list {
   margin: 0;
@@ -319,7 +350,7 @@ header {
 }
 
 .prev-list li span {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   color: #8b949e;
   font-size: 0.75rem;
 }
@@ -333,27 +364,28 @@ header {
 .stock-name {
   font-weight: 600;
   font-size: 0.9rem;
+  padding-right: 2.5rem;
 }
 
 .stock-ticker {
   font-size: 0.65rem;
   color: #8b949e;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .stock-price {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
   margin-top: 0.25rem;
 }
 
 .stock-change {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
   font-weight: 600;
 }
 
-.stock-change.up { color: #3fb950; }
+.stock-change.up { color: #adbac7; }
 .stock-change.down { color: #f85149; }
 
 .stock-weight {
@@ -367,12 +399,38 @@ header {
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  overflow: hidden;
 }
 
-.chart-section canvas {
+.chart-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.35rem;
+  flex-shrink: 0;
+}
+
+.chart-reset {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: #8b949e;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  padding: 0.25rem 0.55rem;
+  cursor: pointer;
+}
+
+.chart-reset:hover {
+  color: #e6edf3;
+  border-color: #6e7681;
+}
+
+/* Contenedor con tamaño fijo: evita CSS width/height en canvas (desalineaba hover) */
+.chart-wrap {
+  position: relative;
   flex: 1;
   min-height: 280px;
-  width: 100% !important;
+  width: 100%;
 }
 
 .chart-legend {
@@ -383,6 +441,7 @@ header {
   color: #8b949e;
   margin-top: 0.5rem;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .dot {
@@ -394,10 +453,36 @@ header {
   vertical-align: middle;
 }
 
-.dot-cloud { background: rgba(88, 166, 255, 0.35); }
-.dot-frontier { background: #58a6ff; }
-.dot-optimal { background: #ffc107; }
-.dot-selected { background: #3fb950; }
+.dot-cloud { background: rgba(139, 148, 158, 0.45); }
+.dot-frontier { background: #c9d1d9; }
+.dot-optimal { background: #d0d7de; }
+.dot-selected {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  position: relative;
+  vertical-align: middle;
+}
+.dot-selected::before,
+.dot-selected::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.7rem;
+  height: 1px;
+  background: #e6edf3;
+}
+.dot-selected::before { transform: translate(-50%, -50%) rotate(45deg); }
+.dot-selected::after { transform: translate(-50%, -50%) rotate(-45deg); }
+
+@media (max-width: 1100px) {
+  .stock-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 800px) {
   .container {
@@ -407,5 +492,8 @@ header {
   .chart-section {
     flex: none;
     max-height: 45vh;
+  }
+  .stock-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

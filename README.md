@@ -30,7 +30,7 @@ Abre `docs/index.html` en el navegador (o sirve `docs/` con un servidor estátic
 
 ## GitHub Pages
 
-El workflow `.github/workflows/update_results.yml` corre **cada lunes** y actualiza `results.json` + `docs/results.json`.
+El workflow `.github/workflows/update_results.yml` corre **lunes y viernes** (14:00 UTC) y actualiza `results.json` + `docs/results.json`.
 
 Configura Pages en el repo: **Settings → Pages → Source: Deploy from branch → `/docs`**.
 
